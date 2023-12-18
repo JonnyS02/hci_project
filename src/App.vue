@@ -16,6 +16,8 @@ export default {
 }
 </script>
 
+#Test
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
