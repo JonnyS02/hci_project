@@ -1,0 +1,18 @@
+
+{
+    "exams": [
+      {
+        "id": 1,
+        "course": "Introduction to Vue.js",
+        "date": "2023-12-20",
+        "location": "Room 101"
+      },
+      {
+        "id": 2,
+        "course": "Advanced JavaScript",
+        "date": "2023-12-22",
+        "location": "Room 102"
+      }
+    ]
+  }
+  

@@ -1,17 +1,61 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <AppHeader />
+    <div v-if="currentView === 'home'">
+      <HomeView @navigateTo="navigateTo" />
+    </div>
+    <div v-else-if="currentView === 'courses'">
+      <CourseList @navigateTo="navigateTo" />
+    </div>
+    <div v-else-if="currentView === 'courseDetails'">
+      <CourseDetails :course="selectedCourse" />
+    </div>
+    <div v-else-if="currentView === 'examSchedule'">
+      <ExamSchedule />
+    </div>
+    <div v-else-if="currentView === 'registrationForm'">
+      <RegistrationForm />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from '@/components/AppHeader.vue'
+import HomeView from '@/views/HomeView.vue'
+import CourseList from '@/components/CourseList.vue'
+import CourseDetails from '@/components/CourseDetails.vue'
+import ExamSchedule from '@/components/ExamSchedule.vue'
+import RegistrationForm from '@/components/RegistrationForm.vue'
 
 export default {
-  name: 'App',
+  data() {
+    return {
+      currentView: 'home',
+      selectedCourse: null
+    }
+  },
   components: {
-    HelloWorld
+    AppHeader,
+    HomeView,
+    CourseList,
+    CourseDetails,
+    ExamSchedule,
+    RegistrationForm
+  },
+  methods: {
+    navigateTo(view, course = null) {
+      console.log('Navigating to:', view);
+      this.currentView = view;
+      if (course) {
+        this.selectedCourse = course;
+      }
+    }
+  },
+  created() {
+    console.log('App.vue created'); 
+  },
+  mounted() {
+    console.log('App.vue mounted');
   }
 }
 </script>
