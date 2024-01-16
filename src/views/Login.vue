@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     login(role) {
-      const icon = role.toLowerCase() === 'student' ? 'fa-user-graduate' : 'fa-user-tie';
+      const icon = role.toLowerCase() === 'student' ? 'Student' : 'Professor';
       this.$store.commit('pochtaStore/iam', {
         name: role.toLowerCase(),
         icon,
