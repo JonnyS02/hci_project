@@ -35,20 +35,11 @@ export default {
   },
   methods: {
     login(role) {
-      /*const icon = role.toLowerCase() === 'student' ? 'fa-user-graduate' : 'fa-user-tie';
-      this.$store.commit('pochtaStore/iam', {
-        name: role.toLowerCase(),
-        icon,
+      const icon = role.toLowerCase() === 'student' ? 'fa-user-graduate' : 'fa-user-tie';
+      pochtaStore.iam({
+        name: role,
+        icon: icon,
       });
-      
-      pochtaStore.iam(role.toLowerCase());
-      const route = { name: 'dashboard', params: { role: role.toLowerCase() } };
-      console.log("Test");
-      console.log(pochtaStore.state.role);
-      window.location.href = this.$router.resolve(route).href;*/
-
-      pochtaStore.iam(role.toLowerCase());
-      //this.$store.commit('pochtaStore/iam', role);
       const route = { name: 'dashboard', params: { role: role.toLowerCase() } };
       window.location.href = this.$router.resolve(route).href;
     },
