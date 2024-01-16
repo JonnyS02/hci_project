@@ -17,7 +17,7 @@ class PochtaStore extends PersistentStore<Pochta> {
       moduleIds: [],
       role: {
         name: 'student',
-        icon: 'fa-user-undergraduate',
+        icon: 'fa-user-graduate',  // Aktualisiert auf 'fa-user-graduate'
       },
     };
   }

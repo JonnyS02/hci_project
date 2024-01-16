@@ -1,5 +1,7 @@
 <template>
-  <v-breadcrumbs :items="state.items" class="px-1 py-0"></v-breadcrumbs>
+  <div v-if="showBreadcrumbBar">
+    <v-breadcrumbs :items="state.items" class="px-1 py-0"></v-breadcrumbs>
+  </div>
 </template>
 
 <script>
@@ -11,14 +13,17 @@ export default {
     const state = reactive({
       items: root.$route.meta.breadcrumbs,
     });
+
     watch(
       () => root.$route,
       val => {
         state.items = val.meta.breadcrumbs;
       }
     );
+
     return {
       state,
+      showBreadcrumbBar: root.$route.meta.showBreadcrumbBar !== false,
     };
   },
 };

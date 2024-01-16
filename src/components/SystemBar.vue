@@ -1,6 +1,6 @@
 <template>
-  <v-system-bar app dark fixed color="primary" style="height: 28px; padding: 0">
-    <span class="mx-4">Vue Pochta</span>
+  <v-system-bar v-if="showSystemBar" app dark fixed color="primary" style="height: 28px; padding: 0">
+    <span class="mx-4">Space Pochta</span>
 
     <v-btn text tile small to="/">Home</v-btn>
 
@@ -63,6 +63,11 @@ export default {
   components: {
     Navigation,
   },
+  computed: {
+    showSystemBar() {
+      return this.$route.meta.showSystemBar !== false;
+    },
+  },
   data: () => ({
     roles: [
       {
@@ -70,7 +75,7 @@ export default {
         icon: 'fa-user-graduate',
       },
       {
-        name: 'professor',
+        name: 'employee',
         icon: 'fa-user-tie',
       },
     ],
@@ -79,8 +84,15 @@ export default {
   }),
   setup() {
     const close = () => window.close();
-    const iam = role => pochtaStore.iam(role);
     const state = pochtaStore.state;
+
+    // Prüfen, ob die Rolle im Store festgelegt ist, und andernfalls die Standardrolle setzen
+    if (!state.role) {
+      pochtaStore.iam(this.roles[0]);
+    }
+
+    const iam = role => pochtaStore.iam(role);
+
     return {
       state,
       iam,

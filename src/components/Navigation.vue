@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation">
+  <div v-if="showNavigation" class="navigation">
     <v-list dense :nav="nav" :class="{ nav }">
       <v-list-item
         :to="item.to"
@@ -26,6 +26,11 @@ export default {
   props: {
     group: String,
     nav: Boolean,
+  },
+  computed: {
+    showNavigation() {
+      return this.$route.meta.showNavigation !== false;
+    },
   },
   data: () => ({ routes }),
 };

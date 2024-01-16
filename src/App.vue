@@ -1,8 +1,9 @@
 <template>
   <v-app>
-    <SystemBar />
+    <SystemBar v-if="showSystemBar" />
 
     <v-navigation-drawer
+      v-if="showNavigationDrawer"
       :mini-variant="mini"
       app
       mini-variant-width="62"
@@ -21,7 +22,7 @@
                 style="color: inherit; text-decoration: none"
                 to="/"
               >
-                Vue Pochta
+                Space Pochta
               </router-link>
             </v-list-item-title>
           </v-list-item-content>
@@ -54,7 +55,7 @@
     </v-navigation-drawer>
 
     <v-main>
-      <BreadcrumbBar />
+      <BreadcrumbBar v-if="showBreadcrumbBar" />
       <router-view />
     </v-main>
   </v-app>
@@ -85,16 +86,34 @@ export default Vue.extend({
     const drawer = true;
     const groups = ['campus', 'study', 'playground', 'about'];
     const mini = ref(true);
+
+    const showSystemBar = ref(true);
+    const showNavigationDrawer = ref(true);
+    const showBreadcrumbBar = ref(true);
+
     function shorten(inputString: string): string {
       return inputString.length > 5 && mini.value
         ? inputString.slice(0, 4).concat('...')
         : inputString;
     }
+
+    watch(
+      () => props.$route.path,
+      (newPath) => {
+        const isLoginPage = newPath === '/';
+        showNavigationDrawer.value = !isLoginPage;
+        showBreadcrumbBar.value = !isLoginPage;
+      }
+    );
+
     return {
       drawer,
       groups,
       mini,
       shorten,
+      showSystemBar,
+      showNavigationDrawer,
+      showBreadcrumbBar,
     };
   },
 });
