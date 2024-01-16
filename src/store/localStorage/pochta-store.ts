@@ -41,6 +41,7 @@ class PochtaStore extends PersistentStore<Pochta> {
   }
 
   iam(role: any): void {
+    console.log('Setting role:', role);
     this.state.role = role;
   }
 

@@ -1,6 +1,6 @@
 import Person from './Person';
 
-export default class Employee extends Person {
+export default class Professor extends Person {
   private _roomId: string = '';
 
   constructor() {

@@ -33,17 +33,14 @@ export default {
   },
   methods: {
     login(role) {
-      const icon = role.toLowerCase() === 'student' ? 'Student' : 'Professor';
-      this.$store.commit('pochtaStore/iam', {
-        name: role.toLowerCase(),
-        icon,
-      });
+      this.$store.commit('pochtaStore/iam', role);
       const route = { name: 'dashboard', params: { role: role.toLowerCase() } };
       window.location.href = this.$router.resolve(route).href;
     },
   },
 };
 </script>
+
 
 <style scoped>
 .elevation-13 {
