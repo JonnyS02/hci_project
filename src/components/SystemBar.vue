@@ -70,7 +70,7 @@ export default {
         icon: 'fa-user-graduate',
       },
       {
-        name: 'tutor',
+        name: 'professor',
         icon: 'fa-user-tie',
       },
     ],
