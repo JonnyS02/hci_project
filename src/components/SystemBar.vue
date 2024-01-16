@@ -75,7 +75,7 @@ export default {
         icon: 'fa-user-graduate',
       },
       {
-        name: 'employee',
+        name: 'professor',
         icon: 'fa-user-tie',
       },
     ],

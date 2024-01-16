@@ -4,7 +4,7 @@ export default class Employee extends Person {
   private _roomId: string = '';
 
   constructor() {
-    super({ role: 'employee' });
+    super({ role: 'professor' });
   }
 
   get roomId(): string {
