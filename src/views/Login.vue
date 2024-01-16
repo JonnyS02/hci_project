@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { pochtaStore } from '@/store/localStorage/pochta-store';
+
 export default {
   data() {
     return {
@@ -33,14 +35,26 @@ export default {
   },
   methods: {
     login(role) {
-      this.$store.commit('pochtaStore/iam', role);
+      /*const icon = role.toLowerCase() === 'student' ? 'fa-user-graduate' : 'fa-user-tie';
+      this.$store.commit('pochtaStore/iam', {
+        name: role.toLowerCase(),
+        icon,
+      });
+      
+      pochtaStore.iam(role.toLowerCase());
+      const route = { name: 'dashboard', params: { role: role.toLowerCase() } };
+      console.log("Test");
+      console.log(pochtaStore.state.role);
+      window.location.href = this.$router.resolve(route).href;*/
+
+      pochtaStore.iam(role.toLowerCase());
+      //this.$store.commit('pochtaStore/iam', role);
       const route = { name: 'dashboard', params: { role: role.toLowerCase() } };
       window.location.href = this.$router.resolve(route).href;
     },
   },
 };
 </script>
-
 
 <style scoped>
 .elevation-13 {
