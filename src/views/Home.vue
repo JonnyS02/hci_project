@@ -1,5 +1,8 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <h1>Dashboard</h1>
+    <p>Eingeloggt als {{ role }}</p>
+  </div>
 </template>
 
 <script>

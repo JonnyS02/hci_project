@@ -1,3 +1,5 @@
+// store/localstorage/pochta-store.ts
+
 import { PersistentStore } from './persistent-store';
 
 interface Pochta extends Object {
@@ -17,7 +19,7 @@ class PochtaStore extends PersistentStore<Pochta> {
       moduleIds: [],
       role: {
         name: 'student',
-        icon: 'fa-user-graduate',  // Aktualisiert auf 'fa-user-graduate'
+        icon: 'fa-user-graduate',
       },
     };
   }
