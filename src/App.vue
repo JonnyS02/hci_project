@@ -83,7 +83,7 @@ export default Vue.extend({
     stores.init();
   },
   setup(props) {
-    const drawer = true;
+    const drawer = !(window.location.pathname ==='/');
     const groups = ['campus', 'study', 'playground', 'about'];
     const mini = ref(true);
 
@@ -96,15 +96,6 @@ export default Vue.extend({
         ? inputString.slice(0, 4).concat('...')
         : inputString;
     }
-
-    watch(
-      () => props.$route.path,
-      (newPath) => {
-        const isLoginPage = newPath === '/';
-        showNavigationDrawer.value = !isLoginPage;
-        showBreadcrumbBar.value = !isLoginPage;
-      }
-    );
 
     return {
       drawer,
