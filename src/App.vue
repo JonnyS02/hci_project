@@ -30,7 +30,7 @@ import RegistrationForm from '@/components/RegistrationForm.vue'
 export default {
   data() {
     return {
-      currentView: 'home',
+      currentView: 'home', // Erste Ansicht
       selectedCourse: null
     }
   },
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     navigateTo(view, course = null) {
-      console.log('Navigating to:', view);
+      console.log('Navigating to:', view); // Konsolenausgabe
       this.currentView = view;
       if (course) {
         this.selectedCourse = course;
@@ -52,7 +52,7 @@ export default {
     }
   },
   created() {
-    console.log('App.vue created'); 
+    console.log('App.vue created'); //unnötig eigentlich
   },
   mounted() {
     console.log('App.vue mounted');

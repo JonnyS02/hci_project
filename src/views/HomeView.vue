@@ -11,7 +11,7 @@ export default {
   name: 'HomeView',
   methods: {
     navigateTo(view) {
-      this.$emit('navigateTo', view); // Auslösen des Events
+      this.$emit('navigateTo', view); // Auslösen des Events - nach Klick auf Button
     }
   }
 };
