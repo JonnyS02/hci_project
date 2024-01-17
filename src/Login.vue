@@ -4,7 +4,7 @@
   <div class="login-container">
     <h2>Login</h2>
     <form @submit.prevent="login">
-      <label for="username">Benutzername:</label>
+      <label for="username"></label>
       <input type="text" id="username" v-model="username" placeholder="Username">
 
       <label for="password">Passwort:</label>
@@ -28,6 +28,7 @@ export default {
       console.log('Benutzername:', this.username);
       console.log('Passwort:', this.password);
       this.$router.push('/Welcome');
+      this.$store.state.name = this.username;
     }
   }
 };
