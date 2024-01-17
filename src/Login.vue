@@ -1,72 +1,76 @@
-<!-- LoginView.vue -->
-
+<!-- Login.vue -->
 <template>
   <div class="login-container">
-    <h2>Login</h2>
-    <form @submit.prevent="login">
-      <label for="username">Benutzername:</label>
-      <input type="text" id="username" v-model="username" placeholder="Username">
+    <img src="@/assets/space-logo.png" alt="Space Logo" class="logo" />
 
-      <label for="password">Passwort:</label>
-      <input type="password" id="password" v-model="password" placeholder="Password">
+    <div class="role-cards">
+      <RoleCard role="Student" @click="showLoginComp('Student')" />
+      <RoleCard role="Professor" @click="showLoginComp('Professor')" />
+    </div>
 
-      <button type="submit">Anmelden</button>
-    </form>
+    <transition name="fade">
+      <LoginComp v-if="showLoginComp" @close="hideLoginComp" />
+    </transition>
   </div>
 </template>
 
 <script>
+import RoleCard from "@/components/RoleCard.vue";
+import LoginComp from "@/components/LoginComp.vue";
+
 export default {
+  name: 'Login',
+  components: {
+    RoleCard,
+    LoginComp,
+  },
   data() {
     return {
-      username: '',
-      password: ''
+      showLoginComp: false,
+      selectedRole: '',
     };
   },
   methods: {
-    login() {
-      console.log('Benutzername:', this.username);
-      console.log('Passwort:', this.password);
-      this.$router.push('/Welcome');
-    }
-  }
+    showLoginComp(role) {
+      console.log(`Clicked ${role} card`);
+      this.selectedRole = role;
+      this.showLoginComp = true;
+    },
+    hideLoginComp() {
+      this.showLoginComp = false;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .login-container {
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  color: #333;
 }
 
-label {
-  margin-bottom: 8px;
+.logo {
+  width: 90%;
+  max-width: 460px;
+  margin-bottom: 20px;
 }
 
-input {
-  padding: 8px;
-  margin-bottom: 16px;
+.role-cards {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
 }
 
-button {
-  padding: 10px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
 }
-
-button:hover {
-  background-color: #45a049;
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
