@@ -52,12 +52,6 @@ class PersonStore extends Database {
     });
   }
 
-  getAll(): Person[] {
-    // Gib alle im Store gespeicherten Personen zurück
-    const allDocs = this.db.allDocs({ include_docs: true });
-    return allDocs.rows.map((row: any) => row.doc);
-  }
-
   add(person: Person): void {
     this.createIfNotExisted(person, 'name');
   }

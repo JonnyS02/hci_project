@@ -26,16 +26,23 @@
 
 <script>
 import { pochtaStore } from '@/store/localStorage/pochta-store';
+import { mapGetters } from 'vuex'; // Importiere mapGetters
 
 export default {
   data() {
     return {
       roles: ['Student', 'Professor'],
     };
+  },computed: {
+    ...mapGetters(['getAllPersons']), // Füge diese Zeile hinzu
   },
   methods: {
     login(role) {
       const icon = role.toLowerCase() === 'student' ? 'fa-user-graduate' : 'fa-user-tie';
+
+      const persons = this.getAllPersons;
+      console.log(persons);
+
       pochtaStore.iam({
         name: role,
         icon: icon,
