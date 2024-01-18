@@ -6,7 +6,7 @@
     </div>
 
     <div v-else class="login-comp">
-      <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false" />
+      <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false"/>
       <button @click="submit">Submit</button>
 
       <div v-if="loginError" class="error-message">Login failed: User not found</div>
@@ -44,8 +44,10 @@ export default {
       });
 
       if (userExists) {
-        this.$router.push('/welcome');
+        this.$router.push('/home');
       } else {
+        this.$router.push('/home');
+
         this.loginError = true;
         console.error('Login failed: User not found');
       }

@@ -5,10 +5,12 @@
 
     <div class="role-cards">
       <div v-if="showRoleCard2" class="card-holder">
-        <LoginComponent role="Student" :showRoleCard1="showRoleCard1" @roleCardClicked="handleRoleCardClicked" @submit="submitForm" />
+        <LoginComponent role="Student" :showRoleCard1="showRoleCard1" @roleCardClicked="handleRoleCardClicked"
+          @submit="submitForm" />
       </div>
       <div v-if="showRoleCard1" class="card-holder">
-        <LoginComponent role="Professor" :showRoleCard2="showRoleCard2" @roleCardClicked="handleRoleCardClicked" @submit="submitForm" />
+        <LoginComponent role="Professor" :showRoleCard2="showRoleCard2" @roleCardClicked="handleRoleCardClicked"
+          @submit="submitForm" />
       </div>
     </div>
   </div>
@@ -38,6 +40,13 @@ export default {
       } else if (selectedRole === 'Professor') {
         this.showRoleCard2 = false;
       }
+      const cardHolders = document.querySelectorAll('.card-holder');
+      if (cardHolders) {
+        cardHolders.forEach(cardHolder => {
+          cardHolder.classList = []; // Setze die Klassen auf ein leeres Array zurück
+        });
+      }
+
     },
   },
 };
@@ -57,8 +66,10 @@ export default {
 
 .role-cards {
   width: 500px;
-  display: flex; /* Flexbox für die .role-cards hinzufügen */
-  justify-content: center; /* Horizontal zentrieren */
+  display: flex;
+  /* Flexbox für die .role-cards hinzufügen */
+  justify-content: center;
+  /* Horizontal zentrieren */
 }
 
 .card-holder {
@@ -72,10 +83,12 @@ export default {
   margin-bottom: 20px;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to {
+
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
-}
-</style>
+}</style>
