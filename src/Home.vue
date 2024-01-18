@@ -1,15 +1,11 @@
+<!-- Home.vue -->
 <template>
   <div>
     <Navbar />
     <div class="main_content">
       <h1>Welcome back <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
       <div class="card-container">
-        <CardItem title="Card 1" link="/courseprof" />
-        <CardItem title="Card 2" link="/card2" />
-        <CardItem title="Card 3" link="/card3" />
-        <CardItem title="Card 4" link="/card4" />
-        <CardItem title="Card 5" link="/card5" />
-        <CardItem title="Card 6" link="/card6" />
+        <CardItem v-for="(card, index) in cardItems" :key="index" :title="card.title" :link="card.link" :delay="((index)/50)+0.01" />
       </div>
     </div>
   </div>
@@ -29,9 +25,20 @@ export default {
       return this.$store.getters.getUser;
     },
     displayUserName() {
-      // Überprüfe, ob user vorhanden und user.name nicht null ist, bevor du darauf zugreifst
       return this.user && this.user.name ? this.user.name : "Max";
     },
+  },
+  data() {
+    return {
+      cardItems: [
+        { title: "Card 1", link: "/card1" },
+        { title: "Card 2", link: "/card2" },
+        { title: "Card 3", link: "/card3" },
+        { title: "Card 4", link: "/card4" },
+        { title: "Card 5", link: "/card5" },
+        { title: "Card 6", link: "/card6" },
+      ],
+    };
   },
 };
 </script>
@@ -57,7 +64,6 @@ export default {
   .card-container {
     padding-left: 0%;
     padding-right: 0%;
-
   }
 }
 </style>
