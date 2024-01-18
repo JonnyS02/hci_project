@@ -31,20 +31,6 @@ export default {
   },
   methods: {
     ...mapActions(['loginUser']), // Map Vuex Action
-    async submitForm(name) {
-      try {
-        const loginSuccessful = await this.loginUser(name);
-        if (loginSuccessful) {
-          // Führe hier die Aktionen nach einem erfolgreichen Login aus, z.B. Navigiere zu einer anderen Route
-          this.$router.push('/welcome');
-        } else {
-          // Hier kannst du eine Fehlermeldung anzeigen oder weitere Aktionen für einen fehlgeschlagenen Login durchführen
-          console.error('Login failed: User not found');
-        }
-      } catch (error) {
-        console.error('An error occurred during login:', error);
-      }
-    },
     handleRoleCardClicked(selectedRole) {
       console.log(`Selected role: ${selectedRole}`);
       if (selectedRole === 'Student') {
