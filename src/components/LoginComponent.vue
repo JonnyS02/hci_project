@@ -6,26 +6,14 @@
     </div>
 
     <div v-else class="login-comp">
-  <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false" />
-  <button @click="submit">Submit</button>
+      <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false" />
+      <button @click="submit">Submit</button>
 
-  <div v-if="loginError" class="error-message">Login failed: User not found</div>
-</div>
-  </div>
-</template>
-  <div>
-    <div v-if="showRoleCard1 || showRoleCard2" class="role-card" @click="showLoginComp">
-      <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
+      <div v-if="loginError" class="error-message">Login failed: User not found</div>
     </div>
-
-    <div v-else class="login-comp">
-  <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false" />
-  <button @click="submit">Submit</button>
-
-  <div v-if="loginError" class="error-message">Login failed: User not found</div>
-</div>
   </div>
 </template>
+
   
 <script>
 export default {
@@ -47,24 +35,6 @@ export default {
       this.$emit('roleCardClicked', this.role);
       this.showRoleCard1 = true;
     },
-<<<<<<< HEAD
-    data() {
-      return {
-        hover: false,
-        name: '',
-        isFocused: false,
-      };
-    },
-    methods: {
-      showLoginComp() {
-              this.$emit('roleCardClicked', this.role);
-              this.showRoleCard1 = true;
-      },
-      submit() {
-        console.log('Name submitted:', this.name);
-        this.$router.push('/');
-      },
-=======
     submit() {
       console.log('Name submitted:', this.name, this.role);
 
@@ -79,7 +49,6 @@ export default {
         this.loginError = true;
         console.error('Login failed: User not found');
       }
->>>>>>> 7d926d12786e7eb86207a481377f6bbbf48ec603
     },
   },
 };
