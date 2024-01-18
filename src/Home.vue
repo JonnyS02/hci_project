@@ -3,7 +3,7 @@
   <div>
     <Navbar />
     <div class="main_content">
-      <h1>Welcome back Jonny</h1>
+      <h1>Welcome back <span :style="{ color: '#e8672c' }">{{ user.name }}</span></h1>
       <div class="card-container">
         <CardItem title="Card 1" link="/card1" />
         <CardItem title="Card 2" link="/card2" />
@@ -24,6 +24,10 @@ export default {
   components: {
     Navbar,
     CardItem,
+  },computed: {
+    user() {
+      return this.$store.getters.getUser;
+    },
   },
 };
 </script>

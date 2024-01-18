@@ -6,7 +6,7 @@
     </div>
 
     <div v-else class="login-comp">
-      <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false"/>
+      <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false" />
       <button @click="submit">Submit</button>
 
       <div v-if="loginError" class="error-message">Login failed: User not found</div>
@@ -39,13 +39,17 @@ export default {
       console.log('Name submitted:', this.name, this.role);
 
       // Überprüfe, ob der eingegebene Name in den Store-Daten existiert
-      const userExists = this.$store.state.persons.some(person => {
+      const user = this.$store.state.persons.find(person => {
         return person.role === this.role && person.name.toLowerCase() === this.name.toLowerCase();
       });
 
-      if (userExists) {
-        this.$router.push('/home');
+      if (user) {
+        // Übergebe die Benutzerinformationen an die geroutete Seite
+        console.log(user.id, this.name, this.role);
+        this.$store.dispatch('loginUser', { name: this.name, role: this.role, id: user.id, lastName: user.lastName, email: user.email, courses: user.courses });
+        this.$router.push({ path: '/home', params: { user: { id: user.id, name: this.name, role: this.role } } });
       } else {
+        // Im Fehlerfall auch weiterleiten (ohne spezifische Benutzerinformationen)
         this.$router.push('/home');
 
         this.loginError = true;
@@ -134,6 +138,5 @@ button:hover {
   color: red;
   margin-top: 10px;
 }
-
 </style>
   
