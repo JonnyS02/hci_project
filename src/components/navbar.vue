@@ -1,15 +1,20 @@
 <template>
   <nav>
     <ul>
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/about">About</router-link></li>
-      <!-- Weitere Navigationspunkte können hier hinzugefügt werden -->
-      <li class="student"><router-link to="/student">Student</router-link></li>
+      <li class="left" :class="{ 'active': this.$route.path === '/' }"><router-link to="/">Homepage</router-link></li>
+      <li class="left" :class="{ 'active': this.$route.path === '/about' }"><router-link to="/about">About</router-link></li>
+      <li class="left" :class="{ 'active': this.$route.path === '/welcome' }"><router-link to="/welcome">Welcome</router-link>
+      </li>
+      <li class="left" :class="{ 'active': $route.path === '/login' }"><router-link to="/login">Log out
+          &nbsp;<font-awesome-icon :icon="['fas', 'power-off']" /></router-link></li>
+      <li class="right" :class="{ 'active': $route.path === '/' }"><router-link to="/">Student &nbsp;<font-awesome-icon
+            :icon="['fas', 'graduation-cap']" /></router-link></li>
     </ul>
   </nav>
 </template>
 
 <script>
+
 export default {
   name: 'Navbar',
 }
@@ -26,12 +31,16 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex; /* Flexbox hinzufügen, um Elemente nebeneinander anzuordnen */
-  justify-content: flex-end; /* Elemente nach rechts ausrichten */
+  display: flex;
+  /* Flexbox hinzufügen, um Elemente nebeneinander anzuordnen */
+  justify-content: flex-end;
+  /* Elemente nach rechts ausrichten */
 }
 
 li {
-  margin-left: 15px; /* Ändere margin-right zu margin-left */
+  margin-left: 15px;
+  /* Ändere margin-right zu margin-left */
+  margin-right: 20px;
 }
 
 a {
@@ -39,7 +48,12 @@ a {
   text-decoration: none;
 }
 
-.student {
-  margin-left: auto; /* Verschiebe das "Student"-Element ganz nach rechts */
+.right {
+  margin-left: auto;
+  /* Verschiebe das "Student"-Element ganz nach rechts */
+}
+
+.active {
+  color: orange;
 }
 </style>

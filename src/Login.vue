@@ -36,7 +36,7 @@ export default {
         const loginSuccessful = await this.loginUser(name);
         if (loginSuccessful) {
           // Führe hier die Aktionen nach einem erfolgreichen Login aus, z.B. Navigiere zu einer anderen Route
-          this.$router.push('/welcome');
+          this.$router.push('/');
         } else {
           // Hier kannst du eine Fehlermeldung anzeigen oder weitere Aktionen für einen fehlgeschlagenen Login durchführen
           console.error('Login failed: User not found');

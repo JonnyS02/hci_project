@@ -33,7 +33,7 @@
       },
       submit() {
         console.log('Name submitted:', this.name);
-        this.$router.push('/welcome');
+        this.$router.push('/');
       },
     },
   };
