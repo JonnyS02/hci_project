@@ -5,10 +5,10 @@
 
     <div class="role-cards">
       <div v-if="showRoleCard2" class="card-holder">
-        <LoginComponent role="Student" :showRoleCard1="showRoleCard1" @roleCardClicked="handleRoleCardClicked" />
+        <LoginComponent role="Student" :showRoleCard1="showRoleCard1" @roleCardClicked="handleRoleCardClicked" @submit="submitForm" />
       </div>
       <div v-if="showRoleCard1" class="card-holder">
-        <LoginComponent role="Professor" :showRoleCard2="showRoleCard2" @roleCardClicked="handleRoleCardClicked" />
+        <LoginComponent role="Professor" :showRoleCard2="showRoleCard2" @roleCardClicked="handleRoleCardClicked" @submit="submitForm" />
       </div>
     </div>
   </div>
@@ -16,6 +16,7 @@
 
 <script>
 import LoginComponent from "@/components/LoginComponent.vue";
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Login',
@@ -29,6 +30,21 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['loginUser']), // Map Vuex Action
+    async submitForm(name) {
+      try {
+        const loginSuccessful = await this.loginUser(name);
+        if (loginSuccessful) {
+          // Führe hier die Aktionen nach einem erfolgreichen Login aus, z.B. Navigiere zu einer anderen Route
+          this.$router.push('/welcome');
+        } else {
+          // Hier kannst du eine Fehlermeldung anzeigen oder weitere Aktionen für einen fehlgeschlagenen Login durchführen
+          console.error('Login failed: User not found');
+        }
+      } catch (error) {
+        console.error('An error occurred during login:', error);
+      }
+    },
     handleRoleCardClicked(selectedRole) {
       console.log(`Selected role: ${selectedRole}`);
       if (selectedRole === 'Student') {
