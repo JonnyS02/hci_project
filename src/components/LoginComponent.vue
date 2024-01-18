@@ -84,6 +84,10 @@
     color: white;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+
+  input::placeholder {
+  color: white;
+}
   
   input:focus {
     background-color: #e8490c;
