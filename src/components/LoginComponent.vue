@@ -46,7 +46,7 @@ export default {
       if (user) {
         // Übergebe die Benutzerinformationen an die geroutete Seite
         console.log(user.id, this.name, this.role);
-        this.$store.dispatch('loginUser', { name: this.name, role: this.role, id: user.id, lastName: user.lastName, email: user.email, courses: user.courses });
+        //this.$store.dispatch('loginUser', { name: this.name, role: this.role, id: user.id, lastName: user.lastName, email: user.email, courses: user.courses });
         this.$router.push({ path: '/home', params: { user: { id: user.id, name: this.name, role: this.role } } });
       } else {
         // Im Fehlerfall auch weiterleiten (ohne spezifische Benutzerinformationen)

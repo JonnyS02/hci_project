@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       cardItems: [
-        { title: "Card 1", link: "/card1" },
+        { title: "Card 1", link: "/courseprof" },
         { title: "Card 2", link: "/card2" },
         { title: "Card 3", link: "/card3" },
         { title: "Card 4", link: "/card4" },
