@@ -1,7 +1,7 @@
 <!-- LoginComponent.vue -->
 <template>
     <div>
-      <div v-if="showRoleCard1" class="role-card" @click="showLoginComp">
+      <div v-if="showRoleCard1 || showRoleCard2" class="role-card" @click="showLoginComp">
         <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
       </div>
   
@@ -28,7 +28,8 @@
     },
     methods: {
       showLoginComp() {
-        this.$emit('roleCardClicked', this.role);
+              this.$emit('roleCardClicked', this.role);
+              this.showRoleCard1 = true;
       },
       submit() {
         console.log('Name submitted:', this.name);
@@ -61,15 +62,18 @@
   }
   
   .login-comp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: #152d3a;
-    color: white;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #152d3a;
+  color: white;
+  border: 2px solid #152d3a; /* Dunkelblaue Umrandung */
+  border-radius: 10px; /* Runde Ecken */
+  margin: 10px; /* Optional: Füge etwas Abstand um die Umrandung hinzu */
+}
+
   input {
     flex: 1;
     padding: 10px;

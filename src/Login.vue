@@ -4,10 +4,10 @@
     <img src="@/assets/space-logo.png" alt="Space Logo" class="logo" />
 
     <div class="role-cards">
-      <div class="card-holder">
+      <div v-if="showRoleCard2" class="card-holder">
         <LoginComponent role="Student" :showRoleCard1="showRoleCard1" @roleCardClicked="handleRoleCardClicked" />
       </div>
-      <div class="card-holder">
+      <div v-if="showRoleCard1" class="card-holder">
         <LoginComponent role="Professor" :showRoleCard2="showRoleCard2" @roleCardClicked="handleRoleCardClicked" />
       </div>
     </div>
@@ -31,13 +31,15 @@ export default {
   methods: {
     handleRoleCardClicked(selectedRole) {
       console.log(`Selected role: ${selectedRole}`);
-      this.showRoleCard1 = false;
-      this.showRoleCard2 = false;
+      if (selectedRole === 'Student') {
+        this.showRoleCard1 = false;
+      } else if (selectedRole === 'Professor') {
+        this.showRoleCard2 = false;
+      }
     },
   },
 };
 </script>
-
 
 <style scoped>
 .login-container {
@@ -51,12 +53,13 @@ export default {
   color: #333;
 }
 
-.role-cards{
+.role-cards {
   width: 500px;
+  display: flex; /* Flexbox für die .role-cards hinzufügen */
+  justify-content: center; /* Horizontal zentrieren */
 }
 
-.card-holder{
-  float: left;
+.card-holder {
   width: 50%;
   padding: 2.5%;
 }
