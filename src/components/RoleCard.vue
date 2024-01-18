@@ -1,8 +1,8 @@
 <!-- RoleCard.vue -->
 <template>
-      <div class="role-card" @click="handleClick" @mouseover="hover = true" @mouseleave="hover = false">
-        <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
-      </div>
+    <div class="role-card" @click="handleClick" @mouseover="hover = true" @mouseleave="hover = false">
+      <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
+    </div>
   </template>
   
   <script>
@@ -20,8 +20,14 @@
         return `/${this.role.toLowerCase()}`;
       },
     },
+    methods: {
+      handleClick() {
+        this.$emit('click');
+      },
+    },
   };
   </script>
+  
   
   <style scoped>
   .role-card {
