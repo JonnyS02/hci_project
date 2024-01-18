@@ -4,44 +4,36 @@
     <img src="@/assets/space-logo.png" alt="Space Logo" class="logo" />
 
     <div class="role-cards">
-      <RoleCard role="Student" @click="showLoginComp('Student')" />
-      <RoleCard role="Professor" @click="showLoginComp('Professor')" />
+      <LoginComponent role="Student" :showRoleCard1="showRoleCard1" @roleCardClicked="handleRoleCardClicked" />
+      <LoginComponent role="Professor" :showRoleCard2="showRoleCard2" @roleCardClicked="handleRoleCardClicked" />
     </div>
-
-    <transition name="fade">
-      <LoginComp v-if="showLoginComp" @close="hideLoginComp" />
-    </transition>
   </div>
 </template>
 
 <script>
-import RoleCard from "@/components/RoleCard.vue";
-import LoginComp from "@/components/LoginComp.vue";
+import LoginComponent from "@/components/LoginComponent.vue";
 
 export default {
   name: 'Login',
   components: {
-    RoleCard,
-    LoginComp,
+    LoginComponent,
   },
   data() {
     return {
-      showLoginComp: false,
-      selectedRole: '',
+      showRoleCard1: true,
+      showRoleCard2: true,
     };
   },
   methods: {
-    showLoginComp(role) {
-      console.log(`Clicked ${role} card`);
-      this.selectedRole = role;
-      this.showLoginComp = true;
-    },
-    hideLoginComp() {
-      this.showLoginComp = false;
+    handleRoleCardClicked(selectedRole) {
+      console.log(`Selected role: ${selectedRole}`);
+      this.showRoleCard1 = false;
+      this.showRoleCard2 = false;
     },
   },
 };
 </script>
+
 
 <style scoped>
 .login-container {

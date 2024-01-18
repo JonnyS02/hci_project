@@ -22,12 +22,11 @@
     },
     methods: {
       handleClick() {
-        this.$emit('click');
+        this.$emit('click', this.role); // Hier geben wir die Rolle als Argument mit
       },
     },
   };
   </script>
-  
   
   <style scoped>
   .role-card {
