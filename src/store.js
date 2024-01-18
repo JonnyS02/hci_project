@@ -28,13 +28,19 @@ export default createStore({
   },
   mutations: {
     setUser(state, user) {
-      state.user = user;
+      state.user = user;  //User bestimmen
+    },
+    addCourse(state, course) {
+      state.courses.push(course);  //Kurse anlegen
     },
   },
   actions: {
     loginUser({ commit, state }, { name, role, id, lastName, email, courses}) {
       const user = { id, name, role, lastName, email,courses };
       commit('setUser', user);
+    },
+    addNewCourse({ commit }, course) {
+      commit('addCourse', course);
     },
   },
   getters: {
