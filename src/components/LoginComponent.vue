@@ -44,7 +44,7 @@ export default {
       });
 
       if (userExists) {
-        this.$router.push('/welcome');
+        this.$router.push('/home');
       } else {
         this.loginError = true;
         console.error('Login failed: User not found');
