@@ -19,8 +19,6 @@ library.add(faGraduationCap)
 library.add(faPowerOff)
 library.add(faUserTie)
 
-
-
 const app = createApp(App);
 app.use(router);
 app.use(store); //Vuex-Store für Daten
