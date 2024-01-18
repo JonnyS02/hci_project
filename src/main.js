@@ -11,12 +11,14 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faGraduationCap, faPowerOff, faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faChalkboardUser, faGraduationCap, faPowerOff, faUserSecret } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(faUserSecret)
 library.add(faGraduationCap)
 library.add(faPowerOff)
+library.add(faChalkboardUser)
+
 
 
 const app = createApp(App);
