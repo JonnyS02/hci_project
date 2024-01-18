@@ -4,29 +4,32 @@ import { createStore } from 'vuex';
 export default createStore({
   state: {
     persons: [
-      { id: 1, role: 'student', name: 'John', lastName: 'Doe', email: 'john@example.com', semester: 3 },
-      { id: 2, role: 'student', name: 'Jane', lastName: 'Smith', email: 'jane@example.com', semester: 4 },
-      { id: 3, role: 'professor', name: 'Masha', lastName: 'Smith', email: 'prof@example.com' },
-      { id: 4, role: 'professor', name: 'Eron', lastName: 'Jones', email: 'drjones@example.com' },
+      { id: 0, role: 'Student', name: 'Anna', lastName: 'Mars', email: 'anna@example.com', semester: 3, courses: [1, 3, 7, 0] },
+      { id: 1, role: 'Student', name: 'David', lastName: 'Saturn', email: 'dave@example.com', semester: 4, courses: [2, 3, 7] },
+      { id: 2, role: 'Student', name: 'Peter', lastName: 'Pluto', email: 'pluto@example.com', semester: 1, courses: [7, 0] },
+      { id: 3, role: 'Student', name: 'Erika', lastName: 'Erde', email: 'dave@example.com', semester: 7, courses: [6, 8, 5, 7] },
+      { id: 4, role: 'Professor', name: 'Masha', lastName: 'Merkur', email: 'prof@example.com', courses: [0, 5] },
+      { id: 5, role: 'Professor', name: 'Jens', lastName: 'Jupiter', email: 'drjupiter@example.com', courses: [1, 6, 7] },
+      { id: 6, role: 'Professor', name: 'Nils', lastName: 'Neptune', email: 'drneptune@example.com', courses: [2, 8] },
+      { id: 7, role: 'Professor', name: 'Valeria', lastName: 'Venus', email: 'drvenus@example.com', courses: [3, 4] },
+    ],
+    courses: [
+      { id: 0, name: 'Orbitalmechanik', prof: 'Merkur', raum: ''  },
+      { id: 1, name: 'Raumfahrtsystemarchitektur', prof: 'Jupiter', raum: ''  },
+      { id: 2, name: 'Raumfahrtmissionen und -planung', prof: 'Neptune', raum: ''  },
+      { id: 3, name: 'Fortgeschrittene Satellitentechnik', prof: 'Venus', raum: ''  },
+      { id: 4, name: 'Astronomie und Kosmologie', prof: 'Venus', raum: ''  },
+      { id: 5, name: 'Exoplaneten Forschung', prof: 'Merkur', raum: ''  },
+      { id: 6, name: 'Theoretische Astrophysik', prof: 'Jupiter', raum: ''  },
+      { id: 7, name: 'Raumzeit und Relativität', prof: 'Jupiter', raum: ''  },
+      { id: 8, name: 'Gravitationsphysik', prof: 'Neptune', raum: '' },
     ],
   },
   mutations: {
     // Hier können Mutationen für Datenänderungen hinzugefügt werden, falls benötigt.
   },
   actions: {
-    async loginUser({ commit, state }, name) {
-      // Simulieren einer API-Anfrage oder Datenbankabfrage
-      const user = state.persons.find(person => person.name.toLowerCase() === name.toLowerCase());
-
-      if (user) {
-        // Hier kannst du weitere Aktionen ausführen, z.B. den Benutzer im Store speichern
-        console.log('   successful:', user);
-        return true; // Erfolgreicher Login
-      } else {
-        console.error('Login failed: User not found');
-        return false; // Login fehlgeschlagen
-      }
-    },
+    //
   },
   getters: {
     // Hier können Getter für den Zugriff auf den Zustand mit bestimmten Transformationen hinzugefügt werden.
