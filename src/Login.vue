@@ -4,8 +4,12 @@
     <img src="@/assets/space-logo.png" alt="Space Logo" class="logo" />
 
     <div class="role-cards">
-      <RoleCard role="Student" @click="showLoginComp('Student')" />
-      <RoleCard role="Professor" @click="showLoginComp('Professor')" />
+      <div class="card-holder">
+        <RoleCard role="Student" @click="showLoginComp('Student')" />
+      </div>
+      <div class="card-holder">
+        <RoleCard role="Professor" @click="showLoginComp('Professor')" />
+      </div>
     </div>
 
     <transition name="fade">
@@ -55,16 +59,20 @@ export default {
   color: #333;
 }
 
+.role-cards{
+  width: 500px;
+}
+
+.card-holder{
+  float: left;
+  width: 50%;
+  padding: 2.5%;
+}
+
 .logo {
   width: 90%;
   max-width: 460px;
   margin-bottom: 20px;
-}
-
-.role-cards {
-  display: flex;
-  width: 20%;
-  justify-content: space-between;
 }
 
 .fade-enter-active, .fade-leave-active {
