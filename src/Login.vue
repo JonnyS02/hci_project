@@ -82,13 +82,4 @@ export default {
   max-width: 460px;
   margin-bottom: 20px;
 }
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}</style>
+</style>

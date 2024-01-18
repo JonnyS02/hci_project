@@ -66,4 +66,19 @@ export default {
     padding-right: 0%;
   }
 }
+
+@media only screen and (max-width: 1700px) {
+  .card-container {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+@media only screen and (max-width: 1900px) {
+  .card-container {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}
+
 </style>

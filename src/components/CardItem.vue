@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       textColor: 'rgba(18, 18, 18, 0)', // Start with transparent color
-      backgroundColor: 'rgba(224, 224, 224, 0)', // Start with transparent background-color
+      backgroundColor: 'rgba(200, 200, 200, 0)', // Start with transparent background-color
     };
   },
   methods: {
@@ -27,12 +27,12 @@ export default {
         const interval = setInterval(() => {
           opacity += 0.1;
           this.textColor = `rgba(18, 18, 18, ${opacity})`;
-          this.backgroundColor = `rgba(224, 224, 224, ${opacity})`;
+          this.backgroundColor = `rgba(200, 200, 200, ${opacity})`;
 
           if (opacity >= 1) {
             clearInterval(interval);
           }
-        }, 1); // Change the interval to make it faster
+        }, 20); // Change the interval to make it faster
       }, this.delay * 10000);
     },
   },
