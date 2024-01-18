@@ -4,7 +4,7 @@
     <div class="main_content">
       <h1>Welcome back <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
       <div class="card-container">
-        <CardItem title="Card 1" link="/card1" />
+        <CardItem title="Card 1" link="/courseprof" />
         <CardItem title="Card 2" link="/card2" />
         <CardItem title="Card 3" link="/card3" />
         <CardItem title="Card 4" link="/card4" />
