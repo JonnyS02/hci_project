@@ -28,15 +28,15 @@ export default createStore({
   },
   mutations: {
     setUser(state, user) {
-      state.user = user;  //User bestimmen
+      state.user = user;
     },
     addCourse(state, course) {
-      state.courses.push(course);  //Kurse anlegen
+      state.courses.push(course);
     },
   },
   actions: {
-    loginUser({ commit, state }, { name, role, id, lastName, email, courses}) {
-      const user = { id, name, role, lastName, email,courses };
+    loginUser({ commit }, { name, role, id, lastName, email, courses }) {
+      const user = { id, name, role, lastName, email, courses };
       commit('setUser', user);
     },
     addNewCourse({ commit }, course) {

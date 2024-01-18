@@ -10,11 +10,11 @@
       <li class="left" :class="{ 'active': $route.path === '/' }"><router-link to="/">Log out
           &nbsp;<font-awesome-icon :icon="['fas', 'power-off']" /></router-link></li>
 
-      <!--Right Content-->
+          <!--Right Content-->
       <li class="right" :class="{ 'active': $route.path === '/' }"><router-link to="/">Student &nbsp;<font-awesome-icon
             :icon="['fas', 'graduation-cap']" /></router-link></li>
       <li class="right" :class="{ 'active': $route.path === '/' }"><router-link to="/">Professor &nbsp;<font-awesome-icon
-            :icon="['fas', 'chalkboard-user']" /></router-link></li>
+            :icon="['fas', 'user-tie']" /></router-link></li>
 
     </ul>
   </nav>
@@ -39,7 +39,7 @@ ul {
   margin: 0;
   padding: 0;
   display: flex;
-  /* Flexbox hinzufügen, um Elemente nebeneinander anzuordnen */
+  /* Flexbox hinzufügen, um Elemente nebeneinander anzuordnen  chalkboard-user*/
   justify-content: flex-end;
   /* Elemente nach rechts ausrichten */
 }
