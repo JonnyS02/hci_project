@@ -47,24 +47,6 @@ export default {
       this.$emit('roleCardClicked', this.role);
       this.showRoleCard1 = true;
     },
-<<<<<<< HEAD
-    data() {
-      return {
-        hover: false,
-        name: '',
-        isFocused: false,
-      };
-    },
-    methods: {
-      showLoginComp() {
-              this.$emit('roleCardClicked', this.role);
-              this.showRoleCard1 = true;
-      },
-      submit() {
-        console.log('Name submitted:', this.name);
-        this.$router.push('/');
-      },
-=======
     submit() {
       console.log('Name submitted:', this.name, this.role);
 
@@ -79,7 +61,6 @@ export default {
         this.loginError = true;
         console.error('Login failed: User not found');
       }
->>>>>>> 7d926d12786e7eb86207a481377f6bbbf48ec603
     },
   },
 };
