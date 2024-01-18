@@ -2,7 +2,7 @@
     <div>
         <Navbar />
         <div class="main_content">
-            <h1>Your courses <span :style="{ color: '#e8672c' }">{{ user ? `Prof. ${user.name}` : 'Guest' }}</span></h1>
+            <h1>Your courses <span :style="{ color: '#e8672c' }">{{ user ? `Prof. ${this.user.name}` : 'Guest' }}</span></h1>
             <CourseList :courses="professorCourses" />
         </div>
     </div>
