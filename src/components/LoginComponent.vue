@@ -84,6 +84,7 @@ export default {
   justify-content: center;
   padding: 20px;
   background-color: #152d3a;
+  width: 300px;
   color: white;
   border: 2px solid #152d3a;
   /* Dunkelblaue Umrandung */
