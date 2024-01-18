@@ -6,26 +6,14 @@
     </div>
 
     <div v-else class="login-comp">
-  <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false" />
-  <button @click="submit">Submit</button>
+      <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false" />
+      <button @click="submit">Submit</button>
 
-  <div v-if="loginError" class="error-message">Login failed: User not found</div>
-</div>
-  </div>
-</template>
-  <div>
-    <div v-if="showRoleCard1 || showRoleCard2" class="role-card" @click="showLoginComp">
-      <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
+      <div v-if="loginError" class="error-message">Login failed: User not found</div>
     </div>
-
-    <div v-else class="login-comp">
-  <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false" />
-  <button @click="submit">Submit</button>
-
-  <div v-if="loginError" class="error-message">Login failed: User not found</div>
-</div>
   </div>
 </template>
+
   
 <script>
 export default {
