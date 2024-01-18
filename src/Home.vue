@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <div class="main_content">
-    <h1>Home</h1>
+    <h1>Hi <span :style="{ color: '#e8672c' }">{{ user.name }}</span></h1>
   </div>
 </template>
 
@@ -14,8 +14,12 @@ export default {
   components: {
     Links,
     Navbar,
+  },computed: {
+    user() {
+      return this.$store.getters.getUser;
+    },
   },
-}
+};
 </script>
 
 <style>
