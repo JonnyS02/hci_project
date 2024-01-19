@@ -59,7 +59,7 @@ export default {
 
 
 a:hover {
-  background-color: rgba(18, 18, 18, 0);
+  background-color: unset;
 }
 
 .card-item:hover {

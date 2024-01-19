@@ -9,17 +9,22 @@
           :delay="((index) / 50) + 0.01" />
       </div>
     </div>
+    <footerC />
   </div>
 </template>
 
 <script>
 import Navbar from './components/navbar.vue';
 import CardItem from './components/CardItem.vue';
+import footerC from './components/footerC.vue';
+
+
 
 export default {
   components: {
     Navbar,
     CardItem,
+    footerC,
   },
   computed: {
     user() {
