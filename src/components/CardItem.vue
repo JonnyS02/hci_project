@@ -16,8 +16,8 @@ export default {
   },
   data() {
     return {
-      textColor: 'rgba(18, 18, 18, 0)', // Start with transparent color
-      backgroundColor: 'rgba(200, 200, 200, 0)', // Start with transparent background-color
+      textColor: 'rgba(18, 18, 18, 0)', 
+      backgroundColor: 'rgba(200, 200, 200, 0)',
     };
   },
   methods: {
@@ -32,7 +32,7 @@ export default {
           if (opacity >= 1) {
             clearInterval(interval);
           }
-        }, 20); // Change the interval to make it faster
+        }, 20);
       }, this.delay * 10000);
     },
   },
@@ -51,7 +51,17 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* Double the speed */
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+a:hover {
+  background-color: rgba(18, 18, 18, 0);
+}
+
+.card-item:hover {
+  box-shadow: 0 0 11px rgba(21, 45, 58, 255);
+  background: linear-gradient(to right, rgba(231, 101, 44, 255) 0%, rgba(231, 101, 44, 255) 100%);
+  color: rgb(255, 255, 255);
 }
 
 .card-link {
