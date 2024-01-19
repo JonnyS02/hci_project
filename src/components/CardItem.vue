@@ -1,8 +1,8 @@
 <template>
   <div class="card-item" :style="{ 'transition-delay': `${delay}s`, 'background-color': backgroundColor, 'border-color': borderColor }">
-    <a :href="link" class="card-link">
+    <router-link :to="link" class="card-link">
       <h2 :style="{ color: textColor }">{{ title }}</h2>
-    </a>
+    </router-link>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       textColor: 'rgba(18, 18, 18, 0)', 
-      backgroundColor: 'rgba(200, 200, 200, 0)',
+      backgroundColor: 'rgba(215, 215, 215, 0)',
       borderColor: 'rgba(232, 103, 44, 0)', // Initialer Wert für die Borderfarbe
     };
   },
@@ -27,7 +27,7 @@ export default {
         const interval = setInterval(() => {
           opacity += 0.1;
           this.textColor = `rgba(18, 18, 18, ${opacity})`;
-          this.backgroundColor = `rgba(200, 200, 200, ${opacity})`;
+          this.backgroundColor = `rgba(215, 215, 215, ${opacity})`;
           this.borderColor = `rgba(232, 103, 44, ${opacity})`;
 
           if (opacity >= 1) {
@@ -55,6 +55,7 @@ export default {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out; /* Füge die Border-Transition hinzu */
   border: 1px solid rgba(232, 103, 44, 0); /* Initialer Wert für die Border */
 }
+
 
 a:hover {
   background-color: rgba(18, 18, 18, 0);
