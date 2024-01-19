@@ -5,7 +5,8 @@
     <div class="main_content">
       <h1>Welcome back <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
       <div class="card-container">
-        <CardItem v-for="(card, index) in cardItems" :key="index" :title="card.title" :link="card.link" :delay="((index)/50)+0.01" />
+        <CardItem v-for="(card, index) in cardItems" :key="index" :title="card.title" :link="card.link"
+          :delay="((index) / 50) + 0.01" />
       </div>
     </div>
   </div>
@@ -44,11 +45,6 @@ export default {
 </script>
 
 <style>
-.main_content {
-  padding: 10px;
-  margin-left: 15px;
-}
-
 .card-container {
   padding-top: 12%;
   width: 100%;
@@ -57,7 +53,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* Zentriere horizontal */
 }
 
 @media only screen and (max-width: 1300px) {
@@ -80,5 +75,4 @@ export default {
     padding-right: 15%;
   }
 }
-
 </style>

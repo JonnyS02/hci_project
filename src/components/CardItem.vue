@@ -1,5 +1,6 @@
 <template>
-  <div class="card-item" :style="{ 'transition-delay': `${delay}s`, 'background-color': backgroundColor, 'border-color': borderColor }">
+  <div class="card-item"
+    :style="{ 'transition-delay': `${delay}s`, 'background-color': backgroundColor, 'border-color': borderColor }">
     <router-link :to="link" class="card-link">
       <h2 :style="{ color: textColor }">{{ title }}</h2>
     </router-link>
@@ -15,9 +16,9 @@ export default {
   },
   data() {
     return {
-      textColor: 'rgba(18, 18, 18, 0)', 
+      textColor: 'rgba(18, 18, 18, 0)',
       backgroundColor: 'rgba(215, 215, 215, 0)',
-      borderColor: 'rgba(232, 103, 44, 0)', // Initialer Wert für die Borderfarbe
+      borderColor: 'rgba(232, 103, 44, 0)', 
     };
   },
   methods: {
@@ -52,8 +53,8 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out; /* Füge die Border-Transition hinzu */
-  border: 1px solid rgba(232, 103, 44, 0); /* Initialer Wert für die Border */
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  border: 1px solid rgba(232, 103, 44, 0);
 }
 
 
@@ -63,5 +64,4 @@ a:hover {
 
 .card-item:hover {
   background: linear-gradient(to right, rgba(231, 101, 44, 255) 0%, rgba(231, 101, 44, 255) 100%);
-}
-</style>
+}</style>

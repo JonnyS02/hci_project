@@ -1,16 +1,18 @@
 <template>
   <div>
-    <Links />
-    <h1>About</h1>
+    <Navbar />
+    <div class="main_content">
+      <h1>About</h1>
+    </div>
   </div>
 </template>
 
 <script>
-import Links from './components/Links.vue';
+import Navbar from './components/navbar.vue';
 
 export default {
   components: {
-    Links,
+    Navbar,
   },
 }
 </script>

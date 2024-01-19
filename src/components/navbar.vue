@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ul>
-      <li class="left" :class="{ 'active': this.$route.path === '/home' }"><router-link to="/">Homepage</router-link></li>
+      <li class="left" :class="{ 'active': this.$route.path === '/home' }"><router-link to="/home">Homepage</router-link></li>
       <li class="left" :class="{ 'active': this.$route.path === '/about' }"><router-link to="/about">About</router-link>
       </li>
       <li class="left" :class="{ 'active': this.$route.path === '/welcome' }"><router-link
@@ -28,7 +28,6 @@ export default {
 </script>
 
 <style scoped>
-/* Füge hier deine individuellen Stilregeln für die Navbar hinzu */
 nav {
   background-color: #333;
   padding: 10px;
@@ -39,14 +38,11 @@ ul {
   margin: 0;
   padding: 0;
   display: flex;
-  /* Flexbox hinzufügen, um Elemente nebeneinander anzuordnen  chalkboard-user*/
   justify-content: flex-end;
-  /* Elemente nach rechts ausrichten */
 }
 
 li {
   margin-left: 15px;
-  /* Ändere margin-right zu margin-left */
   margin-right: 20px;
 }
 
@@ -57,7 +53,6 @@ a {
 
 .right {
   margin-left: auto;
-  /* Verschiebe das "Student"-Element ganz nach rechts */
 }
 
 .active {
