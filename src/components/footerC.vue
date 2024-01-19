@@ -30,6 +30,13 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+@media only screen and (max-width: 1020px) {
+  .footer {
+    position: unset;
+    margin-top: 10px;
+  }
+}
 </style>
 
   
