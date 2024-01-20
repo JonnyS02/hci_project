@@ -1,8 +1,6 @@
 <template>
-  <Navbar />
   <div class="main_content">
     <h1>Welcome back <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
-
     <div class="cards">
       <transition-group appear @before-enter="beforeEnter" @enter="enter">
         <li class="card_holder" v-for="(card, index) in cards" :key="card.link" :data-index="index">
@@ -13,7 +11,6 @@
       </transition-group>
     </div>
   </div>
-  <footerC />
 </template>
 
 <script>

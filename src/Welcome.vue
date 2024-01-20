@@ -4,9 +4,7 @@ import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <Navbar />
   <div class="main_content">
-
     <header>
       <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
@@ -14,7 +12,6 @@ import TheWelcome from './components/TheWelcome.vue'
         <HelloWorld :msg="`You did it! ${this.$store.state.persons[1].lastName}`" />
       </div>
     </header>
-
     <main>
       <TheWelcome />
     </main>

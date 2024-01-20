@@ -1,4 +1,3 @@
-<!-- Login.vue -->
 <template>
   <div class="login-container">
     <img src="@/assets/space-logo.png" alt="Space Logo" class="logo" />
@@ -82,4 +81,5 @@ export default {
   max-width: 460px;
   margin-bottom: 20px;
 }
+
 </style>

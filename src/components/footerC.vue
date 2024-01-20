@@ -3,7 +3,9 @@
         <div class="footer-content">
             <p style="white-space: nowrap;">
                 © 2024 Space Pochta Solutions Inc.&nbsp;
-                <a href="https://github.com/JonnyS02/hci_project"><font-awesome-icon icon="fa-brands fa-github" style="font-size: 1.2em;" /></a>
+                <a href="https://github.com/JonnyS02/hci_project">
+                  <!--  <font-awesome-icon icon="fa-brands fa-github" style="font-size: 1.2em;" />-->
+                </a>
             </p>
         </div>
     </footer>
