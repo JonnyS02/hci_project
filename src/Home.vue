@@ -1,24 +1,27 @@
-<!-- Home.vue -->
 <template>
-  <div>
-    <Navbar />
-    <div class="main_content">
-      <h1>Welcome back <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
-      <div class="card-container">
-        <CardItem v-for="(card, index) in cardItems" :key="index" :title="card.title" :link="card.link"
-          :delay="((index) / 50) + 0.01" />
-      </div>
+  <Navbar />
+  <div class="main_content">
+    <h1>Welcome back <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
+
+    <div class="cards">
+      <transition-group appear @before-enter="beforeEnter" @enter="enter">
+        <li class="card_holder" v-for="(card, index) in cards" :key="card.link" :data-index="index">
+          <router-link :to="card.link" class="card-link">
+            <h2 class="card">{{ card.title }}</h2>
+          </router-link>
+        </li>
+      </transition-group>
     </div>
-    <footerC />
   </div>
+  <footerC />
 </template>
 
 <script>
+import { ref } from 'vue'
+import gsap from 'gsap'
 import Navbar from './components/navbar.vue';
 import CardItem from './components/CardItem.vue';
 import footerC from './components/footerC.vue';
-
-
 
 export default {
   components: {
@@ -34,23 +37,39 @@ export default {
       return this.user && this.user.name ? this.user.name : "Max";
     },
   },
-  data() {
-    return {
-      cardItems: [
-        { title: "Card 1", link: "/courseprof" },
-        { title: "Card 2", link: "/home" },
-        { title: "Card 3", link: "/home" },
-        { title: "Card 4", link: "/home" },
-        { title: "Card 5", link: "/home" },
-        { title: "Card 6", link: "/home" },
-      ],
-    };
-  },
-};
+  setup() {
+    const cards = ref([
+      { title: "Card 1", link: "/courseprof" },
+      { title: "Card 2", link: "/card2" },
+      { title: "Card 3", link: "/card3" },
+      { title: "Card 4", link: "/card4" },
+      { title: "Card 5", link: "/card5" },
+      { title: "Card 6", link: "/card6" },
+
+    ])
+
+    const beforeEnter = (el) => {
+      el.style.opacity = 0
+      el.style.transform = 'translateY(100px)'
+    }
+
+    const enter = (el, done) => {
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        onComplete: done,
+        delay: el.dataset.index * 0.2
+      })
+    }
+
+    return { cards, beforeEnter, enter }
+  }
+}
 </script>
 
 <style>
-.card-container {
+.cards {
   padding-top: 12%;
   width: 100%;
   padding-left: 20%;
@@ -60,24 +79,56 @@ export default {
   justify-content: center;
 }
 
+.card {
+  cursor: pointer;
+  background-color: rgb(215, 215, 215);
+  width: 300px;
+  height: 100px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transition: 0.15s ease-in-out;
+  border: 2px solid rgb(232, 104, 44);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.card_holder {
+  list-style-type: none;
+}
+
+.card:hover {
+  background-color: rgb(232, 104, 44);
+}
+
+.cards a {
+  color: #181818;
+}
+
+.cards a:hover {
+  background-color: unset;
+}
+
 @media only screen and (max-width: 1300px) {
-  .card-container {
+  .cards {
     padding-left: 0%;
     padding-right: 0%;
   }
 }
 
 @media only screen and (max-width: 1700px) {
-  .card-container {
+  .cards {
     padding-left: 10%;
     padding-right: 10%;
   }
 }
 
 @media only screen and (max-width: 1900px) {
-  .card-container {
+  .cards {
     padding-left: 15%;
     padding-right: 15%;
   }
 }
+
 </style>
