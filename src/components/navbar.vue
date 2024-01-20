@@ -10,6 +10,9 @@
       <li><router-link to="/welcome" :class="{ 'no-hover': currentPath === '/welcome' }"><span
             :class="{ 'active': currentPath === '/welcome', 'no-hover': currentPath === '/welcome' }">Welcome</span></router-link>
       </li>
+      <li><router-link to="/courseprof" :class="{ 'no-hover': currentPath === '/courseprof' }"><span
+            :class="{ 'active': currentPath === '/courseprof', 'no-hover': currentPath === '/courseprof' }">Courseprof</span></router-link>
+      </li>
 
       <li><router-link to="/" :class="{ 'no-hover': currentPath === '/' }"><span>Log out &nbsp;<font-awesome-icon
               :icon="['fas', 'power-off']" /></span></router-link></li>
@@ -34,7 +37,7 @@ export default {
     };
   },
   mounted() {
-    this.currentPath = this.$route.path;
+    this.currentPath = this.$route.path;  
   }
 }
 </script>

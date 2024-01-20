@@ -4,7 +4,7 @@
             <p style="white-space: nowrap;">
                 © 2024 Space Pochta Solutions Inc.&nbsp;
                 <a href="https://github.com/JonnyS02/hci_project">
-                    <font-awesome-icon :icon="['fab', 'github']" />
+                    <font-awesome-icon :icon="['fab', 'github']" style="font-size: 1.2em;" />
                 </a>
             </p>
         </div>
@@ -34,10 +34,10 @@ body {
 }
 
 @media only screen and (max-width: 1020px) {
-  .footer {
-    position: unset;
-    margin-top: 10px;
-  }
+    .footer {
+        position: unset;
+        margin-top: 10px;
+    }
 }
 </style>
 
