@@ -38,11 +38,11 @@ export default {
     return {
       cardItems: [
         { title: "Card 1", link: "/courseprof" },
-        { title: "Card 2", link: "/card2" },
-        { title: "Card 3", link: "/card3" },
-        { title: "Card 4", link: "/card4" },
-        { title: "Card 5", link: "/card5" },
-        { title: "Card 6", link: "/card6" },
+        { title: "Card 2", link: "/home" },
+        { title: "Card 3", link: "/home" },
+        { title: "Card 4", link: "/home" },
+        { title: "Card 5", link: "/home" },
+        { title: "Card 6", link: "/home" },
       ],
     };
   },
