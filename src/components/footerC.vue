@@ -4,7 +4,7 @@
             <p style="white-space: nowrap;">
                 © 2024 Space Pochta Solutions Inc.&nbsp;
                 <a href="https://github.com/JonnyS02/hci_project">
-                  <!--  <font-awesome-icon icon="fa-brands fa-github" style="font-size: 1.2em;" />-->
+                    <font-awesome-icon :icon="['fab', 'github']" />
                 </a>
             </p>
         </div>
