@@ -1,7 +1,7 @@
 <template>
   <nav>
     <ul>
-      <li><router-link to="/home" :class="{ 'no-hover': currentPath === '/home' }"><span
+      <li class="no_caret"><router-link to="/home" :class="{ 'no-hover': currentPath === '/home' }"><span
             :class="{ 'active': currentPath === '/home'}">Homepage</span></router-link>
       </li>
       <li><router-link to="/about" :class="{ 'no-hover': currentPath === '/about' }"><span

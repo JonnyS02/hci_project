@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <img src="@/assets/space-logo.png" alt="Space Logo" class="logo" />
+    <img src="@/assets/space-logo.png" alt="Space Logo" class="logo no_caret">
 
     <div class="role-cards">
       <div v-if="showRoleCard2" class="card-holder">
