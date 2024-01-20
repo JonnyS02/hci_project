@@ -20,13 +20,11 @@
 import { ref } from 'vue'
 import gsap from 'gsap'
 import Navbar from './components/navbar.vue';
-import CardItem from './components/CardItem.vue';
 import footerC from './components/footerC.vue';
 
 export default {
   components: {
     Navbar,
-    CardItem,
     footerC,
   },
   computed: {
