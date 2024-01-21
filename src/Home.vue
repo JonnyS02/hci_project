@@ -63,7 +63,7 @@ export default {
 
 <style>
 .cards {
-  padding-top: 12%;
+  padding-top: 20vh;
   width: 100%;
   padding-left: 20%;
   padding-right: 20%;
