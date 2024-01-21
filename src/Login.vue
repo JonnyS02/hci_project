@@ -82,4 +82,10 @@ export default {
   margin-bottom: 20px;
 }
 
+@media only screen and (max-height: 800px) {
+  .login-container {
+    padding-top: 0;
+  }
+}
+
 </style>
