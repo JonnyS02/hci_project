@@ -53,11 +53,11 @@ export default {
 
 <style scoped>
 .login-container {
+  padding-top: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: calc(100vh - 44px);
+  min-height: calc(100vh - 44px);
   width: 100%;
   background-color: #fff;
   color: #333;

@@ -23,8 +23,6 @@ body {
     color: white;
     padding: 10px;
     text-align: center;
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
 

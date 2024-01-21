@@ -1,17 +1,15 @@
 <template>
-  <Navbar :key="$route.fullPath" v-if="isNotLogin" />
-  <div>
-    <router-view v-slot="{ Component, route }">
-      <transition name="route" mode="out-in">
-        <div :key="route.name">
-          <div class="main_content" :key="$route.fullPath" v-if="isNotLogin">
-            <component :is="Component"></component>
-          </div>
-          <component :is="Component" :key="$route.fullPath" v-if="!isNotLogin"></component>
+  <router-view v-slot="{ Component, route }">
+    <transition name="route" mode="out-in">
+      <div :key="route.name">
+        <Navbar :key="$route.fullPath" v-if="isNotLogin" />
+        <div class="main_content" :key="$route.fullPath" v-if="isNotLogin">
+          <component :is="Component"></component>
         </div>
-      </transition>
-    </router-view>
-  </div>
+        <component :is="Component" :key="$route.fullPath" v-if="!isNotLogin"></component>
+      </div>
+    </transition>
+  </router-view>
   <footerC />
 </template>
 
