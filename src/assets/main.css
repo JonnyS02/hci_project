@@ -8,7 +8,7 @@ a,
 .green {
   text-decoration: none;
   color:  rgba(231,101,44,255);
-  transition: 0.35s;
+  transition: 0.30s;
 }
 
 @media (hover: hover) {

@@ -34,7 +34,12 @@ export default {
       currentPath: ''
     };
   },
-  mounted() {
+  watch: {
+    $route(to, from) {
+      this.currentPath = to.path;
+    }
+  },
+  created() {
     this.currentPath = this.$route.path;
   }
 }

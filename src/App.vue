@@ -1,8 +1,11 @@
 <template>
   <router-view v-slot="{ Component, route }">
     <transition name="route" mode="out-in">
+      <Navbar v-if="shouldShowNavbar" />
+    </transition>
+    <transition name="route" mode="out-in">
+
       <div :key="route.name">
-        <Navbar :key="$route.fullPath" v-if="isNotLogin" />
         <div class="main_content" :key="$route.fullPath" v-if="isNotLogin">
           <component :is="Component"></component>
         </div>
@@ -19,7 +22,7 @@
 }
 
 .route-enter-active {
-  transition: all 0.3s ease-out;
+  transition: all 0.25s ease-out;
 }
 
 .route-leave-to {
@@ -27,7 +30,7 @@
 }
 
 .route-leave-active {
-  transition: all 0.3s ease-in;
+  transition: all 0.25s ease-in;
 }
 </style>
 
@@ -37,9 +40,30 @@ import Navbar from './components/navbar.vue';
 import footerC from './components/footerC.vue';
 
 export default {
+  data() {
+    return {
+      shouldShowNavbar: false,
+    };
+  },
   computed: {
     isNotLogin() {
-      return this.$route.name != 'Login';
+      return this.$route.name !== 'Login';
+    }
+  },
+  created() {
+    this.shouldShowNavbar = this.isNotLogin;
+  },
+  watch: {
+    isNotLogin(newVal) {
+      if (newVal) {
+        setTimeout(() => {
+          this.shouldShowNavbar = true;
+        }, 260);
+      } else {
+        setTimeout(() => {
+          this.shouldShowNavbar = false;
+        }, 0);
+      }
     }
   },
   components: {
