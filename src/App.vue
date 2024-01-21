@@ -1,10 +1,9 @@
 <template>
+  <transition name="route" mode="out-in">
+    <Navbar v-if="shouldShowNavbar" />
+  </transition>
   <router-view v-slot="{ Component, route }">
     <transition name="route" mode="out-in">
-      <Navbar v-if="shouldShowNavbar" />
-    </transition>
-    <transition name="route" mode="out-in">
-
       <div :key="route.name">
         <div class="main_content" :key="$route.fullPath" v-if="isNotLogin">
           <component :is="Component"></component>
@@ -58,7 +57,7 @@ export default {
       if (newVal) {
         setTimeout(() => {
           this.shouldShowNavbar = true;
-        }, 260);
+        }, 265);
       } else {
         setTimeout(() => {
           this.shouldShowNavbar = false;
