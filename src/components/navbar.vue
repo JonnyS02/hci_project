@@ -2,7 +2,7 @@
   <nav>
     <ul>
       <li class="no_caret"><router-link to="/home" :class="{ 'no-hover': currentPath === '/home' }"><span
-            :class="{ 'active': currentPath === '/home'}">Homepage</span></router-link>
+            :class="{ 'active': currentPath === '/home' }">Homepage</span></router-link>
       </li>
       <li><router-link to="/about" :class="{ 'no-hover': currentPath === '/about' }"><span
             :class="{ 'active': currentPath === '/about', 'no-hover': currentPath === '/about' }">About</span></router-link>
@@ -18,11 +18,9 @@
               :icon="['fas', 'power-off']" /></span></router-link></li>
 
       <!-- Right Content -->
-      <li class="right" ><router-link
-          to="/"><span>Student
+      <li class="right"><router-link to="/"><span>Student
             &nbsp;<font-awesome-icon :icon="['fas', 'graduation-cap']" /></span></router-link></li>
-      <li class="right" ><router-link
-          to="/"><span>Professor
+      <li class="right"><router-link to="/"><span>Professor
             &nbsp;<font-awesome-icon :icon="['fas', 'user-tie']" /></span></router-link></li>
     </ul>
   </nav>
@@ -37,7 +35,7 @@ export default {
     };
   },
   mounted() {
-    this.currentPath = this.$route.path;  
+    this.currentPath = this.$route.path;
   }
 }
 </script>
@@ -79,4 +77,5 @@ a {
   border-radius: unset;
   padding: unset;
   cursor: default;
-}</style>
+}
+</style>

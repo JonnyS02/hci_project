@@ -4,7 +4,10 @@
     <router-view v-slot="{ Component, route }">
       <transition name="route" mode="out-in">
         <div :key="route.name">
-          <component :is="Component"></component>
+          <div class="main_content" :key="$route.fullPath" v-if="isNotLogin">
+            <component :is="Component"></component>
+          </div>
+          <component :is="Component" :key="$route.fullPath" v-if="!isNotLogin"></component>
         </div>
       </transition>
     </router-view>

@@ -1,15 +1,13 @@
 <template>
-  <div class="main_content">
-    <h1 class="no_caret" >Welcome back <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
-    <div class="cards">
-      <transition-group appear @before-enter="beforeEnter" @enter="enter">
-        <li class="card_holder" v-for="(card, index) in cards" :key="card.link" :data-index="index">
-          <router-link :to="card.link" class="card-link">
-            <h2 class="card">{{ card.title }}</h2>
-          </router-link>
-        </li>
-      </transition-group>
-    </div>
+  <h1 class="no_caret">Welcome back <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
+  <div class="cards">
+    <transition-group appear @before-enter="beforeEnter" @enter="enter">
+      <li class="card_holder" v-for="(card, index) in cards" :key="card.link" :data-index="index">
+        <router-link :to="card.link" class="card-link">
+          <h2 class="card">{{ card.title }}</h2>
+        </router-link>
+      </li>
+    </transition-group>
   </div>
 </template>
 
@@ -125,5 +123,4 @@ export default {
     padding-right: 15%;
   }
 }
-
 </style>

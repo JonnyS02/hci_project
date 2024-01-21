@@ -57,8 +57,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  height: calc(100vh - 44px);
+  width: 100%;
   background-color: #fff;
   color: #333;
 }

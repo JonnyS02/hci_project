@@ -1,11 +1,8 @@
 <template>
-    <div>
-        <div class="main_content">
-            <h1 class="no_caret">Your courses <span :style="{ color: '#e8672c' }">{{ user ? `Prof. ${this.user.name}` : 'Guest' }}</span>
-            </h1>
-            <CourseList :courses="professorCourses" />
-        </div>
-    </div>
+    <h1 class="no_caret">Your courses <span :style="{ color: '#e8672c' }">{{ user ? `Prof. ${this.user.name}` : 'Guest'
+    }}</span>
+    </h1>
+    <CourseList :courses="professorCourses" />
 </template>
   
 <script>
