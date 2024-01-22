@@ -26,7 +26,6 @@ export default {
   computed: {
     user() {
       return this.$store.getters.getUser;
-      return this.$store.getters.getUserCourses;
     },
     displayUserName() {
       return this.user && this.user.name ? this.user.name : "Max";
