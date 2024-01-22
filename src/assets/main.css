@@ -9,13 +9,13 @@ a,
   text-decoration: none;
   color:  rgba(231,101,44,255);
   transition: 0.30s;
+  padding: 2px;
 }
 
 @media (hover: hover) {
   a:hover {
      background-color: #152d3a; 
      border-radius: 5px;
-    padding: 2px;
   }
 }
 
