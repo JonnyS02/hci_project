@@ -45,5 +45,22 @@ export default createStore({
   },
   getters: {
     getUser: (state) => state.user,
+    getUserCourses: (state) => (userId) => {
+      const user = state.persons.find(person => person.id === userId);
+
+      if (user) {
+        return user.courses.map(courseId => {
+          const course = state.courses.find(course => course.id === courseId);
+          return {
+            id: course.id,
+            name: course.name,
+            prof: course.prof,
+            raum: course.raum
+          };
+        });
+      } else {
+        return [];
+      }
+    },
   },
 });

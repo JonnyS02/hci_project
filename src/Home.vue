@@ -16,6 +16,7 @@ import { ref } from 'vue'
 import gsap from 'gsap'
 import Navbar from './components/navbar.vue';
 import footerC from './components/footerC.vue';
+import store from './store';
 
 export default {
   components: {
@@ -25,6 +26,7 @@ export default {
   computed: {
     user() {
       return this.$store.getters.getUser;
+      return this.$store.getters.getUserCourses;
     },
     displayUserName() {
       return this.user && this.user.name ? this.user.name : "Max";
@@ -32,14 +34,19 @@ export default {
   },
   setup() {
     const cards = ref([
-      { title: "Verlaufsplan", link: "/courseprof" },
-      { title: "Meine Kurse", link: "/card2" },
+      { title: "Verlaufsplan", link: "/card1" },
+      { title: "Meine Kurse", link: "/courseprof" },
       { title: "Leistungen", link: "/card3" },
       { title: "Stundenplan", link: "/schedule" },
       { title: "Profil", link: "/card5" },
       { title: "Postfach", link: "/card6" },
 
     ])
+
+    const user = store.getters.getUser; // To get user informations //klappt
+    const userCourses = store.getters.getUserCourses(user.id); //To get courses from user //klappt
+    console.log(user.id, user.name, user.role, user.courses);
+    console.log(userCourses);
 
     const beforeEnter = (el) => {
       el.style.opacity = 0
