@@ -35,7 +35,7 @@ export default {
       { title: "Verlaufsplan", link: "/courseprof" },
       { title: "Meine Kurse", link: "/card2" },
       { title: "Leistungen", link: "/card3" },
-      { title: "Stundenplan", link: "/card4" },
+      { title: "Stundenplan", link: "/schedule" },
       { title: "Profil", link: "/card5" },
       { title: "Postfach", link: "/card6" },
 
