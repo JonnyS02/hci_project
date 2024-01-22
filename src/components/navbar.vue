@@ -8,7 +8,8 @@
             :class="{ 'active': currentPath === '/verlaufsplan', 'no-hover': currentPath === '/verlaufsplan' }">Verlaufsplan</span></router-link>
       </li>
       <li><router-link to="/meine_kurse" :class="{ 'no-hover': currentPath === '/meine_kurse' }"><span
-            :class="{ 'active': currentPath === '/meine_kurse', 'no-hover': currentPath === '/meine_kurse' }">Meine Kurse</span></router-link>
+            :class="{ 'active': currentPath === '/meine_kurse', 'no-hover': currentPath === '/meine_kurse' }">Meine
+            Kurse</span></router-link>
       </li>
       <li><router-link to="/leistungen" :class="{ 'no-hover': currentPath === '/leistungen' }"><span
             :class="{ 'active': currentPath === '/leistungen', 'no-hover': currentPath === '/leistungen' }">Leistungen</span></router-link>
@@ -24,8 +25,14 @@
               :icon="['fas', 'power-off']" /></span></router-link></li>
 
       <!-- Right Content -->
-      <li class="right"><router-link to="/"><span>Student
-            &nbsp;<font-awesome-icon :icon="['fas', 'graduation-cap']" /></span></router-link></li>
+      <li class="right">
+        <router-link to="/">
+          <span style="color: #ff8045;">
+            {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
+            &nbsp;<font-awesome-icon :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
+          </span>
+        </router-link>
+      </li>
       <!--<li class="right"><router-link to="/"><span>Professor
             &nbsp;<font-awesome-icon :icon="['fas', 'user-tie']" /></span></router-link></li>-->
     </ul>
@@ -39,6 +46,11 @@ export default {
     return {
       currentPath: ''
     };
+  },
+  computed: {
+    user() {
+      return this.$store.getters.getUser;
+    },
   },
   watch: {
     $route(to, from) {

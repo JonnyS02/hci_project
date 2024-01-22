@@ -4,7 +4,7 @@ import Welcome from "../Welcome.vue"
 import Home from '../Home.vue'
 import About from '../About.vue'
 import Login from '../Login.vue'
-import CourseProf from '../CourseProf.vue'
+import CourseList from '../CourseList.vue'
 import Schedule from '../Schedule.vue'
 
 const router = createRouter({
@@ -31,9 +31,9 @@ const router = createRouter({
             component: Login 
         },
         {
-            path: "/courseprof",
-            name: "CourseProf",
-            component: CourseProf 
+            path: "/courselist",
+            name: "CourseList",
+            component: CourseList 
         },
         {
             path: "/schedule",

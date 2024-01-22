@@ -15,15 +15,15 @@ export default createStore({
       { id: 7, role: 'Professor', name: 'Valeria', lastName: 'Venus', email: 'drvenus@example.com', courses: [3, 4] },
     ],
     courses: [
-      { id: 0, name: 'Orbitalmechanik', prof: 'Merkur', raum: ''  },
-      { id: 1, name: 'Raumfahrtsystemarchitektur', prof: 'Jupiter', raum: ''  },
-      { id: 2, name: 'Raumfahrtmissionen und -planung', prof: 'Neptune', raum: ''  },
-      { id: 3, name: 'Fortgeschrittene Satellitentechnik', prof: 'Venus', raum: ''  },
-      { id: 4, name: 'Astronomie und Kosmologie', prof: 'Venus', raum: ''  },
-      { id: 5, name: 'Exoplaneten Forschung', prof: 'Merkur', raum: ''  },
-      { id: 6, name: 'Theoretische Astrophysik', prof: 'Jupiter', raum: ''  },
-      { id: 7, name: 'Raumzeit und Relativität', prof: 'Jupiter', raum: ''  },
-      { id: 8, name: 'Gravitationsphysik', prof: 'Neptune', raum: '' },
+      { id: 0, name: 'Orbitalmechanik', prof: 'Merkur', raum: 'C31', day: "Mo", timeslot: "10:15"},
+      { id: 1, name: 'Raumfahrtsystemarchitektur', prof: 'Jupiter', raum: 'B404' ,day: "Di", timeslot: "10:15"},
+      { id: 2, name: 'Raumfahrtmissionen und -planung', prof: 'Neptune', raum: 'K44'  ,day: "Di", timeslot: "14:15"},
+      { id: 3, name: 'Fortgeschrittene Satellitentechnik', prof: 'Venus', raum: 'K19'  ,day: "Mo", timeslot: "16:15"},
+      { id: 4, name: 'Astronomie und Kosmologie', prof: 'Venus', raum: 'F3' ,day: "Th", timeslot: "10:15"},
+      { id: 5, name: 'Exoplaneten Forschung', prof: 'Merkur', raum: 'F7' ,day: "We", timeslot: "14:15"},
+      { id: 6, name: 'Theoretische Astrophysik', prof: 'Jupiter', raum: 'C24' ,day: "Sa", timeslot: "10:15"},
+      { id: 7, name: 'Raumzeit und Relativität', prof: 'Jupiter', raum: 'C1' ,day: "Fr", timeslot: "14:15"},
+      { id: 8, name: 'Gravitationsphysik', prof: 'Neptune', raum: 'F7',day: "Fr", timeslot: "10:15"},
     ],
   },
   mutations: {
@@ -55,7 +55,9 @@ export default createStore({
             id: course.id,
             name: course.name,
             prof: course.prof,
-            raum: course.raum
+            raum: course.raum,
+            day: course.day,
+            timeslot: course.timeslot
           };
         });
       } else {
