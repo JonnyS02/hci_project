@@ -32,12 +32,12 @@ export default {
   },
   setup() {
     const cards = ref([
-      { title: "Card 1", link: "/courseprof" },
-      { title: "Card 2", link: "/card2" },
-      { title: "Card 3", link: "/card3" },
-      { title: "Card 4", link: "/card4" },
-      { title: "Card 5", link: "/card5" },
-      { title: "Card 6", link: "/card6" },
+      { title: "Verlaufsplan", link: "/courseprof" },
+      { title: "Meine Kurse", link: "/card2" },
+      { title: "Leistungen", link: "/card3" },
+      { title: "Stundenplan", link: "/card4" },
+      { title: "Profil", link: "/card5" },
+      { title: "Postfach", link: "/card6" },
 
     ])
 
