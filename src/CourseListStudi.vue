@@ -181,9 +181,9 @@ export default {
         };
 
         const handleCourseSelection = (course) => {
-            // Aktion für das Klicken auf einen Kurs in der Sign-in-Liste
             console.log("Selected course:", course);
-            // Hier kannst du die Logik für die Anmeldung zu einem Kurs implementieren
+            store.dispatch('enrollInCourse', course.id);
+            console.log("Hallo", store.getters.getUser.courses); // Nutze hier store.getters.getUser
         };
 
         return { user, userCourses, availableCourses, beforeEnter, enter, handleCourseClick, handleCourseSelection };
