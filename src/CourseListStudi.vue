@@ -1,5 +1,13 @@
 <template>
     <div class="courses-container">
+        <div id="confirmModal" class="confirm-modal">
+            <div class="modal-content">
+                <p v-if="selectedCourse">Möchten Sie sich wirklich für den Kurs <span :style="{ color: '#e8672c' }">{{
+                    selectedCourse.name }}</span> anmelden? <br><br></p>
+                <button id="confirmButton">OK</button>
+                <button id="cancelButton">Abbrechen</button>
+            </div>
+        </div>
         <h1 class="no_caret">Your courses, <span :style="{ color: '#e8672c' }">{{ user ? user.name : 'Guest' }}</span></h1>
 
         <div class="content">
@@ -41,6 +49,58 @@
 </template>
   
 <style scoped>
+.confirm-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    width: 30%;
+    height: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    /* Schwarzer Hintergrund */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #e8672c;
+    /* Orange Umrandung */
+}
+
+#confirmButton {
+    margin-top: 10px;
+    margin-right: 25px;
+    /* Kleiner Abstand zwischen den Buttons */
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    /* Grüner Hintergrund für OK-Button */
+    color: white;
+    /* Weiße Schriftfarbe für OK-Button */
+    border: none;
+    border-radius: 4px;
+}
+
+#cancelButton {
+    margin-top: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #FF0000;
+    /* Roter Hintergrund für Abbrechen-Button */
+    color: white;
+    /* Weiße Schriftfarbe für Abbrechen-Button */
+    border: none;
+    border-radius: 4px;
+}
+
 .content {
     display: flex;
     justify-content: space-between;
@@ -111,10 +171,11 @@ label {
   
   
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import Navbar from './components/navbar.vue';
 import gsap from 'gsap'
 import store from './store';
+import { useRouter } from 'vue-router';
 
 export default {
     components: {
@@ -128,19 +189,11 @@ export default {
             return this.$store.getters.getUserCourses(this.user.id);
         },
     },
-    methods: {
-        handleCourseClick(course) {
-            // Aktion für das Klicken auf einen Kurs in der Courselist
-            console.log("Clicked on course:", course);
-        },
-        handleCourseSelection(course) {
-            // Aktion für das Klicken auf einen Kurs in der Sign-in-Liste
-            console.log("Selected course:", course);
-            // Hier kannst du die Logik für die Anmeldung zu einem Kurs implementieren
-        },
-    }, setup() {
-        const user = store.getters.getUser; // To get user informations //klappt
-        const userCourses = store.getters.getUserCourses(user.id); //To get courses from user //klappt
+    setup() {
+        const router = useRouter();
+        const selectedCourse = ref(null);
+        const user = store.getters.getUser;
+        const userCourses = store.getters.getUserCourses(user.id);
 
         const courses = ref([
             { id: 0, name: 'Orbitalmechanik', prof: 'Merkur', raum: 'C31', day: "Mo", timeslot: "10:15", description: "Erforschen Sie die Bewegung von Himmelskörpern im Weltraum und lernen Sie, wie Gravitation und Geschwindigkeit sie beeinflussen." },
@@ -155,8 +208,6 @@ export default {
         ]);
 
         const availableCourses = computed(() => {
-            // Filtere die Kurse, die der Nutzer noch nicht belegt hat
-            console.log(courses.value.filter(course => !userCourses.includes(course.id)));
             return courses.value.filter(course => !userCourses.some(userCourse => userCourse.id === course.id));
         });
 
@@ -175,18 +226,63 @@ export default {
             });
         };
 
-        const handleCourseClick = (course) => {
-            // Aktion für das Klicken auf einen Kurs in der Courselist
-            console.log("Clicked on course:", course);
-        };
+        const confirmModal = ref(null);
+        const confirmButton = ref(null);
+        const cancelButton = ref(null);
 
         const handleCourseSelection = (course) => {
-            console.log("Selected course:", course);
-            store.dispatch('enrollInCourse', course.id);
-            console.log("Hallo", store.getters.getUser.courses); // Nutze hier store.getters.getUser
+            selectedCourse.value = course;
+            // Hier den Body des Dokuments abrufen
+            const body = document.body;
+
+            // Den Body blockieren und verdunkeln
+            body.style.overflow = 'hidden';
+            body.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+
+            // Modal direkt zum Body hinzufügen
+            body.appendChild(confirmModal.value);
+
+            confirmModal.value.style.display = 'block';
+
+            confirmButton.value.addEventListener('click', () => {
+                // Kurs nur anmelden, wenn "OK" geklickt wurde
+                store.dispatch('enrollInCourse', course.id);
+
+                // Den Body entsperren und den Hintergrund zurücksetzen
+                body.style.overflow = '';
+                body.style.backgroundColor = '';
+
+                // Modal aus dem Body entfernen
+                body.removeChild(confirmModal.value);
+
+                confirmModal.value.style.display = 'none';
+                router.push('/home');
+            });
+
+            cancelButton.value.addEventListener('click', () => {
+                console.log("Anmeldung abgebrochen");
+
+                // Den Body entsperren und den Hintergrund zurücksetzen
+                body.style.overflow = '';
+                body.style.backgroundColor = '';
+                selectedCourse.value = null;
+
+                // Modal aus dem Body entfernen
+                body.removeChild(confirmModal.value);
+
+                confirmModal.value.style.display = 'none';
+                router.push('/home');
+            });
         };
 
-        return { user, userCourses, availableCourses, beforeEnter, enter, handleCourseClick, handleCourseSelection };
+        onMounted(() => {
+            confirmModal.value = document.getElementById('confirmModal');
+            confirmButton.value = document.getElementById('confirmButton');
+            cancelButton.value = document.getElementById('cancelButton');
+        });
+
+        return { user, userCourses, availableCourses, beforeEnter, enter, handleCourseSelection, selectedCourse };
     },
 };
 </script>
+
