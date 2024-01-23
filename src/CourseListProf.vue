@@ -19,25 +19,25 @@
         <form>
           <div class="form-row">
             <div class="form-column">
-              <label for="name" style="color: #ff8045;">Name:</label>
+              <label for="name" style="color: #0c0907;">Name:</label>
               <input type="text" id="name" name="name" required style="border: 2px solid #ff8045; color: #ff8045;">
 
-              <label for="room" style="color: #ff8045;">Room:</label>
+              <label for="room" style="color: #030302;">Room:</label>
               <input type="text" id="room" name="room" required style="border: 2px solid #ff8045; color: #ff8045;">
 
             </div>
             <div class="form-column">
-              <label for="professor" style="color: #ff8045;">Professor:</label>
+              <label for="professor" style="color: #000000;">Professor:</label>
               <input type="text" id="professor" name="professor" :value="user ? user.lastName : ''" required readonly style="border: 2px solid #ff8045; color: #ff8045;">
 
-              <label for="timeslot" style="color: #ff8045;">Timeslot:</label>
+              <label for="timeslot" style="color: #000000;">Timeslot:</label>
               <input type="text" id="timeslot" name="timeslot" required style="border: 2px solid #ff8045; color: #ff8045;">
-              <label for="day" style="color: #ff8045;">Day:</label>
+              <label for="day" style="color: #000000;">Day:</label>
               <input type="text" id="day" name="day" required style="border: 2px solid #ff8045; color: #ff8045;">
             </div>
           </div>
 
-          <label for="description" style="color: #ff8045;">Description:</label>
+          <label for="description" style="color: #000000;">Description:</label>
           <textarea id="description" name="description" required style="border: 2px solid #ff8045; color: #ff8045;"></textarea>
 
           <button type="submit" style="border: 1px solid #e8672c; color: #0e0906; background-color: #e8672c;">
@@ -104,6 +104,7 @@ export default {
   padding: 20px;
   border: 2px solid #e8672c;
   border-radius: 5px;
+  background-color: rgb(215, 215, 215);
 }
 
 form {
