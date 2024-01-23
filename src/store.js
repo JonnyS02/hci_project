@@ -15,15 +15,15 @@ export default createStore({
       { id: 7, role: 'Professor', name: 'Valeria', lastName: 'Venus', email: 'drvenus@example.com', courses: [3, 4] },
     ],
     courses: [
-      { id: 0, name: 'Orbitalmechanik', prof: 'Merkur', raum: 'C31', day: "Mo", timeslot: "10:15"},
-      { id: 1, name: 'Raumfahrtsystemarchitektur', prof: 'Jupiter', raum: 'B404' ,day: "Di", timeslot: "10:15"},
-      { id: 2, name: 'Raumfahrtmissionen und -planung', prof: 'Neptune', raum: 'K44'  ,day: "Di", timeslot: "14:15"},
-      { id: 3, name: 'Fortgeschrittene Satellitentechnik', prof: 'Venus', raum: 'K19'  ,day: "Mo", timeslot: "16:15"},
-      { id: 4, name: 'Astronomie und Kosmologie', prof: 'Venus', raum: 'F3' ,day: "Th", timeslot: "10:15"},
-      { id: 5, name: 'Exoplaneten Forschung', prof: 'Merkur', raum: 'F7' ,day: "We", timeslot: "14:15"},
-      { id: 6, name: 'Theoretische Astrophysik', prof: 'Jupiter', raum: 'C24' ,day: "Sa", timeslot: "10:15"},
-      { id: 7, name: 'Raumzeit und Relativität', prof: 'Jupiter', raum: 'C1' ,day: "Fr", timeslot: "14:15"},
-      { id: 8, name: 'Gravitationsphysik', prof: 'Neptune', raum: 'F7',day: "Fr", timeslot: "10:15"},
+      { id: 0, name: 'Orbitalmechanik', prof: 'Merkur', raum: 'C31', day: "Mo", timeslot: "10:15", description: "Erforschen Sie die Bewegung von Himmelskörpern im Weltraum und lernen Sie, wie Gravitation und Geschwindigkeit sie beeinflussen."},
+      { id: 1, name: 'Raumfahrtsystemarchitektur', prof: 'Jupiter', raum: 'B404' ,day: "Di", timeslot: "10:15", description: "Gestalten Sie komplexe Raumfahrtmissionen und entwerfen Sie Systeme für den sicheren und effizienten Transport im Weltraum."},
+      { id: 2, name: 'Raumfahrtmissionen und -planung', prof: 'Neptune', raum: 'K44'  ,day: "Di", timeslot: "14:15", description: "Tauchen Sie ein in die Planung und Umsetzung von Raumfahrtmissionen, von der Konzeption bis zur Realisierung."},
+      { id: 3, name: 'Fortgeschrittene Satellitentechnik', prof: 'Venus', raum: 'K19'  ,day: "Mo", timeslot: "16:15", description: "Vertiefen Sie Ihr Verständnis für Satellitentechnologien und lernen Sie fortschrittliche Methoden für innovative Anwendungen kennen."},
+      { id: 4, name: 'Astronomie und Kosmologie', prof: 'Venus', raum: 'F3' ,day: "Th", timeslot: "10:15", description: "Entdecken Sie die Geheimnisse des Universums, erforschen Sie ferne Galaxien und verstehen Sie die grundlegenden Prinzipien der Kosmologie."},
+      { id: 5, name: 'Exoplaneten Forschung', prof: 'Merkur', raum: 'F7' ,day: "We", timeslot: "14:15", description: "Untersuchen Sie Planeten außerhalb unseres Sonnensystems und erkunden Sie die Vielfalt dieser faszinierenden Welten."},
+      { id: 6, name: 'Theoretische Astrophysik', prof: 'Jupiter', raum: 'C24' ,day: "Sa", timeslot: "10:15", description: "Vertiefen Sie Ihr Verständnis für die physikalischen Prinzipien des Universums und erforschen Sie theoretische Modelle für astronomische Phänomene."},
+      { id: 7, name: 'Raumzeit und Relativität', prof: 'Jupiter', raum: 'C1' ,day: "Fr", timeslot: "14:15", description: "Tauchen Sie ein in die faszinierende Welt von Raum und Zeit und verstehen Sie die Auswirkungen der allgemeinen Relativitätstheorie."},
+      { id: 8, name: 'Gravitationsphysik', prof: 'Neptune', raum: 'F7',day: "Fr", timeslot: "10:15", description: "Erforschen Sie die Kräfte der Schwerkraft und ihre Auswirkungen auf die Struktur und Entwicklung des Universums."},
     ],
   },
   mutations: {
@@ -57,7 +57,8 @@ export default createStore({
             prof: course.prof,
             raum: course.raum,
             day: course.day,
-            timeslot: course.timeslot
+            timeslot: course.timeslot,
+            description: course.description
           };
         });
       } else {

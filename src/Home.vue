@@ -34,7 +34,7 @@ export default {
   setup() {
     const cards = ref([
       { title: "Verlaufsplan", link: "/card1" },
-      { title: "Meine Kurse", link: "/courselist" },
+      { title: "Meine Kurse", link: "/courseliststudi" },
       { title: "Leistungen", link: "/card3" },
       { title: "Stundenplan", link: "/schedule" },
       { title: "Profil", link: "/card5" },
