@@ -1,40 +1,20 @@
 <template>
   <nav>
     <ul>
-      <li class="no_caret"><router-link to="/home" :class="{ 'no-hover': currentPath === '/home' }"><span
-            :class="{ 'active': currentPath === '/home' }">Homepage</span></router-link>
+      <li v-for="(item, index) in navItems" :key="index" :class="{ 'no_caret': index === 0, 'no-hover': currentPath === item.path }">
+        <router-link :to="item.path" :class="{ 'active': currentPath === item.path, 'no-hover': currentPath === item.path }">
+          <span>{{ item.label }}<span v-if="item.icon">&nbsp <font-awesome-icon :icon="item.icon" /></span></span>
+        </router-link>
       </li>
-      <li><router-link to="/verlaufsplan" :class="{ 'no-hover': currentPath === '/verlaufsplan' }"><span
-            :class="{ 'active': currentPath === '/verlaufsplan', 'no-hover': currentPath === '/verlaufsplan' }">Verlaufsplan</span></router-link>
-      </li>
-      <li><router-link to="/meine_kurse" :class="{ 'no-hover': currentPath === '/meine_kurse' }"><span
-            :class="{ 'active': currentPath === '/meine_kurse', 'no-hover': currentPath === '/meine_kurse' }">Meine
-            Kurse</span></router-link>
-      </li>
-      <li><router-link to="/leistungen" :class="{ 'no-hover': currentPath === '/leistungen' }"><span
-            :class="{ 'active': currentPath === '/leistungen', 'no-hover': currentPath === '/leistungen' }">Leistungen</span></router-link>
-      </li>
-      <li><router-link to="/stundenplan" :class="{ 'no-hover': currentPath === '/stundenplan' }"><span
-            :class="{ 'active': currentPath === '/stundenplan', 'no-hover': currentPath === '/stundenplan' }">Stundenplan</span></router-link>
-      </li>
-      <li><router-link to="/postfach" :class="{ 'no-hover': currentPath === '/postfach' }"><span
-            :class="{ 'active': currentPath === '/postfach', 'no-hover': currentPath === '/postfach' }">Postfach</span></router-link>
-      </li>
-
-      <li><router-link to="/" :class="{ 'no-hover': currentPath === '/' }"><span>Log out &nbsp;<font-awesome-icon
-              :icon="['fas', 'power-off']" /></span></router-link></li>
-
       <!-- Right Content -->
       <li class="right">
-        <router-link to="/">
+        <router-link to="/profil">
           <span style="color: #ff8045;">
             {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
             &nbsp;<font-awesome-icon :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
           </span>
         </router-link>
       </li>
-      <!--<li class="right"><router-link to="/"><span>Professor
-            &nbsp;<font-awesome-icon :icon="['fas', 'user-tie']" /></span></router-link></li>-->
     </ul>
   </nav>
 </template>
@@ -44,7 +24,16 @@ export default {
   name: 'Navbar',
   data() {
     return {
-      currentPath: ''
+      currentPath: '',
+      navItems: [
+        { path: '/home', label: 'Homepage' },
+        { path: '/verlaufsplan', label: 'Verlaufsplan' },
+        { path: '/courselist', label: 'Meine Kurse' },
+        { path: '/leistungen', label: 'Leistungen' },
+        { path: '/schedule', label: 'Stundenplan' },
+        { path: '/postfach', label: 'Postfach' },
+        { path: '/', label: 'Log out', icon:['fas', 'power-off'] },
+      ],
     };
   },
   computed: {
@@ -55,12 +44,12 @@ export default {
   watch: {
     $route(to, from) {
       this.currentPath = to.path;
-    }
+    },
   },
   created() {
     this.currentPath = this.$route.path;
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -79,7 +68,7 @@ ul {
 
 li {
   margin-left: 15px;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 a {
@@ -98,7 +87,6 @@ a {
 .no-hover:hover {
   background-color: unset;
   border-radius: unset;
-  padding: unset;
   cursor: default;
 }
 </style>

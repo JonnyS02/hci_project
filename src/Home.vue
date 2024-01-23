@@ -37,8 +37,8 @@ export default {
       { title: "Meine Kurse", link: "/courseliststudi" },
       { title: "Leistungen", link: "/card3" },
       { title: "Stundenplan", link: "/schedule" },
-      { title: "Profil", link: "/card5" },
-      { title: "Postfach", link: "/card6" },
+      { title: "Profil", link: "/profil" },
+      { title: "Postfach", link: "/postfach" },
 
     ])
 
@@ -107,6 +107,10 @@ export default {
 
 .cards a:hover {
   background-color: unset;
+}
+
+.card-link{
+  padding: unset;
 }
 
 @media only screen and (max-width: 1300px) {

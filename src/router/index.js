@@ -1,36 +1,31 @@
 
 import { createRouter, createWebHistory } from "vue-router";
-import Welcome from "../Welcome.vue"
 import Home from '../Home.vue'
-import About from '../About.vue'
 import Login from '../Login.vue'
 import CourseListProf from '../CourseListProf.vue'
 import CourseListStudi from '../CourseListStudi.vue'
 import Schedule from '../Schedule.vue'
+import Verlaufsplan from '../Verlaufsplan.vue'
+import Postfach from '../Postfach.vue'
+import Leistungen from '../Leistungen.vue'
+import Profil from '../Profil.vue'
+
+
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes: [
+    routes: [        
         {
-            path: "/welcome",
-            name: "Welcome",
-            component: Welcome        
+            path: "/",
+            name: "Login",
+            component: Login 
         },
         {
             path: "/home",
             name: "Home",
             component: Home 
         },
-        {
-            path: "/about",
-            name: "About",
-            component: About 
-        },
-        {
-            path: "/",
-            name: "Login",
-            component: Login 
-        },
+
         {
             path: "/courselistprof",
             name: "CourseListProf",
@@ -45,7 +40,27 @@ const router = createRouter({
             path: "/schedule",
             name: "Schedule",
             component: Schedule 
-        }
+        },
+        {
+            path: "/verlaufsplan",
+            name: "Verlaufsplan",
+            component: Verlaufsplan 
+        },
+        {
+            path: "/leistungen",
+            name: "Leistungen",
+            component: Leistungen 
+        },
+        {
+            path: "/postfach",
+            name: "Postfach",
+            component: Postfach 
+        },
+        {
+            path: "/profil",
+            name: "Profil",
+            component: Profil 
+        },
     ]
 })
 
