@@ -29,146 +29,32 @@
                 </h2>
 
                 <div class="course-cards-container">
-                    <transition-group appear @before-enter="beforeEnter" @enter="enter">
-                        <li v-for="(course, index) in availableCourses" :key="course.id" class="course-cards"
+                    <transition-group appear @before-enter="beforeEnter" @enter="enter" name="list">
+                        <div v-for="(course, index) in availableCourses" :key="course.id" class="course-cards"
                             :data-index="index" @click="handleCourseSelection(course)">
-                            <span style="font-size: 18px; font-weight: bold; color: #e8672c;">{{ course.name }}</span><br>
+                            <span style="font-size: 18px; font-weight: bold; color: #e8672c;">{{ course.name
+                            }}</span><br>
                             Professor: {{ course.prof }}<br>
                             Raum: {{ course.raum }}, Zeit:
                             {{ course.day }} {{ course.timeslot }}<br>
                             <span style="font-size: 18px; color: #e8672c;">Beschreibung:</span>
                             {{ course.description }}
                             <div class="signup-overlay" @click="handleSignup">Anmelden</div>
-                        </li>
+                        </div>
                     </transition-group>
                 </div>
-
             </div>
         </div>
     </div>
+    <div id="confirmModal" class="confirm-modal">
+        <div class="modal-content">
+            <p v-if="selectedCourse">Möchten Sie sich wirklich für den Kurs <span :style="{ color: '#e8672c' }">{{
+                selectedCourse.name }}</span> anmelden? <br><br></p>
+            <button id="confirmButton">OK</button>
+            <button id="cancelButton">Abbrechen</button>
+        </div>
+    </div>
 </template>
-  
-<style scoped>
-.confirm-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    position: absolute;
-    width: 30%;
-    height: 20%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #000;
-    /* Schwarzer Hintergrund */
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    border: 2px solid #e8672c;
-    /* Orange Umrandung */
-}
-
-#confirmButton {
-    margin-top: 10px;
-    margin-right: 25px;
-    /* Kleiner Abstand zwischen den Buttons */
-    padding: 8px 16px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    /* Grüner Hintergrund für OK-Button */
-    color: white;
-    /* Weiße Schriftfarbe für OK-Button */
-    border: none;
-    border-radius: 4px;
-}
-
-#cancelButton {
-    margin-top: 10px;
-    padding: 8px 16px;
-    cursor: pointer;
-    background-color: #FF0000;
-    /* Roter Hintergrund für Abbrechen-Button */
-    color: white;
-    /* Weiße Schriftfarbe für Abbrechen-Button */
-    border: none;
-    border-radius: 4px;
-}
-
-.content {
-    display: flex;
-    justify-content: space-between;
-    /* Neu: Platz zwischen den beiden Container */
-}
-
-.list {
-    padding-top: 4%;
-    flex: 0 0 50%;
-}
-
-.course-card {
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px;
-}
-
-.course-cards {
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px;
-    border: 1px solid #e8672c;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    position: relative;
-    /* Neu: Position relativ für die Überlagerung */
-}
-
-.signup-overlay {
-    display: none;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background-color: #e8672c;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.course-cards:hover .signup-overlay {
-    display: block;
-}
-
-.course-cards:hover {
-    background-color: #8686863b;
-    color: white;
-}
-
-.bullet {
-    margin-right: 5px;
-}
-
-.list ul {
-    list-style: none;
-    padding: 0;
-}
-
-.signin-container {
-    flex: 1;
-    padding: 10px;
-}
-
-label {
-    margin-top: 10px;
-}
-</style>
-  
   
 <script>
 import { ref, computed, onMounted } from 'vue';
@@ -232,53 +118,53 @@ export default {
 
         const handleCourseSelection = (course) => {
             selectedCourse.value = course;
-            // Hier den Body des Dokuments abrufen
             const body = document.body;
-
-            // Den Body blockieren und verdunkeln
             body.style.overflow = 'hidden';
-            body.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            confirmModal.value.style.opacity = '1';
+            confirmModal.value.style.zIndex = '1';
 
-            // Modal direkt zum Body hinzufügen
-            body.appendChild(confirmModal.value);
-
-            confirmModal.value.style.display = 'block';
 
             confirmButton.value.addEventListener('click', () => {
-                // Kurs nur anmelden, wenn "OK" geklickt wurde
-                store.dispatch('enrollInCourse', course.id);
-
-                // Den Body entsperren und den Hintergrund zurücksetzen
-                body.style.overflow = '';
-                body.style.backgroundColor = '';
-
-                // Modal aus dem Body entfernen
-                body.removeChild(confirmModal.value);
-
-                confirmModal.value.style.display = 'none';
-                router.push('/home');
+                confirmModal.value.style.opacity = '0';
+                confirmModal.value.style.zIndex = '-1';
+                setTimeout(() => {
+                    store.dispatch('enrollInCourse', course.id);
+                    body.style.overflow = '';
+                    body.style.backgroundColor = '';
+                    var id = course.id;
+                    const indexToRemove = availableCourses.value.findIndex(c => c.id === id);
+                    const elementToRemove = document.querySelectorAll('.course-cards')[indexToRemove];
+                    if (elementToRemove) {
+                        elementToRemove.style.marginRight = '40px';
+                    }
+                    courses.value = courses.value.filter(c => c.id !== id);
+                }, 250);
             });
 
-            cancelButton.value.addEventListener('click', () => {
-                console.log("Anmeldung abgebrochen");
 
-                // Den Body entsperren und den Hintergrund zurücksetzen
+            cancelButton.value.addEventListener('click', () => {
+                confirmModal.value.style.opacity = '0';
+                confirmModal.value.style.zIndex = '-1';
+                console.log("Anmeldung abgebrochen");
                 body.style.overflow = '';
                 body.style.backgroundColor = '';
                 selectedCourse.value = null;
-
-                // Modal aus dem Body entfernen
-                body.removeChild(confirmModal.value);
-
-                confirmModal.value.style.display = 'none';
-                router.push('/home');
-            });
+            }
+            );
         };
 
         onMounted(() => {
             confirmModal.value = document.getElementById('confirmModal');
             confirmButton.value = document.getElementById('confirmButton');
             cancelButton.value = document.getElementById('cancelButton');
+            setTimeout(() => {
+                const courseCards = document.querySelectorAll('.course-cards');
+                courseCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.removeAttribute('style');
+                    }, index * 200);
+                });
+            }, 2000);
         });
 
         return { user, userCourses, availableCourses, beforeEnter, enter, handleCourseSelection, selectedCourse };
@@ -286,3 +172,141 @@ export default {
 };
 </script>
 
+<style scoped>
+.confirm-modal {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    transition: opacity 0.15s ease;
+}
+
+.modal-content {
+    position: absolute;
+    width: 30%;
+    height: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #e8672c;
+}
+
+#confirmButton {
+    margin-top: 10px;
+    margin-right: 25px;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+#cancelButton {
+    margin-top: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list {
+    padding-top: 4%;
+    flex: 0 0 50%;
+}
+
+.course-card {
+    color: #e2e2e2;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.course-cards {
+    background-color: rgb(43, 43, 43);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border: 2px solid #e8672c;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    position: relative;
+    transition: background-color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out;
+
+}
+
+.signup-overlay {
+    color: #000;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgb(215, 215, 215);
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+}
+
+.signup-overlay:hover {
+    background-color: #e8672c;
+}
+
+.course-cards:hover {
+    background-color: #8686863b;
+    color: white;
+}
+
+.bullet {
+    margin-right: 5px;
+}
+
+.list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.signin-container {
+    flex: 1;
+    padding: 10px;
+}
+
+label {
+    margin-top: 10px;
+}
+
+/* list transitions */
+.list-leave-to {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.list-leave-active {
+    transition: all 0.4s ease;
+    position: absolute;
+    /* for move transition after item leaves */
+}
+
+.list-move {
+    transition: all 0.3s ease;
+}
+</style>
