@@ -46,14 +46,6 @@
             </div>
         </div>
     </div>
-    <div id="confirmModal" class="confirm-modal">
-        <div class="modal-content">
-            <p v-if="selectedCourse">Möchten Sie sich wirklich für den Kurs <span :style="{ color: '#e8672c' }">{{
-                selectedCourse.name }}</span> anmelden? <br><br></p>
-            <button id="confirmButton">OK</button>
-            <button id="cancelButton">Abbrechen</button>
-        </div>
-    </div>
 </template>
   
 <script>
@@ -115,42 +107,48 @@ export default {
         const confirmModal = ref(null);
         const confirmButton = ref(null);
         const cancelButton = ref(null);
+        const body = document.body;
+        const handleConfirmButtonClick = () => {
+            confirmModal.value.style.opacity = '0';
+            confirmModal.value.style.zIndex = '-1';
+            setTimeout(() => {
+                store.dispatch('enrollInCourse', selectedCourse.value.id);
+                body.style.overflow = '';
+                body.style.backgroundColor = '';
+                var id = selectedCourse.value.id;
+                const indexToRemove = availableCourses.value.findIndex(c => c.id === id);
+                const elementToRemove = document.querySelectorAll('.course-cards')[indexToRemove];
+                if (elementToRemove) {
+                    elementToRemove.style.marginRight = '40px';
+                }
+                courses.value = courses.value.filter(c => c.id !== id);
+                // Event-Listener entfernen
+                confirmButton.value.removeEventListener('click', handleConfirmButtonClick);
+                cancelButton.value.removeEventListener('click', handleCancelButtonClick);
+            }, 250);
+        };
+
+        const handleCancelButtonClick = () => {
+            confirmModal.value.style.opacity = '0';
+            confirmModal.value.style.zIndex = '-1';
+            console.log("Anmeldung abgebrochen");
+            body.style.overflow = '';
+            body.style.backgroundColor = '';
+            selectedCourse.value = null;
+            // Event-Listener entfernen
+            confirmButton.value.removeEventListener('click', handleConfirmButtonClick);
+            cancelButton.value.removeEventListener('click', handleCancelButtonClick);
+        };
 
         const handleCourseSelection = (course) => {
             selectedCourse.value = course;
-            const body = document.body;
             body.style.overflow = 'hidden';
             confirmModal.value.style.opacity = '1';
             confirmModal.value.style.zIndex = '1';
 
-
-            confirmButton.value.addEventListener('click', () => {
-                confirmModal.value.style.opacity = '0';
-                confirmModal.value.style.zIndex = '-1';
-                setTimeout(() => {
-                    store.dispatch('enrollInCourse', course.id);
-                    body.style.overflow = '';
-                    body.style.backgroundColor = '';
-                    var id = course.id;
-                    const indexToRemove = availableCourses.value.findIndex(c => c.id === id);
-                    const elementToRemove = document.querySelectorAll('.course-cards')[indexToRemove];
-                    if (elementToRemove) {
-                        elementToRemove.style.marginRight = '40px';
-                    }
-                    courses.value = courses.value.filter(c => c.id !== id);
-                }, 250);
-            });
-
-
-            cancelButton.value.addEventListener('click', () => {
-                confirmModal.value.style.opacity = '0';
-                confirmModal.value.style.zIndex = '-1';
-                console.log("Anmeldung abgebrochen");
-                body.style.overflow = '';
-                body.style.backgroundColor = '';
-                selectedCourse.value = null;
-            }
-            );
+            // Event-Listener hinzufügen
+            confirmButton.value.addEventListener('click', handleConfirmButtonClick);
+            cancelButton.value.addEventListener('click', handleCancelButtonClick);
         };
 
         onMounted(() => {
