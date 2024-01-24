@@ -2,7 +2,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from '../Home.vue'
 import Login from '../Login.vue'
-import CourseList from '../CourseList.vue'
+import CourseListProf from '../CourseListProf.vue'
+import CourseListStudi from '../CourseListStudi.vue'
 import Schedule from '../Schedule.vue'
 import Verlaufsplan from '../Verlaufsplan.vue'
 import Postfach from '../Postfach.vue'
@@ -26,9 +27,14 @@ const router = createRouter({
         },
 
         {
-            path: "/courselist",
-            name: "CourseList",
-            component: CourseList 
+            path: "/courselistprof",
+            name: "CourseListProf",
+            component: CourseListProf 
+        },
+        {
+            path: "/courseliststudi",
+            name: "CourseListStudi",
+            component: CourseListStudi 
         },
         {
             path: "/schedule",

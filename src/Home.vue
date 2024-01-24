@@ -32,20 +32,19 @@ export default {
     },
   },
   setup() {
-    const cards = ref([
-      { title: "Verlaufsplan", link: "/verlaufsplan" },
-      { title: "Meine Kurse", link: "/courselist" },
-      { title: "Leistungen", link: "/leistungen" },
-      { title: "Stundenplan", link: "/schedule" },
-      { title: "Profil", link: "/profil" },
-      { title: "Postfach", link: "/postfach" },
-
-    ])
-
     const user = store.getters.getUser; // To get user informations //klappt
     const userCourses = store.getters.getUserCourses(user.id); //To get courses from user //klappt
     console.log(user.id, user.name, user.role, user.courses);
     console.log(userCourses);
+
+    const cards = ref([
+      { title: "Verlaufsplan", link: "/card1" },
+      { title: user.role === 'Professor' ? "Meine Kurse" : "Meine Kurse", link: user.role === 'Professor' ? "/courselistprof" : "/courseliststudi" },
+      { title: "Leistungen", link: "/card3" },
+      { title: "Stundenplan", link: "/schedule" },
+      { title: "Profil", link: "/profil" },
+      { title: "Postfach", link: "/postfach" },
+    ]);
 
     const beforeEnter = (el) => {
       el.style.opacity = 0
