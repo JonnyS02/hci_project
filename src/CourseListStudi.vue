@@ -24,22 +24,22 @@
             </div>
 
             <div class="signin-container">
-                <h2 style="color: #e8672c; font-size: 24px; font-weight: bold; text-align: center;">Sign into a new course
+                <h2 style="color: #e8672c; font-size: 24px; font-weight: bold; text-align: center;">Verfügbare Kurse
                     <br><br>
                 </h2>
 
                 <div class="course-cards-container">
                     <transition-group appear @before-enter="beforeEnter" @enter="enter">
-                        <li v-for="(course, index) in availableCourses" :key="course.id" class="course-cards"
+                        <div v-for="(course, index) in availableCourses" :key="course.id" class="course-cards"
                             :data-index="index" @click="handleCourseSelection(course)">
                             <span style="font-size: 18px; font-weight: bold; color: #e8672c;">{{ course.name }}</span><br>
                             Professor: {{ course.prof }}<br>
                             Raum: {{ course.raum }}, Zeit:
-                            {{ course.day }} {{ course.timeslot }}<br>
+                            {{ course.day }}. {{ course.timeslot }}<br>
                             <span style="font-size: 18px; color: #e8672c;">Beschreibung:</span>
                             {{ course.description }}
                             <div class="signup-overlay" @click="handleSignup">Anmelden</div>
-                        </li>
+                    </div>
                     </transition-group>
                 </div>
 
@@ -200,8 +200,8 @@ export default {
             { id: 1, name: 'Raumfahrtsystemarchitektur', prof: 'Jupiter', raum: 'B404', day: "Di", timeslot: "10:15", description: "Gestalten Sie komplexe Raumfahrtmissionen und entwerfen Sie Systeme für den sicheren und effizienten Transport im Weltraum." },
             { id: 2, name: 'Raumfahrtmissionen und -planung', prof: 'Neptune', raum: 'K44', day: "Di", timeslot: "14:15", description: "Tauchen Sie ein in die Planung und Umsetzung von Raumfahrtmissionen, von der Konzeption bis zur Realisierung." },
             { id: 3, name: 'Fortgeschrittene Satellitentechnik', prof: 'Venus', raum: 'K19', day: "Mo", timeslot: "16:15", description: "Vertiefen Sie Ihr Verständnis für Satellitentechnologien und lernen Sie fortschrittliche Methoden für innovative Anwendungen kennen." },
-            { id: 4, name: 'Astronomie und Kosmologie', prof: 'Venus', raum: 'F3', day: "Th", timeslot: "10:15", description: "Entdecken Sie die Geheimnisse des Universums, erforschen Sie ferne Galaxien und verstehen Sie die grundlegenden Prinzipien der Kosmologie." },
-            { id: 5, name: 'Exoplaneten Forschung', prof: 'Merkur', raum: 'F7', day: "We", timeslot: "14:15", description: "Untersuchen Sie Planeten außerhalb unseres Sonnensystems und erkunden Sie die Vielfalt dieser faszinierenden Welten." },
+            { id: 4, name: 'Astronomie und Kosmologie', prof: 'Venus', raum: 'F3', day: "Do", timeslot: "10:15", description: "Entdecken Sie die Geheimnisse des Universums, erforschen Sie ferne Galaxien und verstehen Sie die grundlegenden Prinzipien der Kosmologie." },
+            { id: 5, name: 'Exoplaneten Forschung', prof: 'Merkur', raum: 'F7', day: "Mi", timeslot: "14:15", description: "Untersuchen Sie Planeten außerhalb unseres Sonnensystems und erkunden Sie die Vielfalt dieser faszinierenden Welten." },
             { id: 6, name: 'Theoretische Astrophysik', prof: 'Jupiter', raum: 'C24', day: "Sa", timeslot: "10:15", description: "Vertiefen Sie Ihr Verständnis für die physikalischen Prinzipien des Universums und erforschen Sie theoretische Modelle für astronomische Phänomene." },
             { id: 7, name: 'Raumzeit und Relativität', prof: 'Jupiter', raum: 'C1', day: "Fr", timeslot: "14:15", description: "Tauchen Sie ein in die faszinierende Welt von Raum und Zeit und verstehen Sie die Auswirkungen der allgemeinen Relativitätstheorie." },
             { id: 8, name: 'Gravitationsphysik', prof: 'Neptune', raum: 'F7', day: "Fr", timeslot: "10:15", description: "Erforschen Sie die Kräfte der Schwerkraft und ihre Auswirkungen auf die Struktur und Entwicklung des Universums." },
