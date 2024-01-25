@@ -2,7 +2,7 @@
     <div class="courses-container">
         <div id="confirmModal" class="confirm-modal">
             <div class="modal-content">
-                <p v-if="selectedCourse">Möchten Sie sich wirklich für den Kurs <span :style="{ color: '#e8672c' }">{{
+                <p v-if="selectedCourse">Möchten Sie sich wirklich zur Prüfung  <span :style="{ color: '#e8672c' }">{{
                     selectedCourse.name }}</span> anmelden? <br><br></p>
                 <button id="confirmButton">OK</button>
                 <button id="cancelButton">Abbrechen</button>
@@ -11,22 +11,9 @@
         <h1 class="no_caret">Your courses, <span :style="{ color: '#e8672c' }">{{ user ? user.name : 'Guest' }}</span></h1>
 
         <div class="content">
-            <div class="list">
-                <ul>
-                    <li class="card_holder" v-for="course in userCourses" :key="course.id">
-                        <div class="course-card">
-                            <span class="bullet" style="color: #ff8045;">&#8226;</span>
-                            <span style="color: #ff8045;">{{ course.name }}</span><br> Raum: {{ course.raum }},
-                            {{ course.day }} {{ course.timeslot }}
-                        </div>
-                    </li>
-                </ul>
-            </div>
 
             <div class="signin-container">
-                <h2 style="color: #e8672c; font-size: 24px; font-weight: bold; text-align: center;">Verfügbare Kurse
-                    <br><br>
-                </h2>
+                
 
                 <div class="course-cards-container">
                     <transition-group appear @before-enter="beforeEnter" @enter="enter" name="list">
@@ -39,7 +26,7 @@
                             {{ course.day }}. {{ course.timeslot }}<br>
                             <span style="font-size: 18px; color: #e8672c;">Beschreibung:</span>
                             {{ course.description }}
-                            <div class="signup-overlay" @click="handleSignup">Anmelden</div>
+                            <div class="signup-overlay" @click="handleSignup">Zur Prüfung anmelden</div>
                         </div>
                     </transition-group>
                 </div>
@@ -86,7 +73,7 @@ export default {
         ]);
 
         const availableCourses = computed(() => {
-            return courses.value.filter(course => !userCourses.some(userCourse => userCourse.id === course.id));
+            return courses.value.filter(course => userCourses.some(userCourse => userCourse.id === course.id));
         });
 
         const beforeEnter = (el) => {
@@ -112,7 +99,7 @@ export default {
             confirmModal.value.style.opacity = '0';
             confirmModal.value.style.zIndex = '-1';
             setTimeout(() => {
-                store.dispatch('enrollInCourse', selectedCourse.value.id);
+                store.dispatch('enrollInExam', selectedCourse.value.id);
                 body.style.overflow = '';
                 body.style.backgroundColor = '';
                 var id = selectedCourse.value.id;
@@ -171,6 +158,13 @@ export default {
 </script>
 
 <style scoped>
+
+.course-cards-container {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
 .confirm-modal {
     opacity: 0;
     position: fixed;
