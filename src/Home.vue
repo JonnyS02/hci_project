@@ -14,15 +14,9 @@
 <script>
 import { ref } from 'vue'
 import gsap from 'gsap'
-import Navbar from './components/navbar.vue';
-import footerC from './components/footerC.vue';
 import store from './store';
 
 export default {
-  components: {
-    Navbar,
-    footerC,
-  },
   computed: {
     user() {
       return this.$store.getters.getUser;

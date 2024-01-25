@@ -12,12 +12,11 @@ a,
   padding: 2px;
 }
 
-@media (hover: hover) {
-  a:hover {
-     background-color: #152d3a; 
-     border-radius: 5px;
-  }
+a:hover {
+    background-color: #152d3a; 
+    border-radius: 5px;
 }
+
 
 
 .main_content {

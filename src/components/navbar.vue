@@ -1,18 +1,23 @@
 <template>
   <nav>
     <ul>
-      <li v-for="(item, index) in navItems" :key="index" :class="{ 'no_caret': index === 0, 'no-hover': currentPath === item.path }">
-        <router-link :to="item.path" :class="{ 'active': currentPath === item.path, 'no-hover': currentPath === item.path }">
+      <li v-for="(item, index) in navItems" :key="index"
+        :class="{ 'no_caret': index === 0, 'no-hover': currentPath === item.path }">
+        <router-link :to="item.path"
+          :class="{ 'active': currentPath === item.path, 'no-hover': currentPath === item.path }">
           <span>{{ item.label }}<span v-if="item.icon">&nbsp <font-awesome-icon :icon="item.icon" /></span></span>
+        </router-link>
+      </li>
+      <li class="no_caret">
+        <router-link to="/" class="off">
+          <span>Log out<span>&nbsp <font-awesome-icon :icon="['fas', 'power-off']" /></span></span>
         </router-link>
       </li>
       <!-- Right Content -->
       <li class="right">
-        <router-link to="/profil">
-          <span style="color: #ff8045;">
+        <router-link to="/profil" :class="{ 'active': currentPath === '/profil', 'no-hover': currentPath === '/profil' }">
             {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
             &nbsp;<font-awesome-icon :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
-          </span>
         </router-link>
       </li>
     </ul>
@@ -32,7 +37,7 @@ export default {
         { path: '/leistungen', label: 'Leistungen' },
         { path: '/schedule', label: 'Stundenplan' },
         { path: '/postfach', label: 'Postfach' },
-        { path: '/', label: 'Log out', icon:['fas', 'power-off'] },
+        //  { path: '/', label: 'Log out', icon:['fas', 'power-off'] },
       ],
     };
   },
@@ -88,5 +93,10 @@ a {
   background-color: unset;
   border-radius: unset;
   cursor: default;
+}
+
+.off:hover {
+  background-color: #ff00004f;
+  border-radius: 5px;
 }
 </style>
