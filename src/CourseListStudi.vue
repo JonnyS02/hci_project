@@ -31,8 +31,6 @@
                 <div class="course-cards-container">
                     <transition-group appear @before-enter="beforeEnter" @enter="enter" name="list">
                         <div v-for="(course, index) in availableCourses" :key="course.id" class="course-cards"
-                    <transition-group appear @before-enter="beforeEnter" @enter="enter">
-                        <div v-for="(course, index) in availableCourses" :key="course.id" class="course-cards"
                             :data-index="index" @click="handleCourseSelection(course)">
                             <span style="font-size: 18px; font-weight: bold; color: #e8672c;">{{ course.name
                             }}</span><br>
