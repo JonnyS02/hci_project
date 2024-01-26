@@ -32,9 +32,9 @@ export default {
     console.log(userCourses);
 
     const cards = ref([
-      { title: "Verlaufsplan", link: "/card1" },
+      { title: "Verlaufsplan", link: "/verlaufsplan" },
       { title: user.role === 'Professor' ? "Meine Kurse" : "Meine Kurse", link: user.role === 'Professor' ? "/courselistprof" : "/courseliststudi" },
-      { title: "Leistungen", link: "/card3" },
+      { title: "Leistungen", link: "/profil" },
       { title: "Stundenplan", link: "/schedule" },
       { title: "Profil", link: "/profil" },
       { title: "Postfach", link: "/postfach" },

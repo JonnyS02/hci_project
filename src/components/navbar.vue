@@ -14,10 +14,10 @@
         </router-link>
       </li>
       <!-- Right Content -->
-      <li class="right">
+      <li class="right" style="margin-right: 15;">
         <router-link to="/profil" :class="{ 'active': currentPath === '/profil', 'no-hover': currentPath === '/profil' }">
-            {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
-            &nbsp;<font-awesome-icon :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
+          {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
+          &nbsp;<font-awesome-icon :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
         </router-link>
       </li>
     </ul>
@@ -25,9 +25,12 @@
 </template>
 
 <script>
+import store from '../store';
+
 export default {
   name: 'Navbar',
   data() {
+
     return {
       currentPath: '',
       navItems: [
@@ -37,7 +40,6 @@ export default {
         { path: '/leistungen', label: 'Leistungen' },
         { path: '/schedule', label: 'Stundenplan' },
         { path: '/postfach', label: 'Postfach' },
-        //  { path: '/', label: 'Log out', icon:['fas', 'power-off'] },
       ],
     };
   },
@@ -61,6 +63,7 @@ export default {
 nav {
   background-color: #333;
   padding: 10px;
+  padding-left: 25px;
 }
 
 ul {
@@ -69,11 +72,17 @@ ul {
   padding: 0;
   display: flex;
   justify-content: flex-end;
+  max-width: 2000px;
+}
+
+@media only screen and (min-width: 2000px) {
+  ul {
+    margin: auto;
+  }
 }
 
 li {
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-right: 30px;
 }
 
 a {
