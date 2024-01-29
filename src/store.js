@@ -3,7 +3,7 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    user: { id: 0, role: 'Student', name: 'Anna', lastName: 'Mars', email: 'anna@example.com', semester: 3, courses: [1, 3, 7, 0] },
+    user: { id: 0, role: 'Student', name: 'Anna', lastName: 'Mars', email: 'anna@example.com', semester: 3, courses: [1, 3, 7, 0], prüfungsanmeldungen: [1] },
     persons: [
       { id: 0, role: 'Student', name: 'Anna', lastName: 'Mars', email: 'anna@example.com', semester: 3, courses: [1, 3, 7, 0], prüfungsanmeldungen: [1] },
       { id: 1, role: 'Student', name: 'David', lastName: 'Saturn', email: 'dave@example.com', semester: 4, courses: [2, 3, 7], prüfungsanmeldungen: [] },
@@ -48,6 +48,17 @@ export default createStore({
         user.prüfungsanmeldungen.push(courseId);
       }
     },
+    unenrollExam(state, { userId, courseId }) {
+      const user = state.persons.find(person => person.id === userId);
+  
+      if (user) {
+        const index = user.prüfungsanmeldungen.indexOf(courseId);
+  
+        if (index !== -1) {
+          user.prüfungsanmeldungen.splice(index, 1);
+        }
+      }
+    },
   },
   actions: {
     loginUser({ commit }, { name, role, id, lastName, email, courses }) {
@@ -64,6 +75,10 @@ export default createStore({
     enrollInExam({ commit, state }, courseId) {
       const userId = state.user.id;
       commit('enrollExam', { userId, courseId });
+    },
+    unenrollFromExam({ commit, state }, courseId) {
+      const userId = state.user.id;
+      commit('unenrollExam', { userId, courseId });
     },
   },
   getters: {

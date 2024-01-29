@@ -2,8 +2,13 @@
     <div class="courses-container">
         <div id="confirmModal" class="confirm-modal">
             <div class="modal-content">
-                <p v-if="selectedCourse">Möchten Sie sich wirklich zur Prüfung <span :style="{ color: '#e8672c' }">{{
-                    selectedCourse.name }}</span> anmelden? <br><br></p>
+                <p v-if="selectedCourse">
+                    Möchten Sie sich wirklich zur Prüfung
+                    <span :style="{ color: '#e8672c' }">{{ selectedCourse.name }}</span>
+                    <span v-if="!selectedCourse.isEnrolled"> anmelden</span>
+                    <span v-else> abmelden</span>?
+                    <br><br>
+                </p>
                 <button id="confirmButton">OK</button>
                 <button id="cancelButton">Abbrechen</button>
             </div>
@@ -44,7 +49,11 @@
                                     <td>{{ course.description }}</td>
                                 </tr>
                             </table>
-                            <div class="signup-overlay" @click="handleSignup">Zur Prüfung anmelden</div>
+                            <div class="signup-overlay" @click="handleSignup(course)">
+                                <!-- Button-Darstellung ändern -->
+                                <button v-if="course.isEnrolled" class="withdraw-button">Abmelden</button>
+                                <button v-else class="signup-button">Zur Prüfung anmelden</button>
+                            </div>
                         </div>
                     </transition-group>
                 </div>
@@ -73,7 +82,6 @@ export default {
         },
     },
     setup() {
-        const router = useRouter();
         const selectedCourse = ref(null);
         const user = store.getters.getUser;
         const userCourses = store.getters.getUserCourses(user.id);
@@ -117,19 +125,41 @@ export default {
             confirmModal.value.style.opacity = '0';
             confirmModal.value.style.zIndex = '-1';
             setTimeout(() => {
-                store.dispatch('enrollInExam', selectedCourse.value.id);
+                if (!selectedCourse.value.isEnrolled) {
+                    // Aktionen für die Anmeldung implementieren
+                    store.dispatch('enrollInExam', selectedCourse.value.id);
+
+                    // Update the enrolled status in the courses array
+                    courses.value = courses.value.map(course => {
+                        if (course.id === selectedCourse.value.id) {
+                            return { ...course, isEnrolled: true };
+                        }
+                        return course;
+                    });
+                } else {
+                    // Aktionen für die Abmeldung implementieren
+                    store.dispatch('unenrollFromExam', selectedCourse.value.id);
+
+                    // Update the enrolled status in the courses array
+                    courses.value = courses.value.map(course => {
+                        if (course.id === selectedCourse.value.id) {
+                            return { ...course, isEnrolled: false };
+                        }
+                        return course;
+                    });
+                }
+
+                // Zurücksetzen der ausgewählten Option und des Body-Stils
+                selectedCourse.value = null;
                 body.style.overflow = '';
                 body.style.backgroundColor = '';
-                var id = selectedCourse.value.id;
-                const indexToRemove = availableCourses.value.findIndex(c => c.id === id);
-                const elementToRemove = document.querySelectorAll('.course-cards')[indexToRemove];
 
-                courses.value = courses.value.filter(c => c.id !== id);
                 // Event-Listener entfernen
                 confirmButton.value.removeEventListener('click', handleConfirmButtonClick);
                 cancelButton.value.removeEventListener('click', handleCancelButtonClick);
             }, 250);
         };
+
 
         const handleCancelButtonClick = () => {
             confirmModal.value.style.opacity = '0';
@@ -255,8 +285,6 @@ export default {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: rgb(215, 215, 215);
-    padding: 5px;
     padding-left: 7px;
     padding-right: 7px;
     border-radius: 5px;
@@ -264,8 +292,40 @@ export default {
     transition: background-color 0.15s ease-in-out;
 }
 
-.signup-overlay:hover {
+.signup-button {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #fff2ec;
+    color: rgb(17, 14, 14);
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    /* Fügt eine sanfte Animation hinzu */
+}
+
+.signup-button:hover {
     background-color: #e8672c;
+    color: #000;
+    /* Schriftfarbe schwarz */
+}
+
+.withdraw-button {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #e8672c;
+    color: rgb(17, 14, 14);
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    /* Fügt eine sanfte Animation hinzu */
+}
+
+.withdraw-button:hover {
+    background-color: #ff3d0d;
+    color: #000;
+    /* Schriftfarbe schwarz */
 }
 
 .course-cards:hover {
