@@ -1,5 +1,5 @@
 <template>
-            <h1>Deine Leistungen</h1>
+      <h1>Deine aktuellen Leistungen</h1>
 
       <div class="orange_container" style="margin-bottom: 20px;">
 
@@ -15,34 +15,34 @@
                               style="background-color: rgb(232, 104, 44); height: 1px;padding: unset;margin: unset;"></td>
                   </tr>
                   <tr>
-                        <td>Mathematik</td>
-                        <td>1,3</td>
-                        <td>85</td>
-                        <td>2023-05-15</td>
+                        <td>Astronomie</td>
+                        <td>1,5</td>
+                        <td>5</td>
+                        <td>15.05.2023</td>
                   </tr>
                   <tr>
-                        <td>Englisch</td>
-                        <td>2,0</td>
-                        <td>78</td>
-                        <td>2023-06-02</td>
+                        <td>Astrophysik</td>
+                        <td>1,8</td>
+                        <td>5</td>
+                        <td>02.06.2023</td>
                   </tr>
                   <tr>
-                        <td>Deutsch</td>
+                        <td>Planetenwissenschaften</td>
                         <td>1,7</td>
-                        <td>82</td>
-                        <td>2023-06-10</td>
+                        <td>10</td>
+                        <td>10.06.2023</td>
                   </tr>
                   <tr>
-                        <td>Geschichte</td>
-                        <td>2,5</td>
-                        <td>75</td>
-                        <td>2023-06-20</td>
+                        <td>Raumfahrttechnik</td>
+                        <td>2,2</td>
+                        <td>5</td>
+                        <td>20.06.2023</td>
                   </tr>
                   <tr>
-                        <td>Biologie</td>
-                        <td>1,0</td>
-                        <td>90</td>
-                        <td>2023-07-05</td>
+                        <td>Exobiologie</td>
+                        <td>1,2</td>
+                        <td>10</td>
+                        <td>05.07.2023</td>
                   </tr>
                   <tr>
                         <td colspan="4"
@@ -50,13 +50,35 @@
                   </tr>
                   <tr style="font-size: 20px;">
                         <th>Gesamt</th>
-                        <th>2.3</th>
-                        <th>456</th>
-                        <th>25.01.2024</th>
+                        <th>1,6</th>
+                        <th>35</th>
+                        <th>{{ currentDate }}</th>
                   </tr>
             </table>
       </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      currentDate: ''
+    };
+  },
+  mounted() {
+    this.setCurrentDate();
+  },
+  methods: {
+    setCurrentDate() {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      this.currentDate = `${day}.${month}.${year}`;
+    }
+  }
+};
+</script>
 
 <style scoped>
 .noten_table td,
