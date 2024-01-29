@@ -6,10 +6,13 @@
     </div>
 
     <div v-else class="login-comp">
-      <input v-model="name" type="text" placeholder="Name" @focus="isFocused = true" @blur="isFocused = false" />
+      <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
+      <br>
+      <input class="no_carret" v-model="name" type="text" placeholder="Name" @focus="isFocused = true"
+        @blur="isFocused = false" />
       <button @click="submit">Submit</button>
 
-      <div v-if="loginError" class="error-message">Login failed: User not found</div>
+      <div v-if="loginError" class="error-message no_carret">Login failed: User not found</div>
     </div>
   </div>
 </template>
@@ -25,7 +28,7 @@ export default {
   data() {
     return {
       hover: false,
-      name: '',
+      name: this.role === "Professor" ? "Jens" : "Anna",
       isFocused: false,
       loginError: false,
     };
@@ -50,9 +53,6 @@ export default {
         this.$router.push({ path: '/home', params: { user: { id: user.id, name: this.name, role: this.role } } });
       } else {
         // Im Fehlerfall auch weiterleiten (ohne spezifische Benutzerinformationen)
-        this.$store.dispatch('loginUser', { name: "Masha", role: "Professor", id: 4, lastName: "Merkur", email: "prof@example.com", courses: [0, 5] });
-        this.$router.push('/home');
-
         this.loginError = true;
         console.error('Login failed: User not found');
       }
@@ -62,6 +62,22 @@ export default {
 </script>
   
 <style scoped>
+.route-enter-from {
+  opacity: 0;
+}
+
+.route-enter-active {
+  transition: all 0.25s ease-out;
+}
+
+.route-leave-to {
+  opacity: 0;
+}
+
+.route-leave-active {
+  transition: all 0.25s ease-in;
+}
+
 .role-card {
   display: flex;
   /* Änderung hier */

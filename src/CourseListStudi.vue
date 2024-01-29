@@ -2,7 +2,7 @@
     <div class="courses-container">
         <div id="confirmModal" class="confirm-modal">
             <div class="modal-content">
-                <p v-if="selectedCourse">Möchten Sie sich wirklich zur Prüfung  <span :style="{ color: '#e8672c' }">{{
+                <p v-if="selectedCourse">Möchten Sie sich wirklich zur Prüfung <span :style="{ color: '#e8672c' }">{{
                     selectedCourse.name }}</span> anmelden? <br><br></p>
                 <button id="confirmButton">OK</button>
                 <button id="cancelButton">Abbrechen</button>
@@ -13,19 +13,33 @@
         <div class="content">
 
             <div class="signin-container">
-                
+
 
                 <div class="course-cards-container">
                     <transition-group appear @before-enter="beforeEnter" @enter="enter" name="list">
                         <div v-for="(course, index) in availableCourses" :key="course.id" class="course-cards"
                             :data-index="index" @click="handleCourseSelection(course)">
-                            <span style="font-size: 18px; font-weight: bold; color: #e8672c;">{{ course.name
+                            <span style="font-size: 18px;  color: #ff7d41;">{{ course.name
                             }}</span><br>
-                            Professor: {{ course.prof }}<br>
-                            Raum: {{ course.raum }}, Zeit:
-                            {{ course.day }}. {{ course.timeslot }}<br>
-                            <span style="font-size: 18px; color: #e8672c;">Beschreibung:</span>
-                            {{ course.description }}
+
+                            <table width="100%">
+                                <tr>
+                                    <td>Professor:</td>
+                                    <td> {{ course.prof }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Raum:</td>
+                                    <td>{{ course.raum }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Zeit:</td>
+                                    <td>{{ course.day }}. {{ course.timeslot }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Beschreibung:&nbsp&nbsp&nbsp</td>
+                                    <td>{{ course.description }}</td>
+                                </tr>
+                            </table>
                             <div class="signup-overlay" @click="handleSignup">Zur Prüfung anmelden</div>
                         </div>
                     </transition-group>
@@ -106,7 +120,7 @@ export default {
                 const indexToRemove = availableCourses.value.findIndex(c => c.id === id);
                 const elementToRemove = document.querySelectorAll('.course-cards')[indexToRemove];
                 if (elementToRemove) {
-                    elementToRemove.style.marginRight = '40px';
+                    elementToRemove.style.paddingRight = '125px';
                 }
                 courses.value = courses.value.filter(c => c.id !== id);
                 // Event-Listener entfernen
@@ -158,13 +172,13 @@ export default {
 </script>
 
 <style scoped>
-
 .course-cards-container {
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-bottom: 5%;
-    padding-top: 5%;
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
+
 .confirm-modal {
     opacity: 0;
     position: fixed;
@@ -232,7 +246,6 @@ export default {
 .course-cards {
     background-color: rgb(43, 43, 43);
     font-size: 16px;
-    font-weight: bold;
     padding: 10px;
     border: 2px solid #e8672c;
     margin-bottom: 10px;
@@ -252,11 +265,9 @@ export default {
     padding: 5px;
     padding-left: 7px;
     padding-right: 7px;
-
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.15s ease-in-out;
-
 }
 
 .signup-overlay:hover {
@@ -279,7 +290,6 @@ export default {
 
 .signin-container {
     flex: 1;
-    padding: 10px;
 }
 
 label {

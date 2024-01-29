@@ -14,15 +14,9 @@
 <script>
 import { ref } from 'vue'
 import gsap from 'gsap'
-import Navbar from './components/navbar.vue';
-import footerC from './components/footerC.vue';
 import store from './store';
 
 export default {
-  components: {
-    Navbar,
-    footerC,
-  },
   computed: {
     user() {
       return this.$store.getters.getUser;
@@ -38,9 +32,9 @@ export default {
     console.log(userCourses);
 
     const cards = ref([
-      { title: "Verlaufsplan", link: "/card1" },
+      { title: "Verlaufsplan", link: "/verlaufsplan" },
       { title: user.role === 'Professor' ? "Meine Kurse" : "Meine Kurse", link: user.role === 'Professor' ? "/courselistprof" : "/courseliststudi" },
-      { title: "Leistungen", link: "/card3" },
+      { title: "Leistungen", link: "/profil" },
       { title: "Stundenplan", link: "/schedule" },
       { title: "Profil", link: "/profil" },
       { title: "Postfach", link: "/postfach" },
