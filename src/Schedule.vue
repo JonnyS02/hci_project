@@ -3,6 +3,16 @@
     <div class="orange_container">
 
         <table>
+            <thead>
+                <tr>
+                    <th>Zeit</th>
+                    <th>Montag</th>
+                    <th>Dienstag</th>
+                    <th>Mittwoch</th>
+                    <th>Donnerstag</th>
+                    <th>Freitag</th>
+                </tr>
+            </thead>
             <tr>
                 <td class="time">8:15 - 9:45</td>
                 <td>Exobiologie<br><span class="raum">F Gebäude 59</span></td>
