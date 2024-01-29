@@ -10,15 +10,15 @@
                   <hr>
                   <table style="width: 100%;">
                         <tr>
-                              <th>Rolle</th>
-                              <th>{{ user.rolle }}</th>
+                              <td>Rolle:</td>
+                              <td>{{ user.rolle }}</td>
                         </tr>
                         <tr>
-                              <td>Email</td>
+                              <td>Email:</td>
                               <td>{{ user.email }}</td>
                         </tr>
                         <tr>
-                              <td>Semester</td>
+                              <td>Semester:</td>
                               <td>{{ user.semester }}.</td>
                         </tr>
                   </table>
@@ -44,6 +44,10 @@ export default {
 </script>
     
 <style scoped>
+
+td{
+      width: 50%;
+}
 .orange_container {
       display: flex;
       max-width: 700px;

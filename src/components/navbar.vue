@@ -14,7 +14,7 @@
         </router-link>
       </li>
       <!-- Right Content -->
-      <li class="right" style="margin-right: 15;">
+      <li class="right" style="margin-right: 15px;">
         <router-link to="/profil" :class="{ 'active': currentPath === '/profil', 'no-hover': currentPath === '/profil' }">
           {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
           &nbsp;<font-awesome-icon :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
