@@ -293,6 +293,7 @@ export default {
 }
 
 .signup-button {
+    font-size: 14px;
     cursor: pointer;
     padding: 10px;
     background-color: #fff2ec;
@@ -311,6 +312,7 @@ export default {
 }
 
 .withdraw-button {
+    font-size: 16px;
     cursor: pointer;
     padding: 10px;
     background-color: #e8672c;
