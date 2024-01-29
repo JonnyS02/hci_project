@@ -122,9 +122,11 @@
 }
 
 .container {
+     margin-top: 22EMM0px;
      display: flex;
      justify-content: center;
      align-items: center;
+     margin-bottom: 20px;
 }
 </style>
 

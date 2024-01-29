@@ -36,7 +36,7 @@ export default {
       navItems: [
         { path: '/home', label: 'Homepage' },
         { path: '/verlaufsplan', label: 'Verlaufsplan' },
-        { path: '/courselist', label: 'Meine Kurse' },
+        { path: '/courseliststudi', label: 'Meine Kurse' },
         { path: '/leistungen', label: 'Leistungen' },
         { path: '/schedule', label: 'Stundenplan' },
         { path: '/postfach', label: 'Postfach' },
