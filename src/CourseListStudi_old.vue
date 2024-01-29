@@ -16,7 +16,7 @@
 
 
                 <div class="course-cards-container">
-                    <transition-group appear @before-enter="beforeEnter" @enter="enter">
+                    <transition-group appear @before-enter="beforeEnter" @enter="enter" name="list">
                         <div v-for="(course, index) in availableCourses" :key="course.id" class="course-cards"
                             :data-index="index" @click="handleCourseSelection(course)">
                             <span style="font-size: 18px;  color: #ff7d41;">{{ course.name
@@ -32,12 +32,8 @@
                                     <td>{{ course.raum }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Vorlesung:</td>
+                                    <td>Zeit:</td>
                                     <td>{{ course.day }}. {{ course.timeslot }}</td>
-                                </tr>
-                                <tr>
-                                    <td><span style=" color: #ff7d41;">Prüfung:</span></td>
-                                    <td>Freitag den 12.04.2024 um 10.15 Uhr</td>
                                 </tr>
                                 <tr>
                                     <td>Beschreibung:&nbsp&nbsp&nbsp</td>
@@ -123,7 +119,9 @@ export default {
                 var id = selectedCourse.value.id;
                 const indexToRemove = availableCourses.value.findIndex(c => c.id === id);
                 const elementToRemove = document.querySelectorAll('.course-cards')[indexToRemove];
-
+                if (elementToRemove) {
+                    elementToRemove.style.paddingRight = '125px';
+                }
                 courses.value = courses.value.filter(c => c.id !== id);
                 // Event-Listener entfernen
                 confirmButton.value.removeEventListener('click', handleConfirmButtonClick);
@@ -158,6 +156,14 @@ export default {
             confirmModal.value = document.getElementById('confirmModal');
             confirmButton.value = document.getElementById('confirmButton');
             cancelButton.value = document.getElementById('cancelButton');
+            setTimeout(() => {
+                const courseCards = document.querySelectorAll('.course-cards');
+                courseCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.removeAttribute('style');
+                    }, index * 200);
+                });
+            }, 2000);
         });
 
         return { user, userCourses, availableCourses, beforeEnter, enter, handleCourseSelection, selectedCourse };
@@ -288,5 +294,21 @@ export default {
 
 label {
     margin-top: 10px;
+}
+
+/* list transitions */
+.list-leave-to {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.list-leave-active {
+    transition: all 0.4s ease;
+    position: absolute;
+    /* for move transition after item leaves */
+}
+
+.list-move {
+    transition: all 0.3s ease;
 }
 </style>
