@@ -88,5 +88,25 @@ export default createStore({
         return [];
       }
     },
+    getUserExams: (state) => (userId) => {
+      const user = state.persons.find(person => person.id === userId);
+  
+      if (user) {
+        return user.prüfungsanmeldungen.map(examId => {
+          const exam = state.courses.find(course => course.id === examId);
+          return {
+            id: exam.id,
+            name: exam.name,
+            prof: exam.prof,
+            raum: exam.raum,
+            day: exam.day,
+            timeslot: exam.timeslot,
+            description: exam.description
+          };
+        });
+      } else {
+        return [];
+      }
+    }
   },
 });
