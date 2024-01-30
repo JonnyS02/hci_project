@@ -9,6 +9,7 @@ import Verlaufsplan from '../Verlaufsplan.vue'
 import Postfach from '../Postfach.vue'
 import Leistungen from '../Leistungen.vue'
 import Profil from '../Profil.vue'
+import Coursedetail from '../Coursedetail.vue'
 
 
 
@@ -60,6 +61,11 @@ const router = createRouter({
             path: "/profil",
             name: "Profil",
             component: Profil 
+        },
+        {
+            path: "/coursedetail",
+            name: "Coursedetail",
+            component: Coursedetail 
         },
     ]
 })

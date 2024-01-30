@@ -30,7 +30,7 @@
                          id="image3563" x="-608.07513" y="406.33237" clip-path="url(#clipPath7514)"
                          transform="matrix(1.3130615,0,0,1.3130615,190.3649,-185.20058)" />
 
-                    <a href="/courselist">
+                    <a href="/Coursedetail">
                          <rect style="fill:#1374db;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.0783193;stroke-opacity:1;paint-order:markers stroke fill"
                               id="GuMdWI" class="hoverable" width="104.67849" height="23.096319" x="-587.14532" y="410.77295"
                               rx="0.033296537" ry="0.033064049" />
