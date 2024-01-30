@@ -83,7 +83,6 @@ export default {
 
 .course-name {
       font-size: 24px;
-      font-weight: bold;
 }
 
 .enroll-button {
