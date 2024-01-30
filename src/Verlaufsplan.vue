@@ -116,7 +116,7 @@
      </div>
 </template>
 
-<style>
+<style scoped>
 .hoverable:hover {
      filter: url(#outline);
 }
