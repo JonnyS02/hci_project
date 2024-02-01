@@ -65,7 +65,7 @@
                               Ort:
                         </div>
                         <div class="inner-right">
-                              67443 Neustadt, Deutschland
+                              67433 Neustadt, Deutschland
                         </div>
                   </div>
                   <div class="light-border">
