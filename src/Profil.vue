@@ -1,5 +1,5 @@
 <template>
-      <h1>Profil</h1>
+      <h1>Ihr Profil</h1>
       <div class="orange_container" id="outer_container">
             <img src="./assets/6644b34c91f57f8d40a4eaa94e3cb797.png" class="image" />
       

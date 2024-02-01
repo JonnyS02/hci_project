@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import store from '../store';
+
 export default {
   name: 'Navbar',
   data() {
@@ -42,16 +44,22 @@ export default {
       navItems: [
         { path: '/home', label: 'Homepage' },
         { path: '/verlaufsplan', label: 'Verlaufsplan' },
-        { path: '/courseliststudi', label: 'Meine Kurse' },
+        { path: this.getUserCoursesLink(), label: "Meine Kurse" },
         { path: '/leistungen', label: 'Leistungen' },
         { path: '/schedule', label: 'Stundenplan' },
         { path: '/postfach', label: 'Postfach' },
       ],
     };
   },
+  methods: {
+    getUserCoursesLink() {
+      const user = store.getters.getUser;
+      return user.role === 'Professor' ? "/courselistprof" : "/courseliststudi";
+    }
+  },
   computed: {
     user() {
-      return this.$store.getters.getUser;
+      return store.getters.getUser;
     },
   },
   watch: {

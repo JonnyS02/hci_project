@@ -1,5 +1,5 @@
 <template>
-      <h1>Deine aktuellen Leistungen</h1>
+      <h1>Ihre aktuellen Leistungen</h1>
 
       <div class="orange_container" style="margin-bottom: 20px;">
 

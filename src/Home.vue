@@ -1,5 +1,5 @@
 <template>
-  <h1 class="no_caret">Welcome back <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
+  <h1 class="no_caret">Willkommen zurück, <span :style="{ color: '#e8672c' }">{{ displayUserName }}</span></h1>
   <div class="cards">
     <transition-group appear @before-enter="beforeEnter" @enter="enter">
       <li class="card_holder" v-for="(card, index) in cards" :key="card.link" :data-index="index">
@@ -22,7 +22,7 @@ export default {
       return this.$store.getters.getUser;
     },
     displayUserName() {
-      return this.user && this.user.name ? this.user.name : "Max";
+      return this.user && this.user.name ? (this.user.role === 'Professor' ? 'Prof. ' + this.user.lastName : this.user.name) : "Max";
     },
   },
   setup() {
