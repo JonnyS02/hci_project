@@ -133,7 +133,6 @@ export default {
 }
 .inner-left{
       padding-left: 10px;
-      font-weight: 650;
       width: 50%;
       display: inline-block;
       vertical-align: top;
@@ -148,7 +147,6 @@ export default {
       margin-top: 10px;
 }
 .border{
-      border: 1px solid rgb(232, 104, 44);
       border-radius: 10px;
       padding: 5px;
       background-color: #8686863b;
