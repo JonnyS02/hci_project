@@ -17,7 +17,8 @@
       <li class="right" style="margin-right: 15px;">
         <router-link to="/profil" :class="{ 'active': currentPath === '/profil', 'no-hover': currentPath === '/profil' }">
           {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
-          &nbsp;<font-awesome-icon :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
+          &nbsp;<font-awesome-icon v-if="user.role === 'Student'" :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
+          <font-awesome-icon v-else :icon="['fas', 'user-tie']" style="color: #ff8045;" />
         </router-link>
       </li>
     </ul>
@@ -25,12 +26,9 @@
 </template>
 
 <script>
-import store from '../store';
-
 export default {
   name: 'Navbar',
   data() {
-
     return {
       currentPath: '',
       navItems: [

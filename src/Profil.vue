@@ -84,7 +84,7 @@
                               0170 450620
                         </div>
                   </div>
-                  <button class="button-class">Daten ändern</button>
+                  <button class="button-class">Daten ändern&nbsp<font-awesome-icon :icon="['fas', 'pen-square']" /></button>
             </div>
       </div>
 
