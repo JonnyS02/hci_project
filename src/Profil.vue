@@ -26,8 +26,11 @@
                               </div>
                         </div>
                         <div class ="border">
-                              <div class = "inner-left">
+                              <div class = "inner-left" v-if="user.rolle === 'Student'">
                                     Matrikelnummer:
+                              </div>
+                              <div class = "inner-left" v-else>
+                                    Mitarbeiternummer:
                               </div>
                               <div class = "inner-right">
                                     174056
@@ -37,16 +40,22 @@
                               <div class = "inner-left">
                                     Geburtsdatum:
                               </div>
-                              <div class = "inner-right">
+                              <div class = "inner-right" v-if="user.rolle === 'Student'">
                                     31.12.2000
+                              </div>
+                              <div class = "inner-right" v-else>
+                                    01.01.1979
                               </div>
                         </div>
                         <div class ="border">
                               <div class = "inner-left">
                                     Persönliche E-Mail:
                               </div>
-                              <div class = "inner-right">
+                              <div class = "inner-right" v-if="user.rolle === 'Student'">
                                     anna@example.com
+                              </div>
+                              <div class = "inner-right" v-else>
+                                    jupiterjens@example.com
                               </div>
                         </div>
                   </div>
@@ -56,24 +65,33 @@
                         <div class ="inner-left">
                               Straße:
                         </div>
-                        <div class="inner-right">
+                        <div class="inner-right" v-if="user.rolle === 'Student'">
                               Musterstraße 19
+                        </div>
+                        <div class="inner-right" v-else>
+                              Mainzerallee 35
                         </div>
                   </div>
                   <div class="light-border">
                         <div class ="inner-left">
                               Ort:
                         </div>
-                        <div class="inner-right">
+                        <div class="inner-right" v-if="user.rolle === 'Student'">
                               67433 Neustadt, Deutschland
+                        </div>
+                        <div class="inner-right" v-else>
+                              55116 Mainz, Deutschland
                         </div>
                   </div>
                   <div class="light-border">
                         <div class ="inner-left">
                               Telefon:
                         </div>
-                        <div class="inner-right">
+                        <div class="inner-right" v-if="user.rolle === 'Student'">
                               09443 679340
+                        </div>
+                        <div class="inner-right" v-else>
+                              06131 350970
                         </div>
                   </div>
                   <div class="light-border">
@@ -81,14 +99,14 @@
                               Mobil:
                         </div>
                         <div class="inner-right">
-                              0170 450620
+                              0172 260430
                         </div>
                   </div>
                   <button class="button-class">Daten ändern&nbsp<font-awesome-icon :icon="['fas', 'pen-square']" /></button>
             </div>
       </div>
 
-      <div class="orange_container">
+      <div class="orange_container" v-if="user.rolle === 'Student'">
             <table class="full-table">
                   <tr>
                         <th>Fach</th>
@@ -185,8 +203,8 @@ export default {
       font-weight: 500;
       cursor: pointer;
       padding: 5px;
-      background-color: #868686;
-      color: black;
+      background-color: #696868;
+      color: white;
       border: 1px solid black;
       border-radius: 5px;
       margin-top: 10px;
@@ -196,7 +214,7 @@ export default {
 
 .button-class:hover {
     background-color: #e8672c;
-    color: #000;
+    color: white;
     /* Schriftfarbe schwarz */
 }
 

@@ -21,10 +21,10 @@
           <font-awesome-icon v-else :icon="['fas', 'user-tie']" style="color: #ff8045;" />
         </router-link>
         <div class="dropdown-content">
-            <p>Bescheinigungen</p>
-            <hr>
-            <p>Zahlungen</p>
-            <hr>
+            <p v-if="user.rolle === 'Student'">Bescheinigungen</p>
+            <hr v-if="user.rolle === 'Student'">
+            <p v-if="user.rolle === 'Student'">Zahlungen</p>
+            <hr v-if="user.rolle === 'Student'">
             <p>Einstellungen</p>
             <hr>
         </div> 
