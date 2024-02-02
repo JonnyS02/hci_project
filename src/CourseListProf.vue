@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h1 class="no_caret">Ihre Kurse, <span :style="{ color: '#e8672c' }">{{ user ? `Prof. ${user.lastName}` : 'Guest' }}</span></h1>
-    <div class="cards">
+    <h1 class="no_caret">Ihre Kurse, <span :style="{ color: '#e8672c' }">{{ user ? `Prof. ${user.lastName}` : 'Guest'
+    }}</span></h1>
+    <div class="container">
       <div class="list">
+        <h2 style="color: #e8672c; font-size: 24px; font-weight: bold;">Courselist</h2>
         <ul>
-          <h2 style="color: #e8672c; font-size: 24px; font-weight: bold;">Courselist</h2>
           <li class="card_holder" v-for="course in userCourses" :key="course.id">
             <div class="course-card">
               <span class="bullet" style="color: #ff8045;">&#8226;</span>
@@ -15,17 +16,17 @@
         </ul>
       </div>
       <div>
-        <h2 style="color: #e8672c; font-size: 24px; font-weight: bold; text-align: center;">Create new Course</h2>
+        <h2 style="color: #e8672c; font-size: 24px; font-weight: bold; text-align: center;">Neuen Kurs erstellen</h2>
         <div class="form-container">
           <form>
             <div class="form-row">
               <div class="form-column">
                 <label for="name" style="color: #ffffff;">Name:</label>
-                <input type="text" id="name" name="name" required placeholder="Kursname"
+                <input type="text" id="name" name="name" required placeholder=" Kursname"
                   style="border: 2px solid #ff8045; color: #ff8045;">
 
                 <label for="room" style="color: #ffffff;">Raum:</label>
-                <input type="text" id="room" name="room" required placeholder="z.B C32"
+                <input type="text" id="room" name="room" required placeholder=" z.B C32"
                   style="border: 2px solid #ff8045; color: #ff8045;">
               </div>
               <div class="form-column">
@@ -34,16 +35,16 @@
                   placeholder="Professor's last name" style="border: 2px solid #ff8045; color: #ffffff;">
 
                 <label for="timeslot" style="color: #ffffff;">Zeit:</label>
-                <input type="text" id="timeslot" name="timeslot" required placeholder="z.B 10-12 Uhr"
+                <input type="text" id="timeslot" name="timeslot" required placeholder=" z.B 10-12 Uhr"
                   style="border: 2px solid #ff8045; color: #ffffff;">
                 <label for="day" style="color: #ffffff;">Day:</label>
-                <input type="text" id="day" name="day" required placeholder="z.B Mo, Di"
+                <input type="text" id="day" name="day" required placeholder=" z.B Mo, Di"
                   style="border: 2px solid #ff8045; color: #ffffff;">
               </div>
             </div>
 
             <label for="description" style="color: #ffffff;">Becshreibung:</label>
-            <textarea id="description" name="description" required placeholder="Beschreibung"
+            <textarea id="description" name="description" required placeholder=" Beschreibung"
               style="border: 2px solid #ff8045; color: #ffffff;"></textarea>
 
             <button type="submit" style="border: 1px solid #e8672c; color: #0e0906; background-color: #e8672c;">
@@ -101,18 +102,6 @@ export default {
   background-color: rgb(232, 104, 44);
 }
 
-.list {
-  margin-right: 130px;
-}
-
-.form-container {
-  width: 350px;
-  padding: 20px;
-  border: 2px solid #e8672c;
-  border-radius: 5px;
-  background-color: rgb(39, 38, 38);
-}
-
 form {
   display: flex;
   flex-direction: column;
@@ -147,4 +136,28 @@ button {
   color: white;
   border: none;
   border-radius: 5px;
-}</style>
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-right: 15%;
+  padding-left: 15%;
+}
+
+.list {
+  flex: 1;
+  padding-left: 10px;
+}
+
+.form-container {
+  width: 350px;
+  padding: 20px;
+  border: 2px solid #e8672c;
+  border-radius: 5px;
+  background-color: rgb(39, 38, 38);
+  position: relative;
+}
+</style>
