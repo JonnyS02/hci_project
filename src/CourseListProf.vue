@@ -1,163 +1,239 @@
 <template>
-  <div>
-    <h1 class="no_caret">Ihre Kurse, <span :style="{ color: '#e8672c' }">{{ user ? `Prof. ${user.lastName}` : 'Guest'
-    }}</span></h1>
-    <div class="container">
-      <div class="list">
-        <h2 style="color: #e8672c; font-size: 24px; font-weight: bold;">Courselist</h2>
-        <ul>
-          <li class="card_holder" v-for="course in userCourses" :key="course.id">
-            <div class="course-card">
-              <span class="bullet" style="color: #ff8045;">&#8226;</span>
-              <span style="color: #ff8045;">{{ course.name }}</span><br> Raum: {{ course.raum }},
-              {{ course.day }} {{ course.timeslot }}
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2 style="color: #e8672c; font-size: 24px; font-weight: bold; text-align: center;">Neuen Kurs erstellen</h2>
-        <div class="form-container">
-          <form>
-            <div class="form-row">
-              <div class="form-column">
-                <label for="name" style="color: #ffffff;">Name:</label>
-                <input type="text" id="name" name="name" required placeholder=" Kursname"
-                  style="border: 2px solid #ff8045; color: #ffffff;">
+  <div class="courses-container">
+    <h1 class="no_caret">Ihre Kurse, <span style="color: #e8672c;">Prof.</span> <span :style="{ color: '#e8672c' }">{{ user ? user.lastName : 'Guest' }}</span></h1>
 
-                <label for="room" style="color: #ffffff;">Raum:</label>
-                <input type="text" id="room" name="room" required placeholder=" z.B C32"
-                  style="border: 2px solid #ff8045; color: #ffffff;">
+
+      <div class="content">
+
+          <div class="signin-container">
+
+
+              <div class="course-cards-container">
+                  <transition-group appear @before-enter="beforeEnter" @enter="enter">
+                      <div v-for="(course, index) in availableCourses" :key="course.id" class="course-cards"
+                          :data-index="index" @click="handleCourseSelection(course)">
+                          <span style="font-size: 18px;  color: #ff7d41;">{{ course.name
+                          }}</span><br>
+
+                          <table width="100%">
+                              <tr>
+                                  <td>Professor:</td>
+                                  <td> {{ course.prof }}</td>
+                              </tr>
+                              <tr>
+                                  <td>Raum:</td>
+                                  <td>{{ course.raum }}</td>
+                              </tr>
+                              <tr>
+                                  <td>Vorlesung:</td>
+                                  <td>{{ course.day }}. {{ course.timeslot }}</td>
+                              </tr>
+                              <tr>
+                                  <td><span style=" color: #ff7d41;">Prüfung:</span></td>
+                                  <td>Freitag den 12.04.2024 um 10.15 Uhr</td>
+                              </tr>
+                              <tr>
+                                  <td>Beschreibung:&nbsp&nbsp&nbsp</td>
+                                  <td>{{ course.description }}</td>
+                              </tr>
+                          </table>
+                      </div>
+                  </transition-group>
               </div>
-              <div class="form-column">
-                <label for="professor" style="color: #ffffff;">Professor:</label>
-                <input type="text" id="professor" name="professor" :value="user ? user.lastName : ''" required readonly
-                  placeholder="Professor's last name" style="border: 2px solid #ff8045; color: #ffffff;">
-
-                <label for="timeslot" style="color: #ffffff;">Zeit:</label>
-                <input type="text" id="timeslot" name="timeslot" required placeholder=" z.B 10-12 Uhr"
-                  style="border: 2px solid #ff8045; color: #ffffff;">
-                <label for="day" style="color: #ffffff;">Day:</label>
-                <input type="text" id="day" name="day" required placeholder=" z.B Mo, Di"
-                  style="border: 2px solid #ff8045; color: #ffffff;">
-              </div>
-            </div>
-
-            <label for="description" style="color: #ffffff;">Becshreibung:</label>
-            <textarea id="description" name="description" required placeholder=" Beschreibung"
-              style="border: 2px solid #ff8045; color: #ffffff;"></textarea>
-
-            <button type="submit" style="border: 1px solid #e8672c; color: #0e0906; background-color: #e8672c;">
-              Submit
-            </button>
-          </form>
-        </div>
+          </div>
       </div>
-    </div>
   </div>
 </template>
 
-
 <script>
+import { ref, computed, onMounted } from 'vue';
 import Navbar from './components/navbar.vue';
+import gsap from 'gsap'
+import store from './store';
+import { useRouter } from 'vue-router';
 
 export default {
   components: {
-    Navbar,
+      Navbar,
   },
   computed: {
-    user() {
-      return this.$store.getters.getUser;
-    },
-    userCourses() {
-      return this.$store.getters.getUserCourses(this.user.id);
-    },
+      user() {
+          return this.$store.getters.getUser;
+      },
+      userCourses() {
+          return this.$store.getters.getUserCourses(this.user.id);
+      },
+  },
+  setup() {
+      const selectedCourse = ref(null);
+      const user = store.getters.getUser;
+      const userCourses = store.getters.getUserCourses(user.id);
+
+      const courses = ref([
+          { id: 0, name: 'Orbitalmechanik', prof: 'Merkur', raum: 'C31', day: "Mo", timeslot: "10:15", description: "Erforschen Sie die Bewegung von Himmelskörpern im Weltraum und lernen Sie, wie Gravitation und Geschwindigkeit sie beeinflussen." },
+          { id: 1, name: 'Raumfahrtsystemarchitektur', prof: 'Jupiter', raum: 'B404', day: "Di", timeslot: "10:15", description: "Gestalten Sie komplexe Raumfahrtmissionen und entwerfen Sie Systeme für den sicheren und effizienten Transport im Weltraum." },
+          { id: 2, name: 'Raumfahrtmissionen und -planung', prof: 'Neptune', raum: 'K44', day: "Di", timeslot: "14:15", description: "Tauchen Sie ein in die Planung und Umsetzung von Raumfahrtmissionen, von der Konzeption bis zur Realisierung." },
+          { id: 3, name: 'Fortgeschrittene Satellitentechnik', prof: 'Venus', raum: 'K19', day: "Mo", timeslot: "16:15", description: "Vertiefen Sie Ihr Verständnis für Satellitentechnologien und lernen Sie fortschrittliche Methoden für innovative Anwendungen kennen." },
+          { id: 4, name: 'Astronomie und Kosmologie', prof: 'Venus', raum: 'F3', day: "Do", timeslot: "10:15", description: "Entdecken Sie die Geheimnisse des Universums, erforschen Sie ferne Galaxien und verstehen Sie die grundlegenden Prinzipien der Kosmologie." },
+          { id: 5, name: 'Exoplaneten Forschung', prof: 'Merkur', raum: 'F7', day: "Mi", timeslot: "14:15", description: "Untersuchen Sie Planeten außerhalb unseres Sonnensystems und erkunden Sie die Vielfalt dieser faszinierenden Welten." },
+          { id: 6, name: 'Theoretische Astrophysik', prof: 'Jupiter', raum: 'C24', day: "Sa", timeslot: "10:15", description: "Vertiefen Sie Ihr Verständnis für die physikalischen Prinzipien des Universums und erforschen Sie theoretische Modelle für astronomische Phänomene." },
+          { id: 7, name: 'Raumzeit und Relativität', prof: 'Jupiter', raum: 'C1', day: "Fr", timeslot: "14:15", description: "Tauchen Sie ein in die faszinierende Welt von Raum und Zeit und verstehen Sie die Auswirkungen der allgemeinen Relativitätstheorie." },
+          { id: 8, name: 'Gravitationsphysik', prof: 'Neptune', raum: 'F7', day: "Fr", timeslot: "10:15", description: "Erforschen Sie die Kräfte der Schwerkraft und ihre Auswirkungen auf die Struktur und Entwicklung des Universums." },
+      ]);
+
+      const availableCourses = computed(() => {
+          return courses.value.filter(course => userCourses.some(userCourse => userCourse.id === course.id));
+      });
+
+      const beforeEnter = (el) => {
+          el.style.opacity = 0;
+          el.style.transform = 'translateY(100px)';
+      };
+
+      const enter = (el, done) => {
+          gsap.to(el, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              onComplete: done,
+              delay: el.dataset.index * 0.2,
+          });
+      };
+
+      const confirmModal = ref(null);
+      const confirmButton = ref(null);
+      const cancelButton = ref(null);
+      const body = document.body;
+      const handleConfirmButtonClick = () => {
+          confirmModal.value.style.opacity = '0';
+          confirmModal.value.style.zIndex = '-1';
+          setTimeout(() => {
+              if (!selectedCourse.value.isEnrolled) {
+                  // Aktionen für die Anmeldung implementieren
+                  store.dispatch('enrollInExam', selectedCourse.value.id);
+
+                  // Update the enrolled status in the courses array
+                  courses.value = courses.value.map(course => {
+                      if (course.id === selectedCourse.value.id) {
+                          return { ...course, isEnrolled: true };
+                      }
+                      return course;
+                  });
+              } else {
+                  // Aktionen für die Abmeldung implementieren
+                  store.dispatch('unenrollFromExam', selectedCourse.value.id);
+
+                  // Update the enrolled status in the courses array
+                  courses.value = courses.value.map(course => {
+                      if (course.id === selectedCourse.value.id) {
+                          return { ...course, isEnrolled: false };
+                      }
+                      return course;
+                  });
+              }
+
+              // Zurücksetzen der ausgewählten Option und des Body-Stils
+              selectedCourse.value = null;
+              body.style.overflow = '';
+              body.style.backgroundColor = '';
+
+              // Event-Listener entfernen
+              confirmButton.value.removeEventListener('click', handleConfirmButtonClick);
+              cancelButton.value.removeEventListener('click', handleCancelButtonClick);
+          }, 250);
+      };
+
+
+      const handleCancelButtonClick = () => {
+          confirmModal.value.style.opacity = '0';
+          confirmModal.value.style.zIndex = '-1';
+          console.log("Anmeldung abgebrochen");
+          body.style.overflow = '';
+          body.style.backgroundColor = '';
+          selectedCourse.value = null;
+          // Event-Listener entfernen
+          confirmButton.value.removeEventListener('click', handleConfirmButtonClick);
+          cancelButton.value.removeEventListener('click', handleCancelButtonClick);
+      };
+
+      const handleCourseSelection = (course) => {
+          selectedCourse.value = course;
+          body.style.overflow = 'hidden';
+          confirmModal.value.style.opacity = '1';
+          confirmModal.value.style.zIndex = '1';
+
+          // Event-Listener hinzufügen
+          confirmButton.value.addEventListener('click', handleConfirmButtonClick);
+          cancelButton.value.addEventListener('click', handleCancelButtonClick);
+      };
+
+      onMounted(() => {
+          confirmModal.value = document.getElementById('confirmModal');
+          confirmButton.value = document.getElementById('confirmButton');
+          cancelButton.value = document.getElementById('cancelButton');
+      });
+
+      return { user, userCourses, availableCourses, beforeEnter, enter, handleCourseSelection, selectedCourse };
   },
 };
 </script>
 
 <style scoped>
-.card {
-  cursor: pointer;
-  background-color: rgb(215, 215, 215);
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  transition: 0.15s ease-in-out;
-  border: 2px solid rgb(232, 104, 44);
-  transition: background-color 0.15s ease-in-out;
+.course-cards-container {
+  max-width: 1200px;
+  margin: auto;
+  padding-bottom: 20px;
+  padding-top: 30px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  padding-top: 4%;
+  flex: 0 0 50%;
 }
 
 .course-card {
+  color: #e2e2e2;
   font-size: 16px;
   font-weight: bold;
   padding: 10px;
+}
+
+.course-cards {
+  background-color: rgb(43, 43, 43);
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #e8672c;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  position: relative;
+  transition: background-color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out;
+
+}
+
+.course-cards:hover {
+  background-color: #8686863b;
+  color: white;
 }
 
 .bullet {
   margin-right: 5px;
 }
 
-.card:hover {
-  background-color: rgb(232, 104, 44);
+.list ul {
+  list-style: none;
+  padding: 0;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.form-column {
+.signin-container {
   flex: 1;
-  margin-right: 10px;
 }
 
 label {
   margin-top: 10px;
-}
-
-input,
-textarea {
-  margin-bottom: 10px;
-  width: 100%;
-  background-color: #272727;
-
-}
-
-button {
-  cursor: pointer;
-  padding: 10px;
-  background-color: #e8672c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 20px;
-  padding-right: 15%;
-  padding-left: 15%;
-}
-
-.list {
-  flex: 1;
-  padding-left: 10px;
-}
-
-.form-container {
-  width: 350px;
-  padding: 20px;
-  border: 2px solid #e8672c;
-  border-radius: 5px;
-  background-color: rgb(39, 38, 38);
-  position: relative;
 }
 </style>

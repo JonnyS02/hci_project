@@ -61,7 +61,7 @@ export default {
     const cards = ref([
       { title: "Verlaufsplan & Anmeldung", link: "/verlaufsplan" },
       { title: user.role === 'Professor' ? "Meine Kurse" : "Meine Kurse", link: user.role === 'Professor' ? "/courselistprof" : "/courseliststudi" },
-      { title: "Leistungen", link: "/leistungen" },
+      { title: user.role === 'Professor' ? "Kurs erstellen" : "Leistungen", link: user.role === 'Professor' ? "/addcourse" : "/leistungen" },
       { title: "Stundenplan", link: "/schedule" },
       { title: "Profil", link: "/profil" },
       { title: "Postfach", link: "/postfach" },

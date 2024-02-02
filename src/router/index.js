@@ -10,6 +10,7 @@ import Postfach from '../Postfach.vue'
 import Leistungen from '../Leistungen.vue'
 import Profil from '../Profil.vue'
 import Coursedetail from '../Coursedetail.vue'
+import Addcourse from '../Addcourse.vue'
 
 
 
@@ -66,6 +67,11 @@ const router = createRouter({
             path: "/coursedetail",
             name: "Coursedetail",
             component: Coursedetail 
+        },
+        {
+            path: "/addcourse",
+            name: "Addcourse",
+            component: Addcourse 
         },
     ]
 })
