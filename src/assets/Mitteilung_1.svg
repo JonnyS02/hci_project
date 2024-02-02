@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="9.9847364mm"
+   height="9.9825478mm"
+   viewBox="0 0 9.9847364 9.9825478"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <rect
+       x="7.5048265"
+       y="42.285259"
+       width="14.444774"
+       height="12.508044"
+       id="rect3786" />
+  </defs>
+  <g
+     id="layer1">
+    <path
+       style="fill:#e43616;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.015;stroke-dasharray:none;paint-order:markers stroke fill"
+       id="path1262"
+       d="M 9.9847364,4.9912739 A 4.9923682,4.9912739 0 0 1 5.3083303,9.9725415 4.9923682,4.9912739 0 0 1 0.03999387,5.621793 4.9923682,4.9912739 0 0 1 4.0495442,0.08981619 4.9923682,4.9912739 0 0 1 9.8254018,3.7403378 Z" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text3784"
+       style="font-size:1.87376px;line-height:1.2;font-family:'Avenir Next';-inkscape-font-specification:'Avenir Next, Normal';white-space:pre;shape-inside:url(#rect3786);display:inline;fill:#e43616;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.0566929;stroke-dasharray:none;paint-order:markers stroke fill" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.66521px;line-height:1.2;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif, Normal ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.231919;stroke-dasharray:none;paint-order:markers stroke fill"
+       x="2.8075945"
+       y="7.5869474"
+       id="text3792"><tspan
+         id="tspan3790"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.66521px;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif, Normal ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:1;stroke-width:0.231919"
+         x="2.8075945"
+         y="7.5869474">1</tspan></text>
+  </g>
+</svg>

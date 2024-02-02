@@ -13,7 +13,7 @@
                 <button id="cancelButton">Abbrechen</button>
             </div>
         </div>
-        <h1 class="no_caret">Your courses, <span :style="{ color: '#e8672c' }">{{ user ? user.name : 'Guest' }}</span></h1>
+        <h1 class="no_caret">Ihre Kurse, <span :style="{ color: '#e8672c' }">{{ user ? user.name : 'Guest' }}</span></h1>
 
         <div class="content">
 
