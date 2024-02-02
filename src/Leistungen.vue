@@ -7,7 +7,7 @@
                   <tr style="font-size: 20px;">
                         <th>Fach</th>
                         <th>Note</th>
-                        <th>Punkte</th>
+                        <th>ECTS</th>
                         <th>Datum</th>
                   </tr>
                   <tr>
@@ -50,9 +50,9 @@
                   </tr>
                   <tr style="font-size: 20px;">
                         <th>Gesamt</th>
-                        <th>1,6</th>
-                        <th>35</th>
-                        <th>{{ currentDate }}</th>
+                        <th style="text-align: left;">1,6</th>
+                        <th style="text-align: left;">35</th>
+                        <th style="text-align: left;">{{ currentDate }}</th>
                   </tr>
             </table>
       </div>

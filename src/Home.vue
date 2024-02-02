@@ -14,25 +14,27 @@
     </transition-group>
   </div>
   <transition-group appear @before-enter="beforeEnter" @enter="delay">
-    <!-- <div style="margin-top: 30px; margin-bottom: 30px;" class="orange_container" key="card.link">
-    <div class="seen" style="border-top: 1px solid rgba(232, 104, 44, 0.374); border-bottom: 1px solid rgba(232, 104, 44, 0.374);">
-      <table width="100%">
-        <tr>
-          <td style="width: 35%;"><span class="pointer">
-              <font-awesome-icon v-if=!email.seen :icon="['fas', 'envelope']" />
-              <font-awesome-icon v-else :icon="['fas', 'envelope-open']" />
-              &nbsp
-              <span class="pointer">{{ email.subject }}</span>
-            </span>
-          </td>
-          <td style="width: 35%;"><span class="pointer">{{ email.sender }}</span></td>
-          <td style="width: 25%;"><span class="pointer">{{ email.time }}</span></td>
-          <td style="width: 5%;text-align: right;font-size: 1.3em;"><span class="pointer"><font-awesome-icon
-                :icon="['fas', 'chevron-circle-down']" /></span></td>
-        </tr>
-      </table>
+    <div style="margin-top: 30px; margin-bottom: 30px;" class="orange_container" key="card.link">
+      <h2 style="padding-left:10px;">Aktuelle Meldungen:</h2>
+      <div v-for="(email, index) in mails" :key="email" :class="{ 'email': true, 'seen': email.seen }"
+        :style="{ 'border-top': index === 0 ? 'none' : '1px solid rgba(232, 104, 44, 0.374)', 'border-bottom': index === mails.length - 1 ? 'none' : '1px solid rgba(232, 104, 44, 0.374)' }">
+        <table width="100%">
+          <tr>
+            <td style="width: 35%;"><span class="pointer">
+                <font-awesome-icon v-if=!email.seen :icon="['fas', 'info-circle']" />
+                <font-awesome-icon v-else :icon="['fas', 'envelope-open']" />
+                &nbsp
+                <span class="pointer">{{ email.subject }}</span>
+              </span>
+            </td>
+            <td style="width: 20%;"><span class="pointer">{{ email.sender }}</span></td>
+            <td style="width: 10%;"><span class="pointer">{{ email.time }}</span></td>
+            <td style="width: 5%;text-align: right;font-size: 1.3em;"><span class="pointer"><font-awesome-icon
+                  :icon="['fas', 'chevron-circle-down']" /></span></td>
+          </tr>
+        </table>
+      </div>
     </div>
-  </div> -->
   </transition-group>
 </template>
 
@@ -90,7 +92,14 @@ export default {
       })
     }
 
-    return { cards, beforeEnter, enter, delay }
+    const mails = ref([
+      { sender: 'Orbitalmechanik', time: '29.02.2023, 09:03', subject: 'Prüfungsanmeldung ist jetzt offen!', seen: false },
+      { sender: 'Fortgeschrittene Satellitentechnik', time: '28.02.2023, 10:15', subject: 'Übung fällt aus am 02.03.2024', seen: false },
+      { sender: 'Raumzeit und Relativität', time: '27.02.2023, 11:30', subject: 'Raumänderung für 07.03.2024', seen: true },
+      { sender: 'Fortgeschrittene Satellitentechnik', time: '24.02.2023, 14:45', subject: 'Prüfungstermin wurde verschoben!', seen: true },
+    ]);
+
+    return { cards, beforeEnter, enter, delay, mails }
   }
 }
 </script>
@@ -174,7 +183,6 @@ table {
   padding: 5px;
   border-top: 1px solid rgba(232, 104, 44, 0.374);
   border-bottom: 1px solid rgba(232, 104, 44, 0.374);
-
 }
 
 .email.seen {

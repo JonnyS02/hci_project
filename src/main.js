@@ -11,7 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faCaretDown, faChevronCircleDown, faEnvelope, faEnvelopeOpen, faEnvelopeOpenText, faGraduationCap, faPenSquare, faPowerOff, faUserSecret, faUserTie } from '@fortawesome/free-solid-svg-icons'
+import { faCaretDown, faChevronCircleDown, faEnvelope, faEnvelopeOpen, faEnvelopeOpenText, faGraduationCap, faInfoCircle, faPenSquare, faPowerOff, faUserSecret, faUserTie } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 /* add icons to the library */
@@ -25,6 +25,7 @@ library.add(faEnvelope)
 library.add(faEnvelopeOpen)
 library.add(faPenSquare)
 library.add(faUserTie)
+library.add(faInfoCircle)
 
 const app = createApp(App);
 app.use(router);
