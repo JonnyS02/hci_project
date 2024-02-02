@@ -8,13 +8,13 @@
           <span>{{ item.label }}<span v-if="item.icon">&nbsp <font-awesome-icon :icon="item.icon" /></span></span>
         </router-link>
       </li>
-      <li class="no_caret">
+      <li class="no_caret" style="margin-left: auto; position: relative; display: inline-block;">
         <router-link to="/" class="off">
           <span>Log out<span>&nbsp <font-awesome-icon :icon="['fas', 'power-off']" /></span></span>
         </router-link>
       </li>
       <!-- Right Content -->
-      <li class="right dropdown" style="margin-right: 85px;">
+      <li class="dropdown" style="margin-right: 5%;">
         <router-link to="/profil" :class="{ 'active': currentPath === '/profil', 'no-hover': currentPath === '/profil' }">
           {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
           &nbsp;<font-awesome-icon v-if="user.role === 'Student'" :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
@@ -77,7 +77,7 @@ export default {
 nav {
   background-color: #333;
   padding: 10px;
-  padding-left: 85px;
+  padding-left: 5%;
 }
 
 ul {
@@ -102,10 +102,6 @@ li {
 a {
   color: white;
   text-decoration: none;
-}
-
-.right {
-  margin-left: auto;
 }
 
 .active {

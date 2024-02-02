@@ -1,5 +1,5 @@
 <template>
-     <h1 class="no_caret">Verlaufsplan</h1>
+     <h1 class="no_caret">Melden Sie sich zu Ihren Kursen an</h1>
      <div class="container">
 
           <svg style="border-radius: 20px;" width="366.32581mm" height="197.14388mm" viewBox="0 0 366.32579 197.14387"

@@ -58,6 +58,9 @@
                                     jupiterjens@example.com
                               </div>
                         </div>
+                        <button class="button-down" style="margin-left: 10px;">Bescheinigungen</button>
+                        <button class="button-down" style="margin-left:30px; margin-right: 30px;">Zahlungen</button>
+                        <button class="button-down">Einstellungen</button>
                   </div>
             </div>
             <div class ="left-content">
@@ -120,11 +123,6 @@
                   </tr>
             </table>
       </div>
-
-      <button class="button-down">Daten ändern&nbsp<font-awesome-icon :icon="['fas', 'pen-square']" /></button>
-      <button class="button-down">Daten ändern&nbsp<font-awesome-icon :icon="['fas', 'pen-square']" /></button>
-      <button class="button-down">Daten ändern&nbsp<font-awesome-icon :icon="['fas', 'pen-square']" /></button>
-
 </template>
     
 <script>
@@ -172,10 +170,9 @@ export default {
       border-radius: 10px;
       padding: 5px;
       background-color: #8686863b;
-      margin: auto;
       max-width: 1200px;
-      margin-top: 30px;
-      margin-bottom: 30px;
+      margin-top: 20px;
+      margin-bottom: 20px;
       color: white;
 }
 
@@ -223,17 +220,18 @@ export default {
 }
 
 .button-down{
-      position: relative;
-      font-size: 14px;
+      position:relative;
+      font-size: 18px;
       font-weight: 500;
       cursor: pointer;
-      padding: 5px;
+      padding: 10px;
       background-color: #696868;
       color: white;
       border: 1px solid black;
       border-radius: 5px;
       margin-top: 10px;
       transition: background-color 0.3s, color 0.3s;
+      width: 165px;
 }
 .button-down:hover {
     background-color: #e8672c;
