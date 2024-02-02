@@ -58,9 +58,12 @@
                                     jupiterjens@example.com
                               </div>
                         </div>
-                        <button class="button-down" style="margin-left: 10px;">Bescheinigungen</button>
-                        <button class="button-down" style="margin-left:30px; margin-right: 30px;">Zahlungen</button>
-                        <button class="button-down">Einstellungen</button>
+                        <div v-if="user.rolle === 'Student'">
+                              <button class="button-down" style="margin-left: 10px;">Bescheinigungen</button>
+                              <button class="button-down" style="margin-left:30px; margin-right: 30px;">Zahlungen</button>
+                              <button class="button-down">Einstellungen</button>
+                        </div>
+                        <button v-else class="button-down" style="margin-left: 30%;">Einstellungen</button>
                   </div>
             </div>
             <div class ="left-content">
