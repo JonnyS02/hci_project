@@ -121,6 +121,10 @@
             </table>
       </div>
 
+      <button class="button-down">Daten ändern&nbsp<font-awesome-icon :icon="['fas', 'pen-square']" /></button>
+      <button class="button-down">Daten ändern&nbsp<font-awesome-icon :icon="['fas', 'pen-square']" /></button>
+      <button class="button-down">Daten ändern&nbsp<font-awesome-icon :icon="['fas', 'pen-square']" /></button>
+
 </template>
     
 <script>
@@ -213,6 +217,25 @@ export default {
 }
 
 .button-class:hover {
+    background-color: #e8672c;
+    color: white;
+    /* Schriftfarbe schwarz */
+}
+
+.button-down{
+      position: relative;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 5px;
+      background-color: #696868;
+      color: white;
+      border: 1px solid black;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: background-color 0.3s, color 0.3s;
+}
+.button-down:hover {
     background-color: #e8672c;
     color: white;
     /* Schriftfarbe schwarz */
