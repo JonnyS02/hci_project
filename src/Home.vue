@@ -14,15 +14,14 @@
     </transition-group>
   </div>
   <transition-group appear @before-enter="beforeEnter" @enter="delay">
-    <div style="margin-top: 30px; margin-bottom: 30px;" class="orange_container" key="card.link">
+    <div style="margin-top: 5%; margin-bottom: 30px;" class="orange_container" key="card.link">
       <h2 style="padding-left:10px;">Aktuelle Meldungen:</h2>
       <div v-for="(email, index) in mails" :key="email" :class="{ 'email': true, 'seen': email.seen }"
         :style="{ 'border-top': index === 0 ? 'none' : '1px solid rgba(232, 104, 44, 0.374)', 'border-bottom': index === mails.length - 1 ? 'none' : '1px solid rgba(232, 104, 44, 0.374)' }">
         <table width="100%">
           <tr>
             <td style="width: 35%;"><span class="pointer">
-                <font-awesome-icon v-if=!email.seen :icon="['fas', 'info-circle']" />
-                <font-awesome-icon v-else :icon="['fas', 'envelope-open']" />
+                <font-awesome-icon :icon="['fas', 'info-circle']" />
                 &nbsp
                 <span class="pointer">{{ email.subject }}</span>
               </span>
@@ -63,7 +62,7 @@ export default {
       { title: user.role === 'Professor' ? "Meine Kurse" : "Meine Kurse", link: user.role === 'Professor' ? "/courselistprof" : "/courseliststudi" },
       { title: user.role === 'Professor' ? "Kurs erstellen" : "Leistungen", link: user.role === 'Professor' ? "/addcourse" : "/leistungen" },
       { title: "Stundenplan", link: "/schedule" },
-      { title: "Profil", link: "/profil" },
+      { title: "Profil & Studienservice", link: "/profil" },
       { title: "Postfach", link: "/postfach" },
     ]);
 
@@ -106,7 +105,7 @@ export default {
 
 <style scoped>
 .cards {
-  padding-top: 20vh;
+  padding-top: 5%;
   width: 100%;
   padding-left: 20%;
   padding-right: 20%;
@@ -157,12 +156,15 @@ export default {
   }
 }
 
+
 @media only screen and (max-width: 1700px) {
   .cards {
     padding-left: 10%;
     padding-right: 10%;
   }
 }
+
+
 
 @media only screen and (max-width: 1900px) {
   .cards {
