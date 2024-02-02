@@ -59,7 +59,7 @@ export default {
     console.log(userCourses);
 
     const cards = ref([
-      { title: "Verlaufsplan", link: "/verlaufsplan" },
+      { title: "Verlaufsplan & Anmeldung", link: "/verlaufsplan" },
       { title: user.role === 'Professor' ? "Meine Kurse" : "Meine Kurse", link: user.role === 'Professor' ? "/courselistprof" : "/courseliststudi" },
       { title: "Leistungen", link: "/leistungen" },
       { title: "Stundenplan", link: "/schedule" },
