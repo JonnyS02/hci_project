@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1 class="no_caret">Your courses, <span :style="{ color: '#e8672c' }">{{ user ? `Prof. ${user.lastName}` : 'Guest' }}</span></h1>
+    <h1 class="no_caret">Your courses, <span :style="{ color: '#e8672c' }">{{ user ? `Prof. ${user.lastName}` : 'Guest'
+    }}</span></h1>
     <div class="cards">
       <div class="list">
         <ul>
@@ -14,38 +15,44 @@
           </li>
         </ul>
       </div>
-      <div><h2 style="color: #e8672c; font-size: 24px; font-weight: bold; text-align: center;">Create new Course</h2>
-      <div class="form-container">
-        <form>
-          <div class="form-row">
-            <div class="form-column">
-              <label for="name" style="color: #0c0907;">Name:</label>
-              <input type="text" id="name" name="name" required style="border: 2px solid #ff8045; color: #ff8045;">
+      <div>
+        <h2 style="color: #e8672c; font-size: 24px; font-weight: bold; text-align: center;">Create new Course</h2>
+        <div class="form-container">
+          <form>
+            <div class="form-row">
+              <div class="form-column">
+                <label for="name" style="color: #ffffff;">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Kursname"
+                  style="border: 2px solid #ff8045; color: #ff8045;">
 
-              <label for="room" style="color: #030302;">Room:</label>
-              <input type="text" id="room" name="room" required style="border: 2px solid #ff8045; color: #ff8045;">
+                <label for="room" style="color: #ffffff;">Raum:</label>
+                <input type="text" id="room" name="room" required placeholder="z.B C32"
+                  style="border: 2px solid #ff8045; color: #ff8045;">
+              </div>
+              <div class="form-column">
+                <label for="professor" style="color: #ffffff;">Professor:</label>
+                <input type="text" id="professor" name="professor" :value="user ? user.lastName : ''" required readonly
+                  placeholder="Professor's last name" style="border: 2px solid #ff8045; color: #ffffff;">
 
+                <label for="timeslot" style="color: #ffffff;">Zeit:</label>
+                <input type="text" id="timeslot" name="timeslot" required placeholder="z.B 10-12 Uhr"
+                  style="border: 2px solid #ff8045; color: #ffffff;">
+                <label for="day" style="color: #ffffff;">Day:</label>
+                <input type="text" id="day" name="day" required placeholder="z.B Mo, Di"
+                  style="border: 2px solid #ff8045; color: #ffffff;">
+              </div>
             </div>
-            <div class="form-column">
-              <label for="professor" style="color: #000000;">Professor:</label>
-              <input type="text" id="professor" name="professor" :value="user ? user.lastName : ''" required readonly style="border: 2px solid #ff8045; color: #ff8045;">
 
-              <label for="timeslot" style="color: #000000;">Timeslot:</label>
-              <input type="text" id="timeslot" name="timeslot" required style="border: 2px solid #ff8045; color: #ff8045;">
-              <label for="day" style="color: #000000;">Day:</label>
-              <input type="text" id="day" name="day" required style="border: 2px solid #ff8045; color: #ff8045;">
-            </div>
-          </div>
+            <label for="description" style="color: #ffffff;">Becshreibung:</label>
+            <textarea id="description" name="description" required placeholder="Beschreibung"
+              style="border: 2px solid #ff8045; color: #ffffff;"></textarea>
 
-          <label for="description" style="color: #000000;">Description:</label>
-          <textarea id="description" name="description" required style="border: 2px solid #ff8045; color: #ff8045;"></textarea>
-
-          <button type="submit" style="border: 1px solid #e8672c; color: #0e0906; background-color: #e8672c;">
-            Submit
-          </button>
-        </form>
+            <button type="submit" style="border: 1px solid #e8672c; color: #0e0906; background-color: #e8672c;">
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -104,7 +111,7 @@ export default {
   padding: 20px;
   border: 2px solid #e8672c;
   border-radius: 5px;
-  background-color: rgb(215, 215, 215);
+  background-color: rgb(39, 38, 38);
 }
 
 form {
@@ -131,7 +138,7 @@ textarea {
   margin-bottom: 10px;
   width: 100%;
   background-color: #272727;
-  
+
 }
 
 button {
@@ -141,5 +148,4 @@ button {
   color: white;
   border: none;
   border-radius: 5px;
-}
-</style>
+}</style>
