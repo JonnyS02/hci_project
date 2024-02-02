@@ -23,11 +23,11 @@
               <div class="form-column">
                 <label for="name" style="color: #ffffff;">Name:</label>
                 <input type="text" id="name" name="name" required placeholder=" Kursname"
-                  style="border: 2px solid #ff8045; color: #ff8045;">
+                  style="border: 2px solid #ff8045; color: #ffffff;">
 
                 <label for="room" style="color: #ffffff;">Raum:</label>
                 <input type="text" id="room" name="room" required placeholder=" z.B C32"
-                  style="border: 2px solid #ff8045; color: #ff8045;">
+                  style="border: 2px solid #ff8045; color: #ffffff;">
               </div>
               <div class="form-column">
                 <label for="professor" style="color: #ffffff;">Professor:</label>
