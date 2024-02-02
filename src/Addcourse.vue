@@ -4,7 +4,7 @@
         <div class="container">
             <div>
                 <div class="orange_container">
-                    <form>
+                    <form @submit.prevent="submitForm">
                         <div class="form-row">
                             <div class="form-column">
                                 <label for="name" style="color: #ffffff;">Name:</label>
@@ -38,6 +38,10 @@
                             Kurs erstellen
                         </button>
                     </form>
+                    <div v-if="feedback" class="feedback-card">
+                        {{ feedback }}
+                        <font-awesome-icon :icon="['fas', 'check']" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,15 +55,34 @@ export default {
     components: {
         Navbar,
     },
+    data() {
+        return {
+            feedback: null,
+        };
+    },
     computed: {
         user() {
             return this.$store.getters.getUser;
+        },
+    },
+    methods: {
+        submitForm() {
+            this.feedback = 'Kurs erfolgreich erstellt!';
         },
     },
 };
 </script>
   
 <style scoped>
+.feedback-card {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #5fcf1e;
+    color: rgb(58, 57, 57);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+}
 .card {
     cursor: pointer;
     background-color: rgb(215, 215, 215);
@@ -112,19 +135,19 @@ textarea {
 
 }
 
-.button{
-      float: right;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      padding: 5px;
-      background-color: #696868;
-      color: white;
-      border: 1px solid black;
-      border-radius: 5px;
-      margin-top: 10px;
-      transition: background-color 0.3s, color 0.3s;
-      /* Fügt eine sanfte Animation hinzu */
+.button {
+    float: right;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 5px;
+    background-color: #696868;
+    color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-top: 8;
+    transition: background-color 0.3s, color 0.3s;
+    /* Fügt eine sanfte Animation hinzu */
 }
 
 .button:hover {
@@ -154,5 +177,6 @@ textarea {
     border-radius: 5px;
     background-color: rgb(39, 38, 38);
     position: relative;
-}</style>
+}
+</style>
   
