@@ -43,7 +43,7 @@ export default {
       currentPath: '',
       navItems: [
         { path: '/home', label: 'Homepage' },
-        { path: '/verlaufsplan', label: 'Verlaufsplan' },
+        { path: '/verlaufsplan', label: 'Verlaufsplan & Anmeldung' },
         { path: this.getUserCoursesLink(), label: "Meine Kurse" },
         { path: '/leistungen', label: 'Leistungen' },
         { path: '/schedule', label: 'Stundenplan' },
