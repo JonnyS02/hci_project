@@ -44,8 +44,8 @@ export default {
       navItems: [
         { path: '/home', label: 'Homepage' },
         { path: '/verlaufsplan', label: 'Verlaufsplan & Anmeldung' },
-        { path: this.getUserCoursesLink(), label: "Meine Kurse" },
-        { path: '/leistungen', label: 'Leistungen' },
+        { path: this.getUserCoursesLink() ?  "/courselistprof" : "/courseliststudi", label: "Meine Kurse" },
+        { label: this.getUserCoursesLink() ? "Kurs erstellen" : "Leistungen", path: this.getUserCoursesLink() ? "/addcourse" : "/leistungen" },
         { path: '/schedule', label: 'Stundenplan' },
         { path: '/postfach', label: 'Postfach' },
       ],
@@ -54,7 +54,7 @@ export default {
   methods: {
     getUserCoursesLink() {
       const user = store.getters.getUser;
-      return user.role === 'Professor' ? "/courselistprof" : "/courseliststudi";
+      return user.role === 'Professor';
     }
   },
   computed: {
