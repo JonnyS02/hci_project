@@ -7,32 +7,32 @@
                     <form @submit.prevent="submitForm">
                         <div class="form-row">
                             <div class="form-column">
-                                <label for="name" style="color: #ffffff;">Name:</label>
+                                <label for="name" >Name:</label>
                                 <input type="text" id="name" name="name" required placeholder=" Kursname"
-                                    style="border: 2px solid #ff8045; color: #ffffff;">
+                                    >
 
-                                <label for="room" style="color: #ffffff;">Raum:</label>
+                                <label for="room">Raum:</label>
                                 <input type="text" id="room" name="room" required placeholder=" z.B C32"
-                                    style="border: 2px solid #ff8045; color: #ffffff;">
+                                    >
                             </div>
                             <div class="form-column">
-                                <label for="professor" style="color: #ffffff;">Professor:</label>
+                                <label for="professor" >Professor:</label>
                                 <input type="text" id="professor" name="professor" :value="user ? user.lastName : ''"
                                     required readonly placeholder="Professor's last name"
-                                    style="border: 2px solid #ff8045; color: #ffffff;">
+                                    >
 
-                                <label for="timeslot" style="color: #ffffff;">Zeit:</label>
+                                <label for="timeslot" >Zeit:</label>
                                 <input type="text" id="timeslot" name="timeslot" required placeholder=" z.B 10-12 Uhr"
-                                    style="border: 2px solid #ff8045; color: #ffffff;">
-                                <label for="day" style="color: #ffffff;">Tag:</label>
+                                    >
+                                <label for="day" >Tag:</label>
                                 <input type="text" id="day" name="day" required placeholder=" z.B Mo, Di"
-                                    style="border: 2px solid #ff8045; color: #ffffff;">
+                                    >
                             </div>
                         </div>
 
-                        <label for="description" style="color: #ffffff;">Beschreibung:</label>
+                        <label for="description" >Beschreibung:</label>
                         <textarea id="description" name="description" required placeholder=" Beschreibung"
-                            style="border: 2px solid #ff8045; color: #ffffff;"></textarea>
+                            ></textarea>
 
                         <button type="submit" class="button">
                             Kurs erstellen
@@ -92,6 +92,16 @@ export default {
     transition: 0.15s ease-in-out;
     border: 2px solid rgb(232, 104, 44);
     transition: background-color 0.15s ease-in-out;
+}
+label{
+    color: #ffffff;
+}
+
+input,textarea{
+    border: 2px solid #ff8045cb; 
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .course-card {
