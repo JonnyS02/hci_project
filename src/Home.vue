@@ -127,6 +127,7 @@ export default {
   transition: 0.15s ease-in-out;
   border: 2px solid rgb(232, 104, 44);
   transition: background-color 0.15s ease-in-out;
+  box-shadow: 0 2px 5px rgba(232, 104, 44, 0.5);
 }
 
 .card_holder {

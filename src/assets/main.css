@@ -47,5 +47,5 @@ a:hover {
   margin-top: 30px;
   margin-bottom: 30px;
   color: white;
-
+  box-shadow: 0 2px 5px rgba(232, 104, 44, 0.5);
 }
