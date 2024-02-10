@@ -1,19 +1,20 @@
-<!-- LoginComponent.vue -->
 <template>
   <div>
-    <div v-if="showRoleCard1 || showRoleCard2" class="role-card" @click="showLoginComp">
-      <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
-    </div>
+    <form @submit.prevent="submit" @keyup.enter="submit">
+      <div v-if="showRoleCard1 || showRoleCard2" class="role-card" @click="showLoginComp">
+        <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
+      </div>
 
-    <div v-else class="login-comp">
-      <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
-      <br>
-      <input class="no_carret" v-model="name" type="text" placeholder="Name" @focus="isFocused = true"
-        @blur="isFocused = false" />
-      <button @click="submit">Submit</button>
+      <div v-else class="login-comp">
+        <h3 :style="{ color: hover ? '#000' : '#fff' }">{{ role }}</h3>
+        <br>
+        <input class="no_carret" v-model="name" type="text" placeholder="Name" @focus="isFocused = true"
+          @blur="isFocused = false" />
+        <button type="submit" class="login-button">Login</button>
 
-      <div v-if="loginError" class="error-message no_carret">Login failed: User not found</div>
-    </div>
+        <div v-if="loginError" class="error-message no_carret">Login failed: User not found</div>
+      </div>
+    </form>
   </div>
 </template>
 
