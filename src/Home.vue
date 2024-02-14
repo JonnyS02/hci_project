@@ -58,10 +58,10 @@ export default {
     console.log(userCourses);
 
     const cards = ref([
-      { title: "Verlaufsplan & Anmeldung", link: "/verlaufsplan" },
-      { title: user.role === 'Professor' ? "Meine Kurse" : "Meine Kurse", link: user.role === 'Professor' ? "/courselistprof" : "/courseliststudi" },
+      { title:  user.role === 'Professor' ? "Verlaufsplan": "Verlaufsplan & Anmeldung", link: user.role === 'Professor' ?"/verlaufsplan_prof": "/verlaufsplan"},
+      { title: user.role === 'Professor' ? "Ihre Kurse" : "Meine Kurse", link: user.role === 'Professor' ? "/courselistprof" : "/courseliststudi" },
       { title: user.role === 'Professor' ? "Kurs erstellen" : "Leistungen", link: user.role === 'Professor' ? "/addcourse" : "/leistungen" },
-      { title: "Stundenplan", link: "/schedule" },
+      { title: user.role === 'Professor' ? "Terminplan" : "Stundenplan", link: user.role === 'Professor' ? "/schedule_prof" : "/schedule"},
       { title: "Profil & Studienservice", link: "/profil" },
       { title: "Postfach", link: "/postfach" },
     ]);
@@ -91,12 +91,22 @@ export default {
       })
     }
 
-    const mails = ref([
-      { sender: 'Orbitalmechanik', time: '29.02.2023, 09:03', subject: 'Prüfungsanmeldung ist jetzt offen!', seen: false },
-      { sender: 'Fortgeschrittene Satellitentechnik', time: '28.02.2023, 10:15', subject: 'Übung fällt aus am 02.03.2024', seen: false },
-      { sender: 'Raumzeit und Relativität', time: '27.02.2023, 11:30', subject: 'Raumänderung für 07.03.2024', seen: true },
-      { sender: 'Fortgeschrittene Satellitentechnik', time: '24.02.2023, 14:45', subject: 'Prüfungstermin wurde verschoben!', seen: true },
-    ]);
+    let mails;
+if (user.role === 'Professor') {
+  mails = [
+    { sender: 'Institut für Quantenphysik', time: '14.02.2024, 09:30', subject: 'Erinnerung: Gastvortrag morgen', seen: false },
+    { sender: 'Forschungsgruppe Astrophysik', time: '13.02.2024, 15:20', subject: 'Einladung zur Mitarbeit an neuem Projekt', seen: true },
+    { sender: 'Institut für Angewandte Mathematik', time: '12.02.2024, 11:10', subject: 'Besprechungstermin für Forschungsantrag', seen: false },
+    { sender: 'Fakultät für Informatik', time: '11.02.2024, 13:45', subject: 'Vorlesungsausfall nächste Woche', seen: true }
+  ];
+} else {
+  mails = [
+    { sender: 'Orbitalmechanik', time: '29.02.2023, 09:03', subject: 'Prüfungsanmeldung ist jetzt offen!', seen: false },
+    { sender: 'Fortgeschrittene Satellitentechnik', time: '28.02.2023, 10:15', subject: 'Übung fällt aus am 02.03.2024', seen: false },
+    { sender: 'Raumzeit und Relativität', time: '27.02.2023, 11:30', subject: 'Raumänderung für 07.03.2024', seen: true },
+    { sender: 'Fortgeschrittene Satellitentechnik', time: '24.02.2023, 14:45', subject: 'Prüfungstermin wurde verschoben!', seen: true }
+  ];
+}
 
     return { cards, beforeEnter, enter, delay, mails }
   }

@@ -43,10 +43,10 @@ export default {
       currentPath: '',
       navItems: [
         { path: '/home', label: 'Homepage' },
-        { path: '/verlaufsplan', label: 'Verlaufsplan & Anmeldung' },
-        { path: this.getUserCoursesLink() ?  "/courselistprof" : "/courseliststudi", label: "Meine Kurse" },
+        { path: this.getUserCoursesLink() ? "/verlaufsplan_prof":'/verlaufsplan', label: this.getUserCoursesLink() ? 'Verlaufsplan':'Verlaufsplan & Anmeldung' },
+        { path: this.getUserCoursesLink() ?  "/courselistprof" : "/courseliststudi", label: this.getUserCoursesLink() ?"Ihre Kurse":"Meine Kurse" },
         { label: this.getUserCoursesLink() ? "Kurs erstellen" : "Leistungen", path: this.getUserCoursesLink() ? "/addcourse" : "/leistungen" },
-        { path: '/schedule', label: 'Stundenplan' },
+        { path: this.getUserCoursesLink() ?  "/schedule_prof" : "/schedule", label: this.getUserCoursesLink() ? "Terminplan" : "Stundenplan", },
         { path: '/postfach', label: 'Postfach' },
       ],
     };
