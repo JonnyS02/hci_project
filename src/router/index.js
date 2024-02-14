@@ -5,7 +5,9 @@ import Login from '../Login.vue'
 import CourseListProf from '../CourseListProf.vue'
 import CourseListStudi from '../CourseListStudi.vue'
 import Schedule from '../Schedule.vue'
+import Schedule_prof from '../Schedule_prof.vue'
 import Verlaufsplan from '../Verlaufsplan.vue'
+import Verlaufsplan_prof from '../Verlaufsplan_prof.vue'
 import Postfach from '../Postfach.vue'
 import Leistungen from '../Leistungen.vue'
 import Profil from '../Profil.vue'
@@ -44,9 +46,19 @@ const router = createRouter({
             component: Schedule 
         },
         {
+            path: "/Schedule_prof",
+            name: "Schedule_prof",
+            component: Schedule_prof 
+        },
+        {
             path: "/verlaufsplan",
             name: "Verlaufsplan",
             component: Verlaufsplan 
+        },
+        {
+            path: "/verlaufsplan_prof",
+            name: "Verlaufsplan_prof",
+            component: Verlaufsplan_prof 
         },
         {
             path: "/leistungen",

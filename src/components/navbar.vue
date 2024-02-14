@@ -14,7 +14,7 @@
         </router-link>
       </li>
       <!-- Right Content -->
-      <li class="dropdown" style="margin-right: 5%;">
+      <li class="dropdown" style="margin-right: 0px;">
         <router-link to="/profil" :class="{ 'active': currentPath === '/profil', 'no-hover': currentPath === '/profil' }">
           {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
           &nbsp;<font-awesome-icon v-if="user.role === 'Student'" :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
@@ -43,10 +43,10 @@ export default {
       currentPath: '',
       navItems: [
         { path: '/home', label: 'Homepage' },
-        { path: '/verlaufsplan', label: 'Verlaufsplan & Anmeldung' },
-        { path: this.getUserCoursesLink() ?  "/courselistprof" : "/courseliststudi", label: "Meine Kurse" },
+        { path: this.getUserCoursesLink() ? "/verlaufsplan_prof":'/verlaufsplan', label: this.getUserCoursesLink() ? 'Verlaufsplan':'Verlaufsplan & Anmeldung' },
+        { path: this.getUserCoursesLink() ?  "/courselistprof" : "/courseliststudi", label: this.getUserCoursesLink() ?"Ihre Kurse":"Meine Kurse" },
         { label: this.getUserCoursesLink() ? "Kurs erstellen" : "Leistungen", path: this.getUserCoursesLink() ? "/addcourse" : "/leistungen" },
-        { path: '/schedule', label: 'Stundenplan' },
+        { path: this.getUserCoursesLink() ?  "/schedule_prof" : "/schedule", label: this.getUserCoursesLink() ? "Terminplan" : "Stundenplan", },
         { path: '/postfach', label: 'Postfach' },
       ],
     };
@@ -77,7 +77,9 @@ export default {
 nav {
   background-color: #333;
   padding: 10px;
-  padding-left: 5%;
+  padding-left: 50px;
+  padding-right: 50px;
+
 }
 
 ul {
