@@ -29,7 +29,8 @@ export default {
   data() {
     return {
       hover: false,
-      name: this.role === "Professor" ? "Jens" : "Anna",
+      // name: this.role === "Professor" ? "Jens" : "Anna",
+      name: this.role === "Professor" ? "" : "",
       isFocused: false,
       loginError: false,
     };
