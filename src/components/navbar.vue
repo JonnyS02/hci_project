@@ -14,7 +14,7 @@
         </router-link>
       </li>
       <!-- Right Content -->
-      <li class="dropdown" style="margin-right: 5%;">
+      <li class="dropdown" style="margin-right: 0px;">
         <router-link to="/profil" :class="{ 'active': currentPath === '/profil', 'no-hover': currentPath === '/profil' }">
           {{ user.role === 'Professor' ? 'Prof. ' + user.lastName : user.name }}
           &nbsp;<font-awesome-icon v-if="user.role === 'Student'" :icon="['fas', 'graduation-cap']" style="color: #ff8045;" />
@@ -77,7 +77,9 @@ export default {
 nav {
   background-color: #333;
   padding: 10px;
-  padding-left: 5%;
+  padding-left: 50px;
+  padding-right: 50px;
+
 }
 
 ul {
