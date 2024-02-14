@@ -1,5 +1,5 @@
 <template>
-    <h1>Ihr Stundenplan</h1>
+    <h1>Ihr Terminkalender</h1>
     <div class="orange_container">
 
         <table>
